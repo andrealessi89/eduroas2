@@ -19,8 +19,8 @@ interface MobileLayoutProps {
 const menuItems = [
   { icon: Home, label: "Home", href: "/dashboard" },
   { icon: FileText, label: "Pedidos", href: "/pedidos" },
-  { icon: ShoppingBag, label: "Vendas", href: "/vendas" },
-  { icon: ChartBar, label: "Indicadores", href: "/indicadores" },
+  { icon: Package, label: "Produtos", href: "/produtos" },
+  { icon: Cable, label: "Integrações", href: "/integracoes" },
   { icon: Settings, label: "Ajustes", href: "/ajustes" },
 ];
 
@@ -33,8 +33,8 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
       <main className="flex-1">{children}</main>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
-        <div className="flex justify-around items-center h-16">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 shadow-lg">
+        <div className="flex justify-around items-center h-16 px-2">
           {menuItems.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
@@ -43,14 +43,22 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
+                className={`flex flex-col items-center justify-center flex-1 h-full transition-all duration-200 ${
                   isActive
                     ? "text-blue-600"
-                    : "text-gray-400 hover:text-gray-600"
+                    : "text-gray-500"
                 }`}
               >
-                <Icon className="w-5 h-5 mb-1" />
-                <span className="text-xs">{item.label}</span>
+                <div className={`p-1 rounded-lg transition-all ${
+                  isActive ? "bg-blue-50" : ""
+                }`}>
+                  <Icon className={`w-5 h-5 ${isActive ? "w-6 h-6" : ""} transition-all`} />
+                </div>
+                <span className={`text-[10px] mt-1 font-medium ${
+                  isActive ? "text-blue-600" : "text-gray-500"
+                }`}>
+                  {item.label}
+                </span>
               </Link>
             );
           })}
