@@ -20,6 +20,10 @@ model User {
   sessions      Session[]
   apiTokens     ApiToken[]
   googleAdsData GoogleAdsData[]
+  facebookAdsData FacebookAdsData[]
+  produtos      Produto[]
+  pedidos       Pedido[]
+  integracoes   Integracao[]
 }
 
 model Account {
@@ -78,4 +82,105 @@ model GoogleAdsData {
   
   @@index([userId, date])
   @@index([receivedAt])
+}
+
+model FacebookAdsData {
+  id              String   @id @default(cuid())
+  userId          String
+  date            String
+  accountId       String
+  accountName     String
+  cost            Float
+  impressions     Int
+  clicks          Int
+  conversions     Float
+  averageCpc      Float
+  conversionValue Float
+  receivedAt      DateTime @default(now())
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId, date])
+  @@index([receivedAt])
+}
+
+model Produto {
+  id        String   @id @default(cuid())
+  userId    String
+  nome      String
+  sku       String
+  custo     Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, sku])
+  @@index([userId])
+}
+
+model Pedido {
+  id                String   @id @default(cuid())
+  userId            String
+  idPedido          String
+  codigo            String
+  dataHora          DateTime
+  valorProduto      Float
+  valorFrete        Float
+  valorDesconto     Float
+  valorTotal        Float
+  pessoaNome        String
+  pessoaEmail       String
+  formaPagamento    String
+  situacao          Int
+  situacaoDescricao String
+  cupomCodigo       String?
+  cupomDesconto     Float    @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  user  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itens PedidoItem[]
+  
+  @@unique([userId, idPedido])
+  @@unique([codigo])
+  @@index([userId])
+  @@index([createdAt])
+  @@index([situacao])
+}
+
+model PedidoItem {
+  id                   String   @id @default(cuid())
+  pedidoId             String
+  produtoDerivacaoId   Int
+  produtoDerivacaoCodigo String
+  produtoNome          String
+  quantidade           Int
+  valorUnitario        Float
+  valorDesconto        Float
+  valorItem            Float
+  custoUnitario        Float    @default(0)
+  lucroItem            Float    @default(0)
+  createdAt            DateTime @default(now())
+  
+  pedido Pedido @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
+  
+  @@index([pedidoId])
+  @@index([produtoDerivacaoCodigo])
+}
+
+model Integracao {
+  id        String   @id @default(cuid())
+  userId    String
+  tipo      String   // 'magazord', 'google', 'facebook'
+  nome      String   // Nome descritivo da integração
+  config    Json     // Configurações específicas (user, key, tokens, etc)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, tipo])
+  @@index([userId])
 }
