@@ -9,7 +9,9 @@
     "start": "node dist/server.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "generate-token": "ts-node src/scripts/generate-token.ts"
+    "generate-token": "ts-node src/scripts/generate-token.ts",
+    "seed": "ts-node prisma/seed.ts",
+    "test-webhook": "ts-node src/scripts/test-pedido-webhook.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,12 +21,14 @@
     "cors": "^2.8.5",
     "dotenv": "^17.1.0",
     "express": "^5.1.0",
-    "moment-timezone": "^0.6.0"
+    "moment-timezone": "^0.6.0",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.11",
+    "@types/node-fetch": "^2.6.12",
     "nodemon": "^3.1.10",
     "prisma": "^6.11.1",
     "ts-node": "^10.9.2",

@@ -3,6 +3,11 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 import webhookRoutes from './routes/webhook';
+import produtosRoutes from './routes/produtos';
+import facebookAdsRoutes from './routes/facebookAdsData';
+import pedidosRoutes from './routes/pedidos';
+import dashboardRoutes from './routes/dashboard';
+import integracoesRoutes from './routes/integracoes';
 
 dotenv.config();
 
@@ -15,6 +20,11 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/webhook', webhookRoutes);
+app.use('/produtos', produtosRoutes);
+app.use('/facebook-ads', facebookAdsRoutes);
+app.use('/pedidos', pedidosRoutes);
+app.use('/dashboard', dashboardRoutes);
+app.use('/integracoes', integracoesRoutes);
 
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });

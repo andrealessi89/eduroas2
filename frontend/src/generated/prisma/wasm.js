@@ -120,9 +120,173 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  name: 'name',
+  image: 'image',
+  isActive: 'isActive',
+  emailVerified: 'emailVerified',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AccountScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  provider: 'provider',
+  providerAccountId: 'providerAccountId',
+  refresh_token: 'refresh_token',
+  access_token: 'access_token',
+  expires_at: 'expires_at',
+  token_type: 'token_type',
+  scope: 'scope',
+  id_token: 'id_token',
+  session_state: 'session_state'
+};
+
+exports.Prisma.SessionScalarFieldEnum = {
+  id: 'id',
+  sessionToken: 'sessionToken',
+  userId: 'userId',
+  expires: 'expires'
+};
+
+exports.Prisma.ApiTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  userId: 'userId',
+  name: 'name',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.GoogleAdsDataScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  date: 'date',
+  accountId: 'accountId',
+  accountName: 'accountName',
+  cost: 'cost',
+  impressions: 'impressions',
+  clicks: 'clicks',
+  conversions: 'conversions',
+  averageCpc: 'averageCpc',
+  conversionValue: 'conversionValue',
+  receivedAt: 'receivedAt'
+};
+
+exports.Prisma.FacebookAdsDataScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  date: 'date',
+  accountId: 'accountId',
+  accountName: 'accountName',
+  cost: 'cost',
+  impressions: 'impressions',
+  clicks: 'clicks',
+  conversions: 'conversions',
+  averageCpc: 'averageCpc',
+  conversionValue: 'conversionValue',
+  receivedAt: 'receivedAt'
+};
+
+exports.Prisma.ProdutoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  nome: 'nome',
+  sku: 'sku',
+  custo: 'custo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PedidoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  idPedido: 'idPedido',
+  codigo: 'codigo',
+  dataHora: 'dataHora',
+  valorProduto: 'valorProduto',
+  valorFrete: 'valorFrete',
+  valorDesconto: 'valorDesconto',
+  valorTotal: 'valorTotal',
+  pessoaNome: 'pessoaNome',
+  pessoaEmail: 'pessoaEmail',
+  formaPagamento: 'formaPagamento',
+  situacao: 'situacao',
+  situacaoDescricao: 'situacaoDescricao',
+  cupomCodigo: 'cupomCodigo',
+  cupomDesconto: 'cupomDesconto',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PedidoItemScalarFieldEnum = {
+  id: 'id',
+  pedidoId: 'pedidoId',
+  produtoDerivacaoId: 'produtoDerivacaoId',
+  produtoDerivacaoCodigo: 'produtoDerivacaoCodigo',
+  produtoNome: 'produtoNome',
+  quantidade: 'quantidade',
+  valorUnitario: 'valorUnitario',
+  valorDesconto: 'valorDesconto',
+  valorItem: 'valorItem',
+  custoUnitario: 'custoUnitario',
+  lucroItem: 'lucroItem',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.IntegracaoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tipo: 'tipo',
+  nome: 'nome',
+  config: 'config',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
 
 exports.Prisma.ModelName = {
-
+  User: 'User',
+  Account: 'Account',
+  Session: 'Session',
+  ApiToken: 'ApiToken',
+  GoogleAdsData: 'GoogleAdsData',
+  FacebookAdsData: 'FacebookAdsData',
+  Produto: 'Produto',
+  Pedido: 'Pedido',
+  PedidoItem: 'PedidoItem',
+  Integracao: 'Integracao'
 };
 
 /**
