@@ -65,13 +65,10 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
         where: wherePedidos,
         include: { itens: true },
         orderBy: { createdAt: 'desc' }
-      }),
-      prisma.produto.findMany({
-        where: { userId: req.user!.id }
       })
     );
 
-    const [googleAdsData, facebookAdsData, pedidos, produtos] = await Promise.all(promises);
+    const [googleAdsData, facebookAdsData, pedidos] = await Promise.all(promises);
 
     // Calcular métricas do Google Ads
     const googleMetrics = googleAdsData.reduce((acc: any, record: any) => ({

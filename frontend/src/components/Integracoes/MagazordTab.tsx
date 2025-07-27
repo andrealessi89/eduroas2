@@ -18,7 +18,7 @@ interface MagazordIntegration {
 }
 
 export default function MagazordTab() {
-  const { apiCall } = useApiToken();
+  const { apiCall, loading: tokenLoading } = useApiToken();
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [integration, setIntegration] = useState<MagazordIntegration | null>(null);
@@ -51,8 +51,10 @@ export default function MagazordTab() {
   };
 
   useEffect(() => {
-    fetchIntegration();
-  }, []);
+    if (!tokenLoading) {
+      fetchIntegration();
+    }
+  }, [tokenLoading]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,8 +75,9 @@ export default function MagazordTab() {
 
       if (response.success) {
         setMessage({ type: "success", text: "Integração salva com sucesso!" });
-        setIntegration(response.data);
         setFormData({ ...formData, key: "" }); // Limpar a chave após salvar
+        // Recarregar dados após salvar
+        await fetchIntegration();
       }
     } catch (error) {
       setMessage({
@@ -86,7 +89,7 @@ export default function MagazordTab() {
     }
   };
 
-  if (loading) {
+  if (loading || tokenLoading) {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-gray-500">Carregando configurações...</div>

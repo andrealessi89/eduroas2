@@ -19,13 +19,28 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
     });
 
     // Remover dados sensíveis da resposta
-    const integracoesSafe = integracoes.map(int => ({
-      ...int,
-      config: int.tipo === 'magazord' ? {
-        user: (int.config as any).user || '',
-        hasKey: !!(int.config as any).key
-      } : int.config
-    }));
+    const integracoesSafe = integracoes.map(int => {
+      if (int.tipo === 'magazord') {
+        return {
+          ...int,
+          config: {
+            user: (int.config as any).user || '',
+            hasKey: !!(int.config as any).key
+          }
+        };
+      } else if (int.tipo === 'meta') {
+        return {
+          ...int,
+          config: {
+            accessToken: (int.config as any).accessToken ? 
+              (int.config as any).accessToken.substring(0, 10) + '...' : '',
+            adAccountId: (int.config as any).adAccountId || '',
+            hasToken: !!(int.config as any).accessToken
+          }
+        };
+      }
+      return int;
+    });
 
     return res.json({
       success: true,
@@ -239,6 +254,65 @@ router.patch('/tokens/:id/activate', authenticateToken, async (req: AuthRequest,
     return res.status(500).json({
       success: false,
       error: 'Erro ao ativar token'
+    });
+  }
+});
+
+// Salvar/Atualizar integração Meta Ads
+router.post('/meta', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
+  try {
+    const { accessToken, adAccountId } = req.body;
+
+    if (!accessToken || !adAccountId) {
+      return res.status(400).json({
+        success: false,
+        error: 'Token de acesso e Ad Account ID são obrigatórios'
+      });
+    }
+
+    const integracao = await prisma.integracao.upsert({
+      where: {
+        userId_tipo: {
+          userId: req.user!.id,
+          tipo: 'meta'
+        }
+      },
+      update: {
+        nome: 'Meta Ads',
+        config: {
+          accessToken,
+          adAccountId
+        },
+        isActive: true,
+        updatedAt: new Date()
+      },
+      create: {
+        userId: req.user!.id,
+        tipo: 'meta',
+        nome: 'Meta Ads',
+        config: {
+          accessToken,
+          adAccountId
+        }
+      }
+    });
+
+    return res.json({
+      success: true,
+      data: {
+        ...integracao,
+        config: {
+          accessToken: accessToken.substring(0, 10) + '...',
+          adAccountId,
+          hasToken: true
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao salvar integração Meta Ads:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'Erro ao salvar integração'
     });
   }
 });
