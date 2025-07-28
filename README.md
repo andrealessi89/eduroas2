@@ -1,454 +1,356 @@
-# Sistema EDU - ROAS Manager
+# Dash Pro APP
 
-Sistema de gerenciamento de ROAS (Return on Ad Spend) para e-commerce, integrando dados de vendas com campanhas de marketing digital.
+Sistema completo de dashboard para e-commerce com análise de ROI (Return on Investment) e ROAS (Return on Ad Spend), integrando dados de vendas, custos de produtos e campanhas de marketing digital.
 
-## 📋 Visão Geral
+## 🚀 Funcionalidades Principais
 
-O Sistema EDU é uma plataforma completa para análise de performance de campanhas de marketing digital, calculando o retorno real sobre investimento em anúncios considerando todos os custos envolvidos na operação.
+### 📊 Dashboard Analítico
+- **Métricas em Tempo Real**: Visualização de vendas, lucro, ROI e ROAS
+- **Gráficos Interativos**: Análise de composição de custos e tendências
+- **Filtros Avançados**: Por período, plataforma de ads e status
+- **Cards de Performance**: Indicadores chave de desempenho (KPIs)
+- **Avisos Inteligentes**: Alertas para produtos sem custo cadastrado
 
-### Principais Funcionalidades
+### 🛒 Gestão de Pedidos
+- **Importação Automática**: Webhook integrado com Magazord
+- **Cálculo Automático de Custos**: Busca custos via API do Magazord
+- **Análise de Lucro**: Cálculo em tempo real de margem e lucro por pedido
+- **Gestão de Produtos sem Custo**: Identificação e reprocessamento
+- **Detalhamento Completo**: Visualização item a item com custos e lucros
 
-- ✅ **Dashboard Analítico**: Visualização em tempo real de métricas de performance
-- ✅ **Integração Multi-plataforma**: Google Ads e Facebook Ads
-- ✅ **Webhook E-commerce**: Recebimento automático de pedidos
-- ✅ **Cálculo de Lucro Real**: Considera custos de produtos, frete e investimento em ads
-- ✅ **Filtros Avançados**: Por data, plataforma e período
-- ✅ **Autenticação Segura**: Google OAuth com controle de acesso
-- ✅ **Gestão de Produtos**: CRUD completo com interface intuitiva
-- ✅ **Sistema de Integrações**: Configuração de credenciais Magazord e geração de tokens API
-- ✅ **Interface Responsiva**: Menu lateral colapsável com navegação intuitiva
+### 💰 Integrações de Marketing
 
-## 🏗️ Arquitetura do Sistema
+#### Meta Ads (Facebook/Instagram)
+- **Multi-contas**: Suporte para múltiplas contas de anúncio
+- **Importação Automática**: Dados de campanhas via API
+- **Seleção de Contas**: Escolha quais contas monitorar
+- **Métricas**: Custo, impressões, cliques, conversões
+- **Cron Job**: Atualização automática diária
 
-### Backend (API) - `/backend-webhook`
-- **Framework**: Express.js com TypeScript
-- **Banco de Dados**: PostgreSQL
-- **ORM**: Prisma
-- **Autenticação**: Bearer Token
-- **Porta**: 3001
+#### Google Ads
+- **Geração de Tokens**: Sistema seguro de autenticação
+- **Scripts Automatizados**: Geração automática de scripts para Google Ads
+- **Webhook Dedicado**: Recebimento de dados em tempo real
+- **Integração com Facebook**: Atualização simultânea de dados
+- **Métricas Completas**: CPC, CPA, ROAS, conversões
 
-### Frontend - `/frontend`
-- **Framework**: Next.js 15 com App Router
-- **UI**: Tailwind CSS v4
-- **Charts**: Recharts
-- **Autenticação**: NextAuth.js com Google OAuth
-- **Porta**: 3333
-- **Componentes**: Modal system, Layout responsivo, Tabs
+### 🏪 Integração Magazord
+- **Configuração Simples**: Usuário e chave de API
+- **Busca de Custos**: API para obter custos de produtos automaticamente
+- **Sincronização de Pedidos**: Webhook para pedidos aprovados
+- **Reprocessamento**: Atualização de custos quando necessário
+- **Validação**: Apenas pedidos aprovados são processados
 
-## 📊 Estrutura de Dados
+### 🔐 Sistema de Autenticação
+- **Login Seguro**: Autenticação com NextAuth e Google OAuth
+- **Tokens de API**: Geração e gestão de tokens para integrações
+- **Controle de Acesso**: Cada usuário acessa apenas seus dados
+- **Sessões Persistentes**: Login mantido entre acessos
 
-### Tabelas Principais
+### 📱 Interface Responsiva
+- **Mobile First**: Layout otimizado para dispositivos móveis
+- **Menu Lateral**: Navegação intuitiva em desktop
+- **Menu Inferior**: Navegação fácil em mobile
+- **Tema Moderno**: Interface limpa e profissional com Tailwind CSS
+- **Dark Mode Ready**: Preparado para tema escuro
 
-#### 1. **User**
-```prisma
-- id: String @id
-- email: String @unique
-- name: String?
-- isActive: Boolean @default(false)
-- apiTokens: ApiToken[]
-- googleAdsData: GoogleAdsData[]
-- facebookAdsData: FacebookAdsData[]
-- produtos: Produto[]
-- pedidos: Pedido[]
-- integracoes: Integracao[]
-```
+## 🛠️ Tecnologias Utilizadas
 
-#### 2. **Produto**
-```prisma
-- id: String
-- userId: String
-- nome: String
-- sku: String (único por usuário)
-- custo: Float
-```
+### Backend
+- **Node.js** com TypeScript
+- **Express.js** para API REST
+- **Prisma ORM** para banco de dados
+- **PostgreSQL** como banco de dados
+- **JWT** para autenticação de API
+- **Node-cron** para tarefas agendadas
+- **Axios** para requisições HTTP
+- **Date-fns** para manipulação de datas
 
-#### 3. **Pedido**
-```prisma
-- id: String
-- codigo: String (único)
-- idPedido: String
-- dataHora: DateTime
-- valorProduto: Float
-- valorFrete: Float
-- valorDesconto: Float
-- valorTotal: Float
-- pessoaNome: String
-- pessoaEmail: String
-- formaPagamento: String
-- situacao: Int
-- situacaoDescricao: String
-- cupomCodigo: String?
-- cupomDesconto: Float
-- itens: PedidoItem[]
-```
+### Frontend
+- **Next.js 14** com App Router
+- **React** com TypeScript
+- **Tailwind CSS** para estilização
+- **Recharts** para gráficos
+- **NextAuth** para autenticação
+- **Lucide Icons** para ícones
+- **React Hook Form** para formulários
 
-#### 4. **PedidoItem**
-```prisma
-- id: String
-- pedidoId: String
-- produtoDerivacaoCodigo: String (SKU)
-- produtoNome: String
-- quantidade: Int
-- valorUnitario: Float
-- valorDesconto: Float
-- valorItem: Float
-- custoUnitario: Float
-- lucroItem: Float
-```
+## 📋 Pré-requisitos
 
-#### 5. **GoogleAdsData / FacebookAdsData**
-```prisma
-- id: String
-- userId: String
-- date: String
-- accountId: String
-- accountName: String
-- cost: Float
-- impressions: Int
-- clicks: Int
-- conversions: Float
-- averageCpc: Float
-- conversionValue: Float
-```
-
-#### 6. **Integracao**
-```prisma
-- id: String
-- userId: String
-- tipo: String ('magazord', 'google', 'facebook')
-- nome: String
-- config: Json (credenciais e configurações)
-- isActive: Boolean
-- @@unique([userId, tipo])
-```
-
-#### 7. **ApiToken**
-```prisma
-- id: String
-- token: String @unique
-- userId: String
-- name: String
-- isActive: Boolean
-- createdAt: DateTime
-- updatedAt: DateTime
-```
-
-## 🔧 Regras de Negócio
-
-### 1. **Processamento de Pedidos**
-- ✅ **Apenas pedidos aprovados**: Somente `situacao = 4` são processados
-- ✅ **Sem duplicação**: Verificação pelo campo `codigo` único
-- ✅ **Cálculo automático**: 
-  - Custo baseado no SKU do produto cadastrado
-  - Lucro por item: `valorItem - (custoUnitario × quantidade)`
-- ✅ **Webhook único**: Cada pedido é processado apenas uma vez
-
-### 2. **Cálculos do Dashboard**
-
-#### ROAS (Return on Ad Spend)
-```
-ROAS Geral = Vendas Totais / Investimento Total em Ads
-ROAS Google = Vendas Google / Investimento Google
-ROAS Facebook = Vendas Facebook / Investimento Facebook
-```
-
-#### Lucro Líquido
-```
-Lucro = Receita - Custo dos Produtos - Frete - Investimento em Ads
-```
-
-#### Margens
-- **Margem Bruta**: `(Receita - Custo Produtos) / Receita × 100`
-- **Margem Líquida**: `Lucro Líquido / Receita × 100`
-- **Margem de Contribuição**: `(Receita - Custos Variáveis) / Receita × 100`
-
-#### Métricas de Performance
-- **CPC (Custo por Clique)**: `Investimento / Cliques`
-- **CPA (Custo por Aquisição)**: `Investimento / Conversões`
-- **Taxa de Conversão**: `Conversões / Cliques × 100`
-- **Ticket Médio**: `Valor Total Pedidos / Quantidade Pedidos`
-
-### 3. **Filtros e Agregações**
-- Filtro por período (data inicial e final)
-- Filtro por plataforma (Google, Facebook, Todas)
-- Agregação de dados por dia, semana ou mês
-- Separação entre pedidos totais e aprovados
-
-### 4. **Sistema de Integrações**
-- **Magazord**: Armazenamento seguro de credenciais (user/key)
-- **Tokens API**: Geração e gestão de tokens para autenticação
-- **Segurança**: Credenciais criptografadas, tokens únicos
-- **Interface**: Tabs separadas para cada tipo de integração
-
-## 🚀 Instalação e Configuração
-
-### Pré-requisitos
-- Node.js 18+
+- Node.js 18+ 
 - PostgreSQL 14+
 - NPM ou Yarn
-- Docker (opcional, para o banco de dados)
+- Conta Magazord (para integração)
+- Conta Meta Business (para Facebook Ads)
+- Conta Google Ads (opcional)
 
-### 1. Backend Setup
+## 🔧 Instalação Local
+
+### 1. Clone o Repositório
+```bash
+git clone https://github.com/andrealessi89/eduroas2.git dashpro
+cd dashpro
+```
+
+### 2. Configure o Backend
 
 ```bash
 cd backend-webhook
-
-# Instalar dependências
 npm install
 
-# Configurar variáveis de ambiente
+# Crie o arquivo .env
 cp .env.example .env
-# Editar .env com:
-# DATABASE_URL=postgresql://user:password@localhost:5432/sistemaedu_db
-# PORT=3001
+# Edite o arquivo com suas configurações
 
-# Executar migrations
-npx prisma migrate deploy
+# Execute as migrations
+npx prisma migrate dev
 
-# Gerar Prisma Client
+# Gere o Prisma Client
 npx prisma generate
 
-# Popular dados de teste (produtos, ads data)
-npm run seed
-
-# Gerar token de API para seu usuário
-npm run generate-token seu-email@gmail.com
-
-# Iniciar servidor de desenvolvimento
+# Inicie o servidor
 npm run dev
 ```
 
-### 2. Frontend Setup
+### 3. Configure o Frontend
 
 ```bash
-cd frontend
-
-# Instalar dependências
+cd ../frontend
 npm install
 
-# Configurar variáveis de ambiente
-cp .env.example .env
-# Adicionar:
-# DATABASE_URL=postgresql://user:password@localhost:5432/sistemaedu_db
-# NEXTAUTH_URL=http://localhost:3333
-# NEXTAUTH_SECRET=sua-chave-secreta
-# GOOGLE_CLIENT_ID=seu-client-id
-# GOOGLE_CLIENT_SECRET=seu-client-secret
-# NEXT_PUBLIC_API_URL=http://localhost:3001
+# Crie o arquivo .env.local
+cp .env.example .env.local
+# Edite o arquivo com suas configurações
 
-# Gerar Prisma Client
+# Gere o Prisma Client
 npx prisma generate
 
-# Iniciar servidor de desenvolvimento
+# Inicie o servidor
 npm run dev
 ```
 
-## 📡 Endpoints da API
+### 4. Acesse o Sistema
+- Frontend: http://localhost:3000
+- Backend: http://localhost:3001
 
-### Autenticação
-Todas as rotas requerem header `Authorization: Bearer <token>`
+## 🚀 Deploy em Produção
 
-### Dashboard
-- `GET /dashboard` - Dados completos do dashboard com filtros
-  - Query params: `startDate`, `endDate`, `platform`
-- `GET /dashboard/summary` - Resumo de métricas do dia
+Consulte o arquivo [INSTALACAO_UBUNTU.md](INSTALACAO_UBUNTU.md) para um guia completo de instalação em servidor Ubuntu com:
+- Configuração completa do servidor
+- PM2 para gerenciamento de processos
+- Nginx como proxy reverso
+- SSL com Let's Encrypt
+- Backup automatizado
+- Monitoramento e logs
 
-### Produtos
-- `GET /produtos` - Listar todos os produtos
-- `GET /produtos/:id` - Buscar produto específico
-- `POST /produtos` - Criar novo produto
-  ```json
-  {
-    "nome": "Produto",
-    "sku": "SKU123",
-    "custo": 29.90
-  }
-  ```
-- `PUT /produtos/:id` - Atualizar produto
-- `DELETE /produtos/:id` - Deletar produto
+## 📱 Configuração das Integrações
 
-### Pedidos
-- `GET /pedidos` - Listar pedidos com filtros
-  - Query params: `startDate`, `endDate`, `limit`, `offset`
-- `POST /pedidos/webhook/ecommerce` - Webhook para receber pedidos
-- `GET /pedidos/stats/aggregated` - Estatísticas agregadas
+### Magazord
+1. Acesse Integrações → Magazord
+2. Insira seu usuário e chave de API
+3. Salve as configurações
+4. Configure o webhook no Magazord para: `https://seu-dominio.com/pedidos/webhook/ecommerce`
 
-### Ads Data
-- `POST /webhook` - Receber dados do Google Ads
-- `POST /facebook-ads` - Receber dados do Facebook Ads
-- `GET /facebook-ads` - Listar dados com filtros
-- `GET /facebook-ads/aggregated` - Dados agregados
+### Meta Ads
+1. Acesse Integrações → Meta Ads
+2. Clique em "Nova Integração"
+3. Insira um nome identificador
+4. Cole o token de acesso do Meta Business
+5. Salve e aguarde carregar as contas
+6. Clique em "Gerenciar contas" e selecione as contas desejadas
 
-## 🔐 Segurança
+### Google Ads
+1. Acesse Integrações → Google Ads
+2. Clique em "Gerar Novo Token"
+3. Dê um nome ao token
+4. Copie o script gerado
+5. No Google Ads, vá em Ferramentas → Scripts
+6. Cole o script e configure para executar diariamente
 
-### Autenticação em Duas Camadas
-1. **Frontend**: Google OAuth via NextAuth.js
-2. **Backend**: Bearer Token com validação no banco
+## 📊 Estrutura do Banco de Dados
 
-### Validações Implementadas
-- ✅ Validação de tipos com TypeScript
-- ✅ Validação de campos obrigatórios
-- ✅ Verificação de token ativo
-- ✅ Verificação de usuário ativo
-- ✅ Proteção contra duplicação de dados
-- ✅ Middleware de autenticação em todas as rotas
-
-## 📈 Webhook E-commerce
-
-### Estrutura Esperada do Payload
-```json
-{
-  "id": 71309,
-  "codigo": "0012507422480",
-  "dataHora": "2025-07-09 00:29:30-03",
-  "valorProduto": "164.80",
-  "valorFrete": "14.99",
-  "valorDesconto": "16.48",
-  "valorTotal": "163.31",
-  "pessoaNome": "Cliente Nome",
-  "pessoaEmail": "cliente@email.com",
-  "formaPagamentoNome": "Cartão - MasterCard",
-  "pedidoSituacao": 4,
-  "pedidoSituacaoDescricao": "Crédito e Cadastro Aprovados",
-  "cupomCodigo": "DESC10",
-  "cupomValorDesconto": "16.48",
-  "arrayPedidoRastreio": [{
-    "pedidoItem": [{
-      "produtoDerivacaoId": 443,
-      "produtoDerivacaoCodigo": "SKU123",
-      "descricao": "Produto Descrição",
-      "quantidade": 1,
-      "valorUnitario": 74.90,
-      "valorDesconto": 7.49,
-      "valorItem": 67.41
-    }]
-  }]
-}
-```
-
-### Fluxo de Processamento
-1. **Validação**: Verifica se `pedidoSituacao === 4`
-2. **Duplicidade**: Verifica se o código já existe
-3. **Busca de Custos**: Localiza produtos pelo SKU
-4. **Cálculo**: Determina custo e lucro por item
-5. **Persistência**: Salva pedido e itens relacionados
-6. **Resposta**: Retorna resumo do processamento
-
-## 🧪 Testes
-
-### Gerar Token de API
-```bash
-cd backend-webhook
-npm run generate-token usuario@email.com
-```
-
-### Testar Webhook de Pedido
-```bash
-# Com script de teste
-npm run test-webhook <TOKEN>
-
-# Com cURL
-curl -X POST http://localhost:3001/pedidos/webhook/ecommerce \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer SEU_TOKEN" \
-  -d @test-order.json
-```
-
-### Testar Google Ads Webhook
-```bash
-curl -X POST http://localhost:3001/webhook \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer SEU_TOKEN" \
-  -d '{
-    "data": [{
-      "date": "2025-07-09",
-      "accountId": "123-456-7890",
-      "accountName": "Minha Conta",
-      "cost": 150.00,
-      "impressions": 5000,
-      "clicks": 200,
-      "conversions": 10,
-      "averageCpc": 0.75,
-      "conversionValue": 1500.00
-    }]
-  }'
-```
-
-## 📊 Métricas e KPIs
-
-### Dashboard Principal
-- **Lucro Líquido**: Valor final após todos os custos
-- **ROAS Geral**: Eficiência do investimento em marketing
-- **Pedidos**: Total e aprovados
-- **Ticket Médio**: Valor médio por compra
-- **Margem de Lucro**: Percentual de lucro sobre vendas
-
-### Por Plataforma
-- **Investimento**: Quanto foi gasto
-- **Vendas Geradas**: Valor de conversão
-- **ROAS Individual**: Retorno de cada plataforma
-- **CPC/CPA**: Custos de aquisição
-- **Taxa de Conversão**: Eficiência das campanhas
-
-### Distribuição de Custos
-- **Produtos**: Custo de mercadoria vendida
-- **Frete**: Custos de entrega
-- **Marketing**: Investimento em ads
-- **Lucro**: Margem final
+### Principais Tabelas
+- **users**: Usuários do sistema com autenticação Google
+- **pedidos**: Pedidos importados do e-commerce
+- **pedido_itens**: Itens detalhados dos pedidos
+- **google_ads_data**: Dados diários do Google Ads
+- **facebook_ads_data**: Dados diários do Facebook Ads
+- **integracoes**: Configurações de todas as integrações
+- **api_tokens**: Tokens de acesso para API
 
 ## 🔄 Fluxo de Dados
 
-```mermaid
-graph LR
-    A[Google Ads] --> B[Webhook API]
-    C[Facebook Ads] --> B
-    D[E-commerce] --> E[Webhook Pedidos]
-    B --> F[Database]
-    E --> F
-    F --> G[Dashboard API]
-    G --> H[Frontend Dashboard]
-```
+1. **Pedidos**: Magazord → Webhook → Busca Custos API → Cálculo → Dashboard
+2. **Google Ads**: Script → Webhook → Banco de Dados → Dashboard
+3. **Facebook Ads**: Cron Job → API Meta → Banco de Dados → Dashboard
+4. **Dashboard**: Agrega todos os dados e calcula ROI/ROAS em tempo real
 
-## 🛠️ Manutenção e Monitoramento
+## 📈 Métricas Calculadas
 
-### Logs do Sistema
-- Formato: `[YYYY-MM-DD HH:mm:ss] Ação - Usuário - Detalhes`
-- Webhooks recebidos são logados
-- Erros são capturados e registrados
+### Financeiras
+- **ROI**: (Lucro / Investimento Total) × 100
+- **ROAS**: Receita / Custo com Ads
+- **Margem de Lucro**: (Lucro / Receita) × 100
+- **Ticket Médio**: Receita / Quantidade de Pedidos
 
-### Comandos Úteis
+### Marketing
+- **CPA**: Custo por Aquisição
+- **CTR**: Taxa de Cliques
+- **CPC**: Custo por Clique
+- **Taxa de Conversão**: Conversões / Cliques × 100
+
+### Operacionais
+- **Custo de Produto**: Soma dos custos unitários
+- **Custo de Frete**: Total gasto com entregas
+- **Desconto Médio**: Média de descontos aplicados
+
+## 📡 API Endpoints
+
+### Dashboard
+- `GET /dashboard` - Dados completos com filtros
+- `GET /dashboard/summary` - Resumo do dia
+
+### Pedidos
+- `GET /pedidos` - Listar com paginação
+- `GET /pedidos/:id` - Detalhes do pedido
+- `POST /pedidos/webhook/ecommerce` - Webhook Magazord
+- `POST /pedidos/:id/reprocessar-custos` - Atualizar custos
+- `GET /pedidos/sem-custo` - Pedidos com produtos sem custo
+
+### Integrações
+- `GET /integracoes` - Listar todas
+- `POST /integracoes/magazord` - Salvar Magazord
+- `GET /integracoes/meta` - Listar Meta Ads
+- `POST /integracoes/meta` - Criar Meta Ads
+- `PATCH /integracoes/meta/:id/accounts` - Selecionar contas
+- `GET /integracoes/google-ads/tokens` - Listar tokens
+- `POST /integracoes/google-ads/generate-token` - Gerar token
+
+### Ads Data
+- `GET /google-ads` - Dados Google Ads
+- `GET /facebook-ads` - Dados Facebook Ads
+- `POST /integracoes/google-ads/webhook` - Webhook Google
+
+## 🔐 Segurança
+
+- Senhas criptografadas com bcrypt
+- Tokens JWT para autenticação de API
+- OAuth 2.0 para login de usuários
+- Validação de dados em todas as rotas
+- Sanitização de inputs
+- HTTPS em produção (recomendado)
+- Rate limiting implementado
+- CORS configurado
+
+## 🧪 Desenvolvimento
+
+### Scripts Disponíveis
+
+Backend:
 ```bash
-# Ver logs do Prisma
-npx prisma studio
-
-# Verificar status das migrations
-npx prisma migrate status
-
-# Reset do banco (CUIDADO: apaga tudo)
-npx prisma migrate reset
+npm run dev          # Desenvolvimento com hot reload
+npm run build        # Compilar TypeScript
+npm run start        # Produção
+npm run seed:test    # Popular dados de teste
+npm run test-webhook # Testar webhook
 ```
 
-### Performance
-- Dashboard otimizado para até 100k registros
-- Índices criados para queries frequentes
-- Agregações pré-calculadas para métricas
+Frontend:
+```bash
+npm run dev          # Desenvolvimento
+npm run build        # Build de produção
+npm run start        # Servir produção
+npm run lint         # Verificar código
+```
 
-## 📝 Notas Importantes
+### Estrutura de Pastas
 
-1. **SKUs**: Devem corresponder EXATAMENTE entre sistema e e-commerce
-2. **Custos**: Manter produtos atualizados para cálculos precisos
-3. **Timezone**: Sistema usa horário de Brasília (America/Sao_Paulo)
-4. **Pedidos**: Apenas situação 4 (aprovados) são considerados
-5. **Tokens**: Cada usuário deve ter seu próprio token de API
+```
+dashpro/
+├── backend-webhook/
+│   ├── src/
+│   │   ├── routes/       # Endpoints da API
+│   │   ├── services/     # Lógica de negócio
+│   │   ├── middleware/   # Autenticação, etc
+│   │   ├── jobs/         # Tarefas agendadas
+│   │   └── utils/        # Utilitários
+│   └── prisma/
+│       └── schema.prisma # Modelo do banco
+├── frontend/
+│   ├── src/
+│   │   ├── app/          # Páginas Next.js
+│   │   ├── components/   # Componentes React
+│   │   ├── hooks/        # Custom hooks
+│   │   └── lib/          # Utilitários
+│   └── public/           # Assets estáticos
+└── docs/                 # Documentação
+```
 
-## 🤝 Suporte
+## 🤝 Contribuindo
 
-Para dúvidas ou problemas:
-1. Verifique os logs do sistema
-2. Confirme as configurações de ambiente
-3. Valide os tokens de API
-4. Verifique a estrutura dos webhooks
+1. Faça um Fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+### Padrões de Código
+- Use TypeScript para type safety
+- Siga as convenções do ESLint
+- Escreva testes para novas features
+- Documente funções complexas
+- Mantenha componentes pequenos e reutilizáveis
+
+## 📝 Changelog
+
+### v1.0.0 (2025-01-28)
+- Sistema completo de dashboard
+- Integração com Magazord
+- Integração com Meta Ads (multi-contas)
+- Integração com Google Ads
+- Cálculo automático de ROI/ROAS
+- Interface responsiva
+- Sistema de autenticação completo
+
+## 📞 Suporte
+
+Para suporte, envie um email para suporte@dashpro.com ou abra uma issue no GitHub.
+
+### FAQ
+
+**P: Como obter o token do Meta Ads?**
+R: Acesse o Meta Business Suite → Configurações → Integrações de Negócios → Gerar Token
+
+**P: O webhook não está funcionando, o que fazer?**
+R: Verifique se o token está correto e se a URL está acessível publicamente
+
+**P: Como calcular o custo dos produtos?**
+R: O sistema busca automaticamente via API do Magazord usando o SKU
+
+## 🎯 Roadmap
+
+- [ ] Integração com Google Analytics 4
+- [ ] Relatórios em PDF exportáveis
+- [ ] App Mobile nativo (React Native)
+- [ ] Integração com mais plataformas (Shopify, WooCommerce)
+- [ ] Dashboard personalizado por usuário
+- [ ] Sistema de alertas e notificações
+- [ ] API pública documentada
+- [ ] Modo offline com sincronização
+- [ ] Análise preditiva com IA
+- [ ] Integração com WhatsApp Business
 
 ## 📄 Licença
 
-Este projeto é privado e confidencial.
+Este projeto é proprietário e confidencial. Todos os direitos reservados.
+
+## 👥 Equipe
+
+- **André Alessi** - Fundador e Desenvolvedor Principal
+- **Contribuidores** - Veja a lista completa no GitHub
+
+---
+
+**Dash Pro APP** - Transformando dados em decisões inteligentes 📊
+
+Desenvolvido com ❤️ por André Alessi
