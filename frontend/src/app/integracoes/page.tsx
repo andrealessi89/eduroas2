@@ -6,9 +6,10 @@ import DashboardLayout from "@/components/Layout/DashboardLayout";
 import MagazordTab from "@/components/Integracoes/MagazordTab";
 import TokensTab from "@/components/Integracoes/TokensTab";
 import MetaAdsTab from "@/components/Integracoes/MetaAdsTab";
+import GoogleAdsTab from "@/components/Integracoes/GoogleAdsTab";
 import { Cable } from "lucide-react";
 
-type TabType = "magazord" | "tokens" | "meta";
+type TabType = "magazord" | "tokens" | "meta" | "google";
 
 export default function IntegracoesPage() {
   const { data: session, status } = useSession();
@@ -33,6 +34,7 @@ export default function IntegracoesPage() {
   const tabs = [
     { id: "magazord" as TabType, label: "Magazord", description: "Configure sua integração com o Magazord" },
     { id: "meta" as TabType, label: "Meta Ads", description: "Configure sua integração com Meta Ads" },
+    { id: "google" as TabType, label: "Google Ads", description: "Configure sua integração com Google Ads" },
     { id: "tokens" as TabType, label: "Tokens da API", description: "Gerencie seus tokens de acesso" },
   ];
 
@@ -75,6 +77,7 @@ export default function IntegracoesPage() {
           <div className="p-6">
             {activeTab === "magazord" && <MagazordTab />}
             {activeTab === "meta" && <MetaAdsTab />}
+            {activeTab === "google" && <GoogleAdsTab />}
             {activeTab === "tokens" && <TokensTab />}
           </div>
         </div>

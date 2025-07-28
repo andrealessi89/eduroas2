@@ -9,6 +9,7 @@ import pedidosRoutes from './routes/pedidos';
 import dashboardRoutes from './routes/dashboard';
 import integracoesRoutes from './routes/integracoes';
 import googleAdsRoutes from './routes/googleAds';
+import googleAdsIntegrationRoutes from './routes/googleAdsIntegration';
 import { initializeFacebookAdsCron } from './jobs/facebookAdsCron';
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.use('/facebook-ads', facebookAdsRoutes);
 app.use('/pedidos', pedidosRoutes);
 app.use('/dashboard', dashboardRoutes);
 app.use('/integracoes', integracoesRoutes);
+app.use('/integracoes/google-ads', googleAdsIntegrationRoutes);
 app.use('/google-ads', googleAdsRoutes);
 
 app.get('/health', (_req, res) => {
