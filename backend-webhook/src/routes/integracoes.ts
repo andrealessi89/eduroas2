@@ -2,9 +2,36 @@ import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { authenticateToken, AuthRequest } from '../middleware/auth';
 import crypto from 'crypto';
+import axios from 'axios';
 
 const router = Router();
 const prisma = new PrismaClient();
+
+// Função para buscar contas de anúncio do Meta
+async function fetchMetaAdAccounts(accessToken: string) {
+  try {
+    const response = await axios.get(
+      `https://graph.facebook.com/v23.0/me?fields=adaccounts{business_name,account_status,balance,currency,spend_cap,name}&access_token=${accessToken}`
+    );
+    
+    if (response.data && response.data.adaccounts && response.data.adaccounts.data) {
+      return response.data.adaccounts.data.map((account: any) => ({
+        id: account.id,
+        name: account.name,
+        businessName: account.business_name,
+        status: account.account_status,
+        balance: account.balance,
+        currency: account.currency,
+        spendCap: account.spend_cap
+      }));
+    }
+    
+    return [];
+  } catch (error) {
+    console.error('Erro ao buscar contas de anúncio do Meta:', error);
+    throw error;
+  }
+}
 
 // Listar integrações do usuário
 router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
@@ -258,41 +285,78 @@ router.patch('/tokens/:id/activate', authenticateToken, async (req: AuthRequest,
   }
 });
 
-// Salvar/Atualizar integração Meta Ads
+// Listar integrações Meta Ads
+router.get('/meta', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
+  try {
+    const integracoes = await prisma.integracao.findMany({
+      where: {
+        userId: req.user!.id,
+        tipo: 'meta'
+      },
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
+
+    // Remover dados sensíveis da resposta
+    const integracoesSafe = integracoes.map(int => ({
+      ...int,
+      config: {
+        name: (int.config as any).name || int.nome,
+        accessToken: (int.config as any).accessToken ? 
+          (int.config as any).accessToken.substring(0, 10) + '...' : '',
+        hasToken: !!(int.config as any).accessToken,
+        adAccounts: (int.config as any).adAccounts || [],
+        selectedAccounts: (int.config as any).selectedAccounts || []
+      }
+    }));
+
+    return res.json({
+      success: true,
+      data: integracoesSafe
+    });
+  } catch (error) {
+    console.error('Erro ao buscar integrações Meta Ads:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'Erro ao buscar integrações'
+    });
+  }
+});
+
+// Criar nova integração Meta Ads
 router.post('/meta', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
   try {
-    const { accessToken, adAccountId } = req.body;
+    const { name, accessToken } = req.body;
 
-    if (!accessToken || !adAccountId) {
+    if (!name || !accessToken) {
       return res.status(400).json({
         success: false,
-        error: 'Token de acesso e Ad Account ID são obrigatórios'
+        error: 'Nome e token de acesso são obrigatórios'
       });
     }
 
-    const integracao = await prisma.integracao.upsert({
-      where: {
-        userId_tipo: {
-          userId: req.user!.id,
-          tipo: 'meta'
-        }
-      },
-      update: {
-        nome: 'Meta Ads',
-        config: {
-          accessToken,
-          adAccountId
-        },
-        isActive: true,
-        updatedAt: new Date()
-      },
-      create: {
+    // Buscar contas de anúncio
+    let adAccounts = [];
+    try {
+      adAccounts = await fetchMetaAdAccounts(accessToken);
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        error: 'Token inválido ou erro ao buscar contas de anúncio'
+      });
+    }
+
+    const integracao = await prisma.integracao.create({
+      data: {
         userId: req.user!.id,
         tipo: 'meta',
-        nome: 'Meta Ads',
+        nome: name,
         config: {
+          name,
           accessToken,
-          adAccountId
+          adAccounts, // Salvar as contas de anúncio
+          selectedAccounts: [] // Contas selecionadas (inicialmente vazio)
         }
       }
     });
@@ -302,17 +366,166 @@ router.post('/meta', authenticateToken, async (req: AuthRequest, res): Promise<a
       data: {
         ...integracao,
         config: {
+          name,
           accessToken: accessToken.substring(0, 10) + '...',
-          adAccountId,
+          hasToken: true,
+          adAccounts
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao criar integração Meta Ads:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'Erro ao criar integração'
+    });
+  }
+});
+
+// Atualizar integração Meta Ads
+router.put('/meta/:id', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
+  try {
+    const { id } = req.params;
+    const { name, accessToken } = req.body;
+
+    if (!name || !accessToken) {
+      return res.status(400).json({
+        success: false,
+        error: 'Nome e token de acesso são obrigatórios'
+      });
+    }
+
+    const integracao = await prisma.integracao.updateMany({
+      where: {
+        id,
+        userId: req.user!.id,
+        tipo: 'meta'
+      },
+      data: {
+        nome: name,
+        config: {
+          name,
+          accessToken
+        },
+        updatedAt: new Date()
+      }
+    });
+
+    if (integracao.count === 0) {
+      return res.status(404).json({
+        success: false,
+        error: 'Integração não encontrada'
+      });
+    }
+
+    // Buscar a integração atualizada
+    const integracaoAtualizada = await prisma.integracao.findUnique({
+      where: { id }
+    });
+
+    return res.json({
+      success: true,
+      data: {
+        ...integracaoAtualizada,
+        config: {
+          name,
+          accessToken: accessToken.substring(0, 10) + '...',
           hasToken: true
         }
       }
     });
   } catch (error) {
-    console.error('Erro ao salvar integração Meta Ads:', error);
+    console.error('Erro ao atualizar integração Meta Ads:', error);
     return res.status(500).json({
       success: false,
-      error: 'Erro ao salvar integração'
+      error: 'Erro ao atualizar integração'
+    });
+  }
+});
+
+// Atualizar contas selecionadas da integração Meta Ads
+router.patch('/meta/:id/accounts', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
+  try {
+    const { id } = req.params;
+    const { selectedAccounts } = req.body;
+
+    if (!Array.isArray(selectedAccounts)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Contas selecionadas devem ser um array'
+      });
+    }
+
+    // Buscar a integração atual
+    const integracao = await prisma.integracao.findFirst({
+      where: {
+        id,
+        userId: req.user!.id,
+        tipo: 'meta'
+      }
+    });
+
+    if (!integracao) {
+      return res.status(404).json({
+        success: false,
+        error: 'Integração não encontrada'
+      });
+    }
+
+    const config = integracao.config as any;
+    config.selectedAccounts = selectedAccounts;
+
+    // Atualizar a integração
+    await prisma.integracao.update({
+      where: { id },
+      data: {
+        config,
+        updatedAt: new Date()
+      }
+    });
+
+    return res.json({
+      success: true,
+      message: 'Contas selecionadas atualizadas com sucesso'
+    });
+  } catch (error) {
+    console.error('Erro ao atualizar contas selecionadas:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'Erro ao atualizar contas selecionadas'
+    });
+  }
+});
+
+// Excluir integração Meta Ads
+router.delete('/meta/:id', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
+  try {
+    const { id } = req.params;
+
+    const integracao = await prisma.integracao.deleteMany({
+      where: {
+        id,
+        userId: req.user!.id,
+        tipo: 'meta'
+      }
+    });
+
+    if (integracao.count === 0) {
+      return res.status(404).json({
+        success: false,
+        error: 'Integração não encontrada'
+      });
+    }
+
+    return res.json({
+      success: true,
+      message: 'Integração excluída com sucesso'
+    });
+  } catch (error) {
+    console.error('Erro ao excluir integração Meta Ads:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'Erro ao excluir integração'
     });
   }
 });

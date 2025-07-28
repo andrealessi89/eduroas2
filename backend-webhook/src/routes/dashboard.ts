@@ -87,11 +87,11 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
 
     // Calcular métricas do Facebook Ads
     const facebookMetrics = facebookAdsData.reduce((acc: any, record: any) => ({
-      cost: acc.cost + record.cost,
-      impressions: acc.impressions + record.impressions,
-      clicks: acc.clicks + record.clicks,
-      conversions: acc.conversions + record.conversions,
-      conversionValue: acc.conversionValue + record.conversionValue
+      cost: acc.cost + (record.cost || 0),
+      impressions: acc.impressions + (record.impressions || 0),
+      clicks: acc.clicks + (record.clicks || 0),
+      conversions: acc.conversions + (record.conversions || 0),
+      conversionValue: acc.conversionValue + (record.conversionValue || 0)
     }), {
       cost: 0,
       impressions: 0,

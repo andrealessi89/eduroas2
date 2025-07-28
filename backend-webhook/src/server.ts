@@ -3,11 +3,13 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 import webhookRoutes from './routes/webhook';
-import facebookAdsRoutes from './routes/facebookAdsData';
+import facebookAdsDataRoutes from './routes/facebookAdsData';
+import facebookAdsRoutes from './routes/facebookAds';
 import pedidosRoutes from './routes/pedidos';
 import dashboardRoutes from './routes/dashboard';
 import integracoesRoutes from './routes/integracoes';
 import googleAdsRoutes from './routes/googleAds';
+import { initializeFacebookAdsCron } from './jobs/facebookAdsCron';
 
 dotenv.config();
 
@@ -20,6 +22,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/webhook', webhookRoutes);
+app.use('/facebook-ads-data', facebookAdsDataRoutes);
 app.use('/facebook-ads', facebookAdsRoutes);
 app.use('/pedidos', pedidosRoutes);
 app.use('/dashboard', dashboardRoutes);
@@ -34,6 +37,9 @@ async function main() {
   try {
     await prisma.$connect();
     console.log('✅ Database connected');
+    
+    // Inicializar cron jobs
+    initializeFacebookAdsCron();
     
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);

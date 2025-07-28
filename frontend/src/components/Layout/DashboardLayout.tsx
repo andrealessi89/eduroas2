@@ -14,7 +14,8 @@ import {
   ChevronLeft,
   User,
   ShoppingCart,
-  BarChart3
+  BarChart3,
+  Facebook
 } from "lucide-react";
 
 interface MenuItem {
@@ -38,6 +39,11 @@ const menuItems: MenuItem[] = [
     icon: <BarChart3 className="w-5 h-5" />,
     label: "Google Ads",
     href: "/google-ads",
+  },
+  {
+    icon: <Facebook className="w-5 h-5" />,
+    label: "Facebook Ads",
+    href: "/facebook-ads",
   },
   {
     icon: <Settings className="w-5 h-5" />,
