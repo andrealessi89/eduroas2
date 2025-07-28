@@ -33,6 +33,7 @@ import {
 } from "recharts";
 import { useDashboard } from "@/hooks/useDashboard";
 import DashboardLayout from "@/components/Layout/DashboardLayout";
+import PedidosSemCusto from "@/components/PedidosSemCusto";
 
 // Cores para gráficos
 const COLORS = {
@@ -401,6 +402,9 @@ export default function DashboardPage() {
               />
             </div>
           </div>
+
+          {/* Avisos de produtos sem custo */}
+          <PedidosSemCusto />
 
           {/* Ads Section */}
           <div className="space-y-4 mb-6">

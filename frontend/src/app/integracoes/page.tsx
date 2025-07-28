@@ -5,9 +5,10 @@ import { useSession } from "next-auth/react";
 import DashboardLayout from "@/components/Layout/DashboardLayout";
 import MagazordTab from "@/components/Integracoes/MagazordTab";
 import TokensTab from "@/components/Integracoes/TokensTab";
+import MetaAdsTab from "@/components/Integracoes/MetaAdsTab";
 import { Cable } from "lucide-react";
 
-type TabType = "magazord" | "tokens";
+type TabType = "magazord" | "tokens" | "meta";
 
 export default function IntegracoesPage() {
   const { data: session, status } = useSession();
@@ -31,6 +32,7 @@ export default function IntegracoesPage() {
 
   const tabs = [
     { id: "magazord" as TabType, label: "Magazord", description: "Configure sua integração com o Magazord" },
+    { id: "meta" as TabType, label: "Meta Ads", description: "Configure sua integração com Meta Ads" },
     { id: "tokens" as TabType, label: "Tokens da API", description: "Gerencie seus tokens de acesso" },
   ];
 
@@ -72,6 +74,7 @@ export default function IntegracoesPage() {
           {/* Tab Content */}
           <div className="p-6">
             {activeTab === "magazord" && <MagazordTab />}
+            {activeTab === "meta" && <MetaAdsTab />}
             {activeTab === "tokens" && <TokensTab />}
           </div>
         </div>

@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { authenticateToken, AuthRequest } from '../middleware/auth';
 import moment from 'moment-timezone';
+import { MagazordApiService } from '../services/magazordApi';
 
 const router = Router();
 const prisma = new PrismaClient();
@@ -15,7 +16,7 @@ interface PedidoPayload {
 // Listar pedidos do usuário com filtros
 router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
   try {
-    const { startDate, endDate, limit = 100, offset = 0 } = req.query;
+    const { startDate, endDate, limit = 100, offset = 0, status } = req.query;
 
     const where: any = {
       userId: req.user!.id
@@ -38,10 +39,44 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
           createdAt: 'desc'
         },
         take: parseInt(limit as string),
-        skip: parseInt(offset as string)
+        skip: parseInt(offset as string),
+        include: {
+          itens: true
+        }
       }),
       prisma.pedido.count({ where })
     ]);
+
+    // Adicionar informações de status de processamento
+    const pedidosComStatus = pedidos.map(pedido => {
+      const itensSemCusto = pedido.itens.filter(item => item.custoUnitario === 0);
+      const custoTotal = pedido.itens.reduce((acc, item) => acc + (item.custoUnitario * item.quantidade), 0);
+      const lucroTotal = pedido.valorTotal - custoTotal - pedido.valorFrete;
+      
+      return {
+        ...pedido,
+        statusProcessamento: {
+          processado: true,
+          temErros: itensSemCusto.length > 0,
+          produtosSemCusto: itensSemCusto.map(item => ({
+            codigo: item.produtoDerivacaoCodigo,
+            nome: item.produtoNome,
+            quantidade: item.quantidade
+          })),
+          custoTotal,
+          lucroTotal,
+          margemLucro: pedido.valorTotal > 0 ? (lucroTotal / pedido.valorTotal) * 100 : 0
+        }
+      };
+    });
+
+    // Filtrar por status se solicitado
+    let pedidosFiltrados = pedidosComStatus;
+    if (status === 'com-erro') {
+      pedidosFiltrados = pedidosComStatus.filter(p => p.statusProcessamento.temErros);
+    } else if (status === 'sem-erro') {
+      pedidosFiltrados = pedidosComStatus.filter(p => !p.statusProcessamento.temErros);
+    }
 
     // Calcular totais
     const totals = await prisma.pedido.aggregate({
@@ -57,13 +92,14 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
 
     return res.json({
       success: true,
-      data: pedidos,
+      data: pedidosFiltrados,
       total,
       totals: {
         count: totals._count.id,
         valorTotal: totals._sum.valorTotal || 0,
         valorFrete: totals._sum.valorFrete || 0,
-        valorProdutos: (totals._sum.valorTotal || 0) - (totals._sum.valorFrete || 0)
+        valorProdutos: (totals._sum.valorTotal || 0) - (totals._sum.valorFrete || 0),
+        pedidosComErro: pedidosComStatus.filter(p => p.statusProcessamento.temErros).length
       }
     });
   } catch (error) {
@@ -82,6 +118,9 @@ router.get('/:id', authenticateToken, async (req: AuthRequest, res): Promise<any
       where: {
         id: req.params.id,
         userId: req.user!.id
+      },
+      include: {
+        itens: true
       }
     });
 
@@ -92,9 +131,32 @@ router.get('/:id', authenticateToken, async (req: AuthRequest, res): Promise<any
       });
     }
 
+    // Adicionar informações detalhadas de processamento
+    const itensSemCusto = pedido.itens.filter(item => item.custoUnitario === 0);
+    const custoTotal = pedido.itens.reduce((acc, item) => acc + (item.custoUnitario * item.quantidade), 0);
+    const lucroTotal = pedido.valorTotal - custoTotal - pedido.valorFrete;
+
+    const pedidoDetalhado = {
+      ...pedido,
+      statusProcessamento: {
+        processado: true,
+        temErros: itensSemCusto.length > 0,
+        produtosSemCusto: itensSemCusto.map(item => ({
+          codigo: item.produtoDerivacaoCodigo,
+          nome: item.produtoNome,
+          quantidade: item.quantidade,
+          valorItem: item.valorItem
+        })),
+        custoTotal,
+        lucroTotal,
+        margemLucro: pedido.valorTotal > 0 ? (lucroTotal / pedido.valorTotal) * 100 : 0,
+        fretePercentual: pedido.valorTotal > 0 ? (pedido.valorFrete / pedido.valorTotal) * 100 : 0
+      }
+    };
+
     return res.json({
       success: true,
-      data: pedido
+      data: pedidoDetalhado
     });
   } catch (error) {
     console.error('Erro ao buscar pedido:', error);
@@ -132,7 +194,17 @@ router.post('/webhook/ecommerce', authenticateToken, async (req: AuthRequest, re
       });
     }
 
-    // Buscar o custo dos produtos
+    // Buscar serviço da API Magazord
+    const magazordApi = await MagazordApiService.createFromUserId(req.user!.id);
+    
+    if (!magazordApi) {
+      return res.status(400).json({
+        success: false,
+        error: 'Integração com Magazord não configurada ou inativa'
+      });
+    }
+
+    // Coletar todos os códigos de produtos únicos
     const produtosSku = new Set<string>();
     for (const rastreio of pedidoData.arrayPedidoRastreio || []) {
       for (const item of rastreio.pedidoItem || []) {
@@ -140,26 +212,26 @@ router.post('/webhook/ecommerce', authenticateToken, async (req: AuthRequest, re
       }
     }
 
-    const produtos = await prisma.produto.findMany({
-      where: {
-        userId: req.user!.id,
-        sku: { in: Array.from(produtosSku) }
-      }
-    });
-
-    const produtosMap = new Map(produtos.map(p => [p.sku, p]));
+    // Buscar custos via API da Magazord
+    const custosProdutos = await magazordApi.buscarCustosProdutos(Array.from(produtosSku));
 
     // Calcular valores totais
     let custoTotal = 0;
     const itensToCreate: any[] = [];
+    const produtosSemCusto: string[] = [];
 
     for (const rastreio of pedidoData.arrayPedidoRastreio || []) {
       for (const item of rastreio.pedidoItem || []) {
-        const produto = produtosMap.get(item.produtoDerivacaoCodigo);
-        const custoUnitario = produto?.custo || 0;
+        const custoProduto = custosProdutos.get(item.produtoDerivacaoCodigo);
+        const custoUnitario = custoProduto?.custo || 0;
         const lucroItem = item.valorItem - (custoUnitario * item.quantidade);
         
         custoTotal += custoUnitario * item.quantidade;
+
+        // Registrar produtos sem custo para posterior notificação
+        if (!custoProduto || custoProduto.custo === 0) {
+          produtosSemCusto.push(item.produtoDerivacaoCodigo);
+        }
 
         itensToCreate.push({
           produtoDerivacaoId: item.produtoDerivacaoId,
@@ -208,6 +280,10 @@ router.post('/webhook/ecommerce', authenticateToken, async (req: AuthRequest, re
 
     const brasiliaTime = moment().tz('America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss');
     console.log(`[${brasiliaTime}] Pedido aprovado recebido - User: ${req.user!.email} - Código: ${pedido.codigo} - Lucro: R$ ${lucroTotal.toFixed(2)}`);
+    
+    if (produtosSemCusto.length > 0) {
+      console.warn(`[${brasiliaTime}] Produtos sem custo no pedido ${pedido.codigo}: ${produtosSemCusto.join(', ')}`);
+    }
 
     return res.status(200).json({
       success: true,
@@ -217,7 +293,8 @@ router.post('/webhook/ecommerce', authenticateToken, async (req: AuthRequest, re
         valorTotal: pedido.valorTotal,
         custoTotal,
         lucroTotal,
-        itens: pedido.itens.length
+        itens: pedido.itens.length,
+        produtosSemCusto: produtosSemCusto.length > 0 ? produtosSemCusto : undefined
       }
     });
   } catch (error: any) {
@@ -301,6 +378,163 @@ router.get('/stats/aggregated', authenticateToken, async (req: AuthRequest, res)
     return res.status(500).json({
       success: false,
       error: 'Erro ao buscar estatísticas'
+    });
+  }
+});
+
+// Reprocessar custos de um pedido
+router.post('/:id/reprocessar-custos', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
+  try {
+    // Buscar o pedido com seus itens
+    const pedido = await prisma.pedido.findFirst({
+      where: {
+        id: req.params.id,
+        userId: req.user!.id
+      },
+      include: {
+        itens: true
+      }
+    });
+
+    if (!pedido) {
+      return res.status(404).json({
+        success: false,
+        error: 'Pedido não encontrado'
+      });
+    }
+
+    // Buscar serviço da API Magazord
+    const magazordApi = await MagazordApiService.createFromUserId(req.user!.id);
+    
+    if (!magazordApi) {
+      return res.status(400).json({
+        success: false,
+        error: 'Integração com Magazord não configurada ou inativa'
+      });
+    }
+
+    // Coletar códigos de produtos
+    const produtosSku = pedido.itens.map(item => item.produtoDerivacaoCodigo);
+    
+    // Buscar custos atualizados via API da Magazord
+    const custosProdutos = await magazordApi.buscarCustosProdutos(produtosSku);
+
+    // Atualizar custos dos itens
+    let custoTotal = 0;
+    const itensAtualizados: any[] = [];
+    const produtosSemCusto: string[] = [];
+
+    for (const item of pedido.itens) {
+      const custoProduto = custosProdutos.get(item.produtoDerivacaoCodigo);
+      const custoUnitario = custoProduto?.custo || 0;
+      const lucroItem = item.valorItem - (custoUnitario * item.quantidade);
+      
+      custoTotal += custoUnitario * item.quantidade;
+
+      // Registrar produtos sem custo
+      if (!custoProduto || custoProduto.custo === 0) {
+        produtosSemCusto.push(item.produtoDerivacaoCodigo);
+      }
+
+      // Atualizar o item se o custo mudou
+      if (item.custoUnitario !== custoUnitario) {
+        await prisma.pedidoItem.update({
+          where: { id: item.id },
+          data: {
+            custoUnitario,
+            lucroItem
+          }
+        });
+        
+        itensAtualizados.push({
+          produtoDerivacaoCodigo: item.produtoDerivacaoCodigo,
+          custoAnterior: item.custoUnitario,
+          custoNovo: custoUnitario
+        });
+      }
+    }
+
+    const lucroTotal = pedido.valorTotal - custoTotal - pedido.valorFrete;
+
+    const brasiliaTime = moment().tz('America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss');
+    console.log(`[${brasiliaTime}] Custos reprocessados para pedido ${pedido.codigo} - User: ${req.user!.email} - Novos custos: ${itensAtualizados.length} itens`);
+
+    return res.json({
+      success: true,
+      message: 'Custos reprocessados com sucesso',
+      data: {
+        codigo: pedido.codigo,
+        valorTotal: pedido.valorTotal,
+        custoTotal,
+        lucroTotal,
+        itensAtualizados: itensAtualizados.length,
+        detalhesAtualizacao: itensAtualizados,
+        produtosSemCusto: produtosSemCusto.length > 0 ? produtosSemCusto : undefined
+      }
+    });
+  } catch (error: any) {
+    console.error('Erro ao reprocessar custos:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Erro ao reprocessar custos'
+    });
+  }
+});
+
+// Buscar pedidos com produtos sem custo
+router.get('/sem-custo', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
+  try {
+    // Buscar todos os itens de pedido com custo zero
+    const itensSemCusto = await prisma.pedidoItem.findMany({
+      where: {
+        custoUnitario: 0,
+        pedido: {
+          userId: req.user!.id
+        }
+      },
+      include: {
+        pedido: {
+          select: {
+            id: true,
+            codigo: true,
+            dataHora: true,
+            valorTotal: true
+          }
+        }
+      }
+    });
+
+    // Agrupar por pedido
+    const pedidosMap = new Map<string, any>();
+    
+    for (const item of itensSemCusto) {
+      if (!pedidosMap.has(item.pedido.id)) {
+        pedidosMap.set(item.pedido.id, {
+          ...item.pedido,
+          produtosSemCusto: []
+        });
+      }
+      
+      pedidosMap.get(item.pedido.id).produtosSemCusto.push({
+        produtoDerivacaoCodigo: item.produtoDerivacaoCodigo,
+        produtoNome: item.produtoNome,
+        quantidade: item.quantidade,
+        valorItem: item.valorItem
+      });
+    }
+
+    const pedidosComProdutosSemCusto = Array.from(pedidosMap.values());
+
+    return res.json({
+      success: true,
+      data: pedidosComProdutosSemCusto,
+      total: pedidosComProdutosSemCusto.length
+    });
+  } catch (error) {
+    console.error('Erro ao buscar pedidos sem custo:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'Erro ao buscar pedidos sem custo'
     });
   }
 });

@@ -46,34 +46,6 @@ export const api = {
       apiFetch('/dashboard/summary', { token }),
   },
 
-  // Produtos
-  produtos: {
-    list: (token?: string) => 
-      apiFetch('/produtos', { token }),
-    
-    get: (id: string, token?: string) => 
-      apiFetch(`/produtos/${id}`, { token }),
-    
-    create: (data: { nome: string; sku: string; custo: number }, token?: string) =>
-      apiFetch('/produtos', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        token,
-      }),
-    
-    update: (id: string, data: Partial<{ nome: string; sku: string; custo: number }>, token?: string) =>
-      apiFetch(`/produtos/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify(data),
-        token,
-      }),
-    
-    delete: (id: string, token?: string) =>
-      apiFetch(`/produtos/${id}`, {
-        method: 'DELETE',
-        token,
-      }),
-  },
 
   // Facebook Ads
   facebookAds: {
@@ -100,12 +72,17 @@ export const api = {
 
   // Pedidos
   pedidos: {
-    list: (params?: { startDate?: string; endDate?: string; limit?: number; offset?: number }, token?: string) => {
+    list: (params?: { url?: string; startDate?: string; endDate?: string; limit?: number; offset?: number; status?: string }, token?: string) => {
+      if (params?.url) {
+        return apiFetch(params.url.replace(API_BASE_URL, ''), { token });
+      }
+      
       const queryParams = new URLSearchParams();
       if (params?.startDate) queryParams.append('startDate', params.startDate);
       if (params?.endDate) queryParams.append('endDate', params.endDate);
       if (params?.limit) queryParams.append('limit', params.limit.toString());
       if (params?.offset) queryParams.append('offset', params.offset.toString());
+      if (params?.status) queryParams.append('status', params.status);
       
       const queryString = queryParams.toString();
       return apiFetch(`/pedidos${queryString ? '?' + queryString : ''}`, { token });
@@ -123,11 +100,41 @@ export const api = {
       const queryString = queryParams.toString();
       return apiFetch(`/pedidos/stats/aggregated${queryString ? '?' + queryString : ''}`, { token });
     },
+    
+    semCusto: (token?: string) => 
+      apiFetch('/pedidos/sem-custo', { token }),
+    
+    reprocessarCustos: (id: string, token?: string) =>
+      apiFetch(`/pedidos/${id}/reprocessar-custos`, {
+        method: 'POST',
+        token,
+      }),
   },
 
-  // Google Ads (já existente)
+  // Google Ads
   googleAds: {
-    test: (token?: string) => 
-      apiFetch('/webhook/test', { token }),
+    list: (params?: { startDate?: string; endDate?: string; accountId?: string; limit?: number; offset?: number }, token?: string) => {
+      const queryParams = new URLSearchParams();
+      if (params?.startDate) queryParams.append('startDate', params.startDate);
+      if (params?.endDate) queryParams.append('endDate', params.endDate);
+      if (params?.accountId) queryParams.append('accountId', params.accountId);
+      if (params?.limit) queryParams.append('limit', params.limit.toString());
+      if (params?.offset) queryParams.append('offset', params.offset.toString());
+      
+      const queryString = queryParams.toString();
+      return apiFetch(`/google-ads${queryString ? '?' + queryString : ''}`, { token });
+    },
+    
+    get: (id: string, token?: string) => 
+      apiFetch(`/google-ads/${id}`, { token }),
+    
+    delete: (id: string, token?: string) =>
+      apiFetch(`/google-ads/${id}`, {
+        method: 'DELETE',
+        token,
+      }),
+      
+    accounts: (token?: string) =>
+      apiFetch('/google-ads/accounts/list', { token }),
   },
 };

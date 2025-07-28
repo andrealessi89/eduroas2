@@ -14,8 +14,8 @@ export function useApiToken() {
       }
 
       try {
-        // Buscar token da API baseado no email do usuário
-        const response = await fetch('/api/user/token', {
+        // Buscar token do usuário
+        const userTokenResponse = await fetch('/api/user/token', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -23,8 +23,8 @@ export function useApiToken() {
           body: JSON.stringify({ email: session.user.email }),
         });
 
-        if (response.ok) {
-          const data = await response.json();
+        if (userTokenResponse.ok) {
+          const data = await userTokenResponse.json();
           setToken(data.token);
         }
       } catch (error) {

@@ -24,7 +24,7 @@ interface ApiToken {
 }
 
 export default function TokensTab() {
-  const { apiCall } = useApiToken();
+  const { apiCall, loading: tokenLoading } = useApiToken();
   const [tokens, setTokens] = useState<ApiToken[]>([]);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -50,8 +50,11 @@ export default function TokensTab() {
   };
 
   useEffect(() => {
-    fetchTokens();
-  }, []);
+    // Only fetch tokens after the auth token is loaded
+    if (!tokenLoading) {
+      fetchTokens();
+    }
+  }, [tokenLoading]);
 
   const handleCreateToken = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,7 +126,7 @@ export default function TokensTab() {
     setNewTokenName("");
   };
 
-  if (loading) {
+  if (loading || tokenLoading) {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-gray-500">Carregando tokens...</div>

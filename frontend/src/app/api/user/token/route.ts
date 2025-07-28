@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import crypto from 'crypto';
 
 export async function POST(request: NextRequest) {
   try {
@@ -37,10 +38,14 @@ export async function POST(request: NextRequest) {
 
     // Se não há token ativo, criar um novo
     if (!token) {
+      // Gerar token único como o backend faz
+      const generatedToken = crypto.randomBytes(32).toString('hex');
+      
       const newToken = await prisma.apiToken.create({
         data: {
           userId: user.id,
           name: 'Dashboard Token',
+          token: generatedToken, // Especificar o token explicitamente
         },
       });
       token = newToken.token;

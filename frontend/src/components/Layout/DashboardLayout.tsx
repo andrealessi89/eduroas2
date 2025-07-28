@@ -6,14 +6,15 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import {
   LayoutDashboard,
-  Package,
   Settings,
   DollarSign,
   Menu,
   X,
   LogOut,
   ChevronLeft,
-  User
+  User,
+  ShoppingCart,
+  BarChart3
 } from "lucide-react";
 
 interface MenuItem {
@@ -29,9 +30,14 @@ const menuItems: MenuItem[] = [
     href: "/dashboard",
   },
   {
-    icon: <Package className="w-5 h-5" />,
-    label: "Produtos",
-    href: "/produtos",
+    icon: <ShoppingCart className="w-5 h-5" />,
+    label: "Pedidos",
+    href: "/pedidos",
+  },
+  {
+    icon: <BarChart3 className="w-5 h-5" />,
+    label: "Google Ads",
+    href: "/google-ads",
   },
   {
     icon: <Settings className="w-5 h-5" />,
