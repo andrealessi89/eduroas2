@@ -60,7 +60,8 @@
       "Bash(uname -a)",
       "Bash(ps aux)",
       "Bash(kill:*)",
-      "Bash(npm run seed:*)"
+      "Bash(npm run seed:*)",
+      "Bash(fuser:*)"
     ],
     "deny": []
   }

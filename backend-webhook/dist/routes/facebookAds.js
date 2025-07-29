@@ -1,0 +1,173 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const client_1 = require("@prisma/client");
+const auth_1 = require("../middleware/auth");
+const facebookAdsService_1 = require("../services/facebookAdsService");
+const router = (0, express_1.Router)();
+const prisma = new client_1.PrismaClient();
+// Listar dados do Facebook Ads
+router.get('/', auth_1.authenticateToken, async (req, res) => {
+    try {
+        const { startDate, endDate } = req.query;
+        console.log(`[FacebookAds API] GET /facebook-ads - userId: ${req.user.id}, startDate: ${startDate}, endDate: ${endDate}`);
+        const where = {
+            userId: req.user.id
+        };
+        if (startDate || endDate) {
+            where.date = {};
+            if (startDate)
+                where.date.gte = startDate;
+            if (endDate)
+                where.date.lte = endDate;
+        }
+        const data = await prisma.facebookAdsData.findMany({
+            where,
+            orderBy: [
+                { date: 'desc' },
+                { accountName: 'asc' }
+            ]
+        });
+        console.log(`[FacebookAds API] Dados encontrados: ${data.length} registros`);
+        if (data.length > 0) {
+            console.log(`[FacebookAds API] Primeiro registro:`, JSON.stringify(data[0], null, 2));
+        }
+        // Calcular métricas totais
+        const totals = data.reduce((acc, record) => ({
+            cost: acc.cost + record.cost,
+            impressions: acc.impressions + record.impressions,
+            clicks: acc.clicks + record.clicks,
+            conversions: acc.conversions + record.conversions,
+            conversionValue: acc.conversionValue + record.conversionValue
+        }), {
+            cost: 0,
+            impressions: 0,
+            clicks: 0,
+            conversions: 0,
+            conversionValue: 0
+        });
+        const metrics = {
+            cpc: totals.clicks > 0 ? totals.cost / totals.clicks : 0,
+            cpa: totals.conversions > 0 ? totals.cost / totals.conversions : 0,
+            roas: totals.cost > 0 ? totals.conversionValue / totals.cost : 0,
+            ctr: totals.impressions > 0 ? (totals.clicks / totals.impressions) * 100 : 0
+        };
+        console.log(`[FacebookAds API] Totals calculados:`, JSON.stringify(totals, null, 2));
+        return res.json({
+            success: true,
+            data,
+            totals,
+            metrics
+        });
+    }
+    catch (error) {
+        console.error('Erro ao buscar dados do Facebook Ads:', error);
+        return res.status(500).json({
+            success: false,
+            error: 'Erro ao buscar dados'
+        });
+    }
+});
+// Buscar dados por ID
+router.get('/:id', auth_1.authenticateToken, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const data = await prisma.facebookAdsData.findUnique({
+            where: {
+                id,
+                userId: req.user.id
+            }
+        });
+        if (!data) {
+            return res.status(404).json({
+                success: false,
+                error: 'Registro não encontrado'
+            });
+        }
+        return res.json({
+            success: true,
+            data
+        });
+    }
+    catch (error) {
+        console.error('Erro ao buscar registro:', error);
+        return res.status(500).json({
+            success: false,
+            error: 'Erro ao buscar registro'
+        });
+    }
+});
+// Webhook para processar dados do Facebook Ads
+router.post('/webhook', async (req, res) => {
+    try {
+        console.log('[FacebookAds Webhook] Dados recebidos:', JSON.stringify(req.body, null, 2));
+        // Facebook envia verificação de webhook
+        if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token']) {
+            console.log('[FacebookAds Webhook] Verificação de webhook solicitada');
+            return res.send(req.query['hub.challenge']);
+        }
+        // Processar dados do webhook
+        // Por enquanto, vamos apenas buscar dados de todos os usuários
+        await facebookAdsService_1.FacebookAdsService.fetchAllUsersInsights();
+        return res.json({ success: true });
+    }
+    catch (error) {
+        console.error('[FacebookAds Webhook] Erro ao processar:', error.message);
+        return res.status(500).json({
+            success: false,
+            error: 'Erro ao processar webhook'
+        });
+    }
+});
+// Forçar sincronização manual
+router.post('/sync', auth_1.authenticateToken, async (req, res) => {
+    try {
+        const { date } = req.body;
+        const userId = req.user.id;
+        console.log(`[FacebookAds API] Sincronização solicitada pelo usuário ${userId}`);
+        console.log(`[FacebookAds API] Data solicitada: ${date || 'hoje'}`);
+        await facebookAdsService_1.FacebookAdsService.fetchAndSaveInsights(userId, date);
+        return res.json({
+            success: true,
+            message: 'Sincronização iniciada com sucesso'
+        });
+    }
+    catch (error) {
+        console.error('[FacebookAds API] Erro ao sincronizar:', error.message);
+        console.error('[FacebookAds API] Stack:', error.stack);
+        return res.status(500).json({
+            success: false,
+            error: 'Erro ao sincronizar dados'
+        });
+    }
+});
+// Deletar registro
+router.delete('/:id', auth_1.authenticateToken, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const data = await prisma.facebookAdsData.deleteMany({
+            where: {
+                id,
+                userId: req.user.id
+            }
+        });
+        if (data.count === 0) {
+            return res.status(404).json({
+                success: false,
+                error: 'Registro não encontrado'
+            });
+        }
+        return res.json({
+            success: true,
+            message: 'Registro excluído com sucesso'
+        });
+    }
+    catch (error) {
+        console.error('Erro ao excluir registro:', error);
+        return res.status(500).json({
+            success: false,
+            error: 'Erro ao excluir registro'
+        });
+    }
+});
+exports.default = router;

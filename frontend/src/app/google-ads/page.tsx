@@ -39,14 +39,42 @@ import {
 
 export default function GoogleAdsPage() {
   const { data: session, status } = useSession();
-  const [dateFilter, setDateFilter] = useState({
-    startDate: "",
-    endDate: "",
+  const [dateFilter, setDateFilter] = useState(() => {
+    // Sempre inicia com o dia atual
+    const today = new Date().toISOString().split("T")[0];
+    return {
+      startDate: today,
+      endDate: today,
+    };
   });
   const [accountFilter, setAccountFilter] = useState("");
   const [chartView, setChartView] = useState<"cost" | "performance" | "conversions">("cost");
   const [aggregatedData, setAggregatedData] = useState<any[]>([]);
   const [periodView, setPeriodView] = useState<"day" | "week" | "month">("day");
+
+  // Função para calcular tempo decorrido
+  const getTimeAgo = (dateStr: string) => {
+    try {
+      const date = new Date(dateStr);
+      const now = new Date();
+      const diffMs = now.getTime() - date.getTime();
+      const diffMins = Math.floor(diffMs / 60000);
+      
+      if (diffMins < 1) return 'há menos de 1 minuto';
+      if (diffMins === 1) return 'há 1 minuto';
+      if (diffMins < 60) return `há ${diffMins} minutos`;
+      
+      const diffHours = Math.floor(diffMins / 60);
+      if (diffHours === 1) return 'há 1 hora';
+      if (diffHours < 24) return `há ${diffHours} horas`;
+      
+      const diffDays = Math.floor(diffHours / 24);
+      if (diffDays === 1) return 'há 1 dia';
+      return `há ${diffDays} dias`;
+    } catch {
+      return '';
+    }
+  };
 
   // Função auxiliar para formatar datas de forma segura
   const formatDateSafely = (dateStr: string | null | undefined) => {
@@ -248,51 +276,109 @@ export default function GoogleAdsPage() {
 
           {/* Filtros */}
           <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {/* Filtro de conta */}
-              <div>
-                <select
-                  value={accountFilter}
-                  onChange={(e) => setAccountFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                  <option value="">Todas as contas</option>
-                  {accounts.map(account => (
-                    <option key={account} value={account}>{account}</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Data início */}
-              <div>
-                <input
-                  type="date"
-                  value={dateFilter.startDate}
-                  onChange={(e) => setDateFilter({ ...dateFilter, startDate: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-              </div>
-
-              {/* Data fim */}
-              <div>
-                <input
-                  type="date"
-                  value={dateFilter.endDate}
-                  onChange={(e) => setDateFilter({ ...dateFilter, endDate: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-              </div>
-
-              {/* Botão refresh */}
-              <div className="flex justify-end">
+            <div className="space-y-4">
+              {/* Atalhos de período */}
+              <div className="flex flex-wrap gap-2">
                 <button
-                  onClick={refresh}
-                  disabled={loading}
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                  onClick={() => {
+                    const today = new Date();
+                    setDateFilter({
+                      startDate: today.toISOString().split("T")[0],
+                      endDate: today.toISOString().split("T")[0],
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
                 >
-                  <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
-                  Atualizar
+                  Hoje
                 </button>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const yesterday = new Date(today);
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    setDateFilter({
+                      startDate: yesterday.toISOString().split("T")[0],
+                      endDate: yesterday.toISOString().split("T")[0],
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Ontem
+                </button>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const last7Days = new Date(today);
+                    last7Days.setDate(last7Days.getDate() - 7);
+                    setDateFilter({
+                      startDate: last7Days.toISOString().split("T")[0],
+                      endDate: today.toISOString().split("T")[0],
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Últimos 7 dias
+                </button>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const last30Days = new Date(today);
+                    last30Days.setDate(last30Days.getDate() - 30);
+                    setDateFilter({
+                      startDate: last30Days.toISOString().split("T")[0],
+                      endDate: today.toISOString().split("T")[0],
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Últimos 30 dias
+                </button>
+              </div>
+
+              {/* Campos de filtro */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                {/* Filtro de conta */}
+                <div>
+                  <select
+                    value={accountFilter}
+                    onChange={(e) => setAccountFilter(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <option value="">Todas as contas</option>
+                    {accounts.map(account => (
+                      <option key={account} value={account}>{account}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Data início */}
+                <div>
+                  <input
+                    type="date"
+                    value={dateFilter.startDate}
+                    onChange={(e) => setDateFilter({ ...dateFilter, startDate: e.target.value })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+
+                {/* Data fim */}
+                <div>
+                  <input
+                    type="date"
+                    value={dateFilter.endDate}
+                    onChange={(e) => setDateFilter({ ...dateFilter, endDate: e.target.value })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+
+                {/* Última atualização */}
+                <div className="flex items-center justify-end text-sm text-gray-500">
+                  {data.length > 0 && data[0].updatedAt && (
+                    <span>
+                      Atualizado {getTimeAgo(data[0].updatedAt)}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -434,7 +520,7 @@ export default function GoogleAdsPage() {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Recebido em
+                      Última Atualização
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Conta
@@ -486,13 +572,13 @@ export default function GoogleAdsPage() {
                         <tr key={item.id} className="hover:bg-gray-50">
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-900">
-                              {formatDateSafely(item.receivedAt)}
+                              {formatDateSafely(item.updatedAt || item.receivedAt)}
                             </div>
                             <div className="text-xs text-gray-500">
-                              {item.receivedAt ? 
+                              {(item.updatedAt || item.receivedAt) ? 
                                 (() => {
                                   try {
-                                    const date = new Date(item.receivedAt);
+                                    const date = new Date(item.updatedAt || item.receivedAt);
                                     return isNaN(date.getTime()) ? '-' : format(date, 'HH:mm:ss', { locale: ptBR });
                                   } catch {
                                     return '-';

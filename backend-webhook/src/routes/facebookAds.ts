@@ -10,6 +10,7 @@ const prisma = new PrismaClient();
 router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
   try {
     const { startDate, endDate } = req.query;
+    console.log(`[FacebookAds API] GET /facebook-ads - userId: ${req.user!.id}, startDate: ${startDate}, endDate: ${endDate}`);
     
     const where: any = {
       userId: req.user!.id
@@ -28,6 +29,11 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
         { accountName: 'asc' }
       ]
     });
+    
+    console.log(`[FacebookAds API] Dados encontrados: ${data.length} registros`);
+    if (data.length > 0) {
+      console.log(`[FacebookAds API] Primeiro registro:`, JSON.stringify(data[0], null, 2));
+    }
 
     // Calcular métricas totais
     const totals = data.reduce((acc, record) => ({
@@ -50,6 +56,8 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
       roas: totals.cost > 0 ? totals.conversionValue / totals.cost : 0,
       ctr: totals.impressions > 0 ? (totals.clicks / totals.impressions) * 100 : 0
     };
+    
+    console.log(`[FacebookAds API] Totals calculados:`, JSON.stringify(totals, null, 2));
 
     return res.json({
       success: true,
@@ -101,11 +109,11 @@ router.get('/:id', authenticateToken, async (req: AuthRequest, res): Promise<any
 // Webhook para processar dados do Facebook Ads
 router.post('/webhook', async (req, res): Promise<any> => {
   try {
-    console.log('Webhook Facebook Ads recebido:', JSON.stringify(req.body, null, 2));
+    console.log('[FacebookAds Webhook] Dados recebidos:', JSON.stringify(req.body, null, 2));
     
     // Facebook envia verificação de webhook
     if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token']) {
-      console.log('Verificação de webhook Facebook');
+      console.log('[FacebookAds Webhook] Verificação de webhook solicitada');
       return res.send(req.query['hub.challenge']);
     }
 
@@ -114,8 +122,8 @@ router.post('/webhook', async (req, res): Promise<any> => {
     await FacebookAdsService.fetchAllUsersInsights();
 
     return res.json({ success: true });
-  } catch (error) {
-    console.error('Erro no webhook do Facebook Ads:', error);
+  } catch (error: any) {
+    console.error('[FacebookAds Webhook] Erro ao processar:', error.message);
     return res.status(500).json({
       success: false,
       error: 'Erro ao processar webhook'
@@ -127,15 +135,20 @@ router.post('/webhook', async (req, res): Promise<any> => {
 router.post('/sync', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
   try {
     const { date } = req.body;
+    const userId = req.user!.id;
     
-    await FacebookAdsService.fetchAndSaveInsights(req.user!.id, date);
+    console.log(`[FacebookAds API] Sincronização solicitada pelo usuário ${userId}`);
+    console.log(`[FacebookAds API] Data solicitada: ${date || 'hoje'}`); 
+    
+    await FacebookAdsService.fetchAndSaveInsights(userId, date);
 
     return res.json({
       success: true,
       message: 'Sincronização iniciada com sucesso'
     });
-  } catch (error) {
-    console.error('Erro ao sincronizar:', error);
+  } catch (error: any) {
+    console.error('[FacebookAds API] Erro ao sincronizar:', error.message);
+    console.error('[FacebookAds API] Stack:', error.stack);
     return res.status(500).json({
       success: false,
       error: 'Erro ao sincronizar dados'

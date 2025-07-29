@@ -25,7 +25,6 @@ model User {
   apiTokens       ApiToken[]
   googleAdsData   GoogleAdsData[]
   facebookAdsData FacebookAdsData[]
-  produtos        Produto[]
   pedidos         Pedido[]
   integracoes     Integracao[]
 }
@@ -106,21 +105,6 @@ model FacebookAdsData {
 
   @@index([userId, date])
   @@index([receivedAt])
-}
-
-model Produto {
-  id        String   @id @default(cuid())
-  userId    String
-  nome      String
-  sku       String
-  custo     Float
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, sku])
-  @@index([userId])
 }
 
 model Pedido {

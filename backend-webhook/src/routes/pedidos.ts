@@ -168,9 +168,25 @@ router.get('/:id', authenticateToken, async (req: AuthRequest, res): Promise<any
 });
 
 // Webhook para receber pedidos do e-commerce
-router.post('/webhook/ecommerce', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
+router.post('/webhook/:userId/ecommerce', async (req: any, res): Promise<any> => {
   try {
+    const { userId } = req.params;
     const pedidoData = req.body;
+    
+    // Buscar o usuário pelo ID
+    const user = await prisma.user.findUnique({
+      where: { id: userId }
+    });
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        error: 'Usuário não encontrado'
+      });
+    }
+
+    // Adicionar usuário ao request para manter compatibilidade
+    req.user = user;
 
     // Validar se é um pedido com situação 4 (aprovado)
     if (pedidoData.pedidoSituacao !== 4) {
@@ -181,17 +197,22 @@ router.post('/webhook/ecommerce', authenticateToken, async (req: AuthRequest, re
       });
     }
 
-    // Verificar se o pedido já existe
-    const pedidoExistente = await prisma.pedido.findUnique({
-      where: { codigo: pedidoData.codigo }
-    });
-
-    if (pedidoExistente) {
-      return res.status(200).json({
-        success: true,
-        message: 'Pedido já processado anteriormente',
-        codigo: pedidoData.codigo
+    // Verificar se o pedido já existe para este usuário
+    if (pedidoData.codigo) {
+      const pedidoExistente = await prisma.pedido.findFirst({
+        where: { 
+          codigo: pedidoData.codigo,
+          userId: userId
+        }
       });
+
+      if (pedidoExistente) {
+        return res.status(200).json({
+          success: true,
+          message: 'Pedido já processado anteriormente para este usuário',
+          codigo: pedidoData.codigo
+        });
+      }
     }
 
     // Buscar serviço da API Magazord
@@ -565,6 +586,30 @@ router.delete('/:id', authenticateToken, async (req: AuthRequest, res): Promise<
     return res.status(500).json({
       success: false,
       error: 'Erro ao deletar pedido'
+    });
+  }
+});
+
+// Endpoint para obter URL do webhook
+router.get('/webhook/url', authenticateToken, async (req: AuthRequest, res): Promise<any> => {
+  try {
+    const baseUrl = process.env.BACKEND_URL || 'https://api.dashproapp.com.br';
+    const webhookUrl = `${baseUrl}/pedidos/webhook/${req.user!.id}/ecommerce`;
+
+    return res.json({
+      success: true,
+      data: {
+        url: webhookUrl,
+        method: 'POST',
+        contentType: 'application/json',
+        description: 'Use esta URL no webhook da Magazord para receber pedidos aprovados (situação 4)'
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao gerar URL do webhook:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'Erro ao gerar URL do webhook'
     });
   }
 });

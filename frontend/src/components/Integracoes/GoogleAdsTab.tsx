@@ -157,8 +157,7 @@ function main() {
     impressions: stats.getImpressions(),
     clicks:      stats.getClicks(),
     conversions: stats.getConversions(),
-    averageCpc:  Number(stats.getAverageCpc().toFixed(2)),
-    conversionValue: stats.getConversionValue()
+    averageCpc:  Number(stats.getAverageCpc().toFixed(2))
   };
 
   UrlFetchApp.fetch(BACKEND_URL, {

@@ -54,24 +54,34 @@ export default function FacebookAdsPage() {
   const [data, setData] = useState<FacebookAdsData[]>([]);
   const [totals, setTotals] = useState<Totals | null>(null);
   const [metrics, setMetrics] = useState<Metrics | null>(null);
-  const [dateRange, setDateRange] = useState({
-    startDate: new Date().toISOString().split("T")[0],
-    endDate: new Date().toISOString().split("T")[0],
+  const [dateRange, setDateRange] = useState(() => {
+    // Sempre inicia com o dia atual
+    const today = new Date().toISOString().split("T")[0];
+    
+    return {
+      startDate: today,
+      endDate: today,
+    };
   });
 
   const fetchData = async () => {
     setLoading(true);
     try {
+      const params = new URLSearchParams();
+      if (dateRange.startDate) params.append('startDate', dateRange.startDate);
+      if (dateRange.endDate) params.append('endDate', dateRange.endDate);
+      
       const response = await apiCall<{
         success: boolean;
         data: FacebookAdsData[];
         totals: Totals;
         metrics: Metrics;
-      }>("/facebook-ads", {
+      }>(`/facebook-ads${params.toString() ? `?${params.toString()}` : ''}`, {
         method: "GET",
       });
 
       if (response.success) {
+        console.log('[FacebookAds] Dados recebidos:', response.data.length, 'registros');
         setData(response.data);
         setTotals(response.totals);
         setMetrics(response.metrics);
@@ -102,7 +112,8 @@ export default function FacebookAdsPage() {
     if (!tokenLoading) {
       fetchData();
     }
-  }, [tokenLoading]);
+  }, [tokenLoading, dateRange.startDate, dateRange.endDate]);
+
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("pt-BR", {
@@ -146,6 +157,101 @@ export default function FacebookAdsPage() {
               <RefreshCw className={`w-4 h-4 ${syncing ? "animate-spin" : ""}`} />
               Sincronizar
             </button>
+          </div>
+        </div>
+
+        {/* Filtros de data */}
+        <div className="bg-white p-4 rounded-lg shadow-sm border mb-6">
+          <div className="space-y-4">
+            {/* Atalhos de período */}
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => {
+                  const today = new Date();
+                  setDateRange({
+                    startDate: today.toISOString().split("T")[0],
+                    endDate: today.toISOString().split("T")[0],
+                  });
+                }}
+                className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+              >
+                Hoje
+              </button>
+              <button
+                onClick={() => {
+                  const today = new Date();
+                  const yesterday = new Date(today);
+                  yesterday.setDate(yesterday.getDate() - 1);
+                  setDateRange({
+                    startDate: yesterday.toISOString().split("T")[0],
+                    endDate: yesterday.toISOString().split("T")[0],
+                  });
+                }}
+                className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+              >
+                Ontem
+              </button>
+              <button
+                onClick={() => {
+                  const today = new Date();
+                  const last7Days = new Date(today);
+                  last7Days.setDate(last7Days.getDate() - 7);
+                  setDateRange({
+                    startDate: last7Days.toISOString().split("T")[0],
+                    endDate: today.toISOString().split("T")[0],
+                  });
+                }}
+                className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+              >
+                Últimos 7 dias
+              </button>
+              <button
+                onClick={() => {
+                  const today = new Date();
+                  const last30Days = new Date(today);
+                  last30Days.setDate(last30Days.getDate() - 30);
+                  setDateRange({
+                    startDate: last30Days.toISOString().split("T")[0],
+                    endDate: today.toISOString().split("T")[0],
+                  });
+                }}
+                className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+              >
+                Últimos 30 dias
+              </button>
+            </div>
+            
+            {/* Campos de data */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Data inicial
+                </label>
+                <input
+                  type="date"
+                  value={dateRange.startDate}
+                  onChange={(e) => setDateRange({ ...dateRange, startDate: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Data final
+                </label>
+                <input
+                  type="date"
+                  value={dateRange.endDate}
+                  onChange={(e) => setDateRange({ ...dateRange, endDate: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div className="flex items-end">
+                <p className="text-sm text-gray-500">
+                  <Calendar className="w-4 h-4 inline mr-1" />
+                  Mostrando dados do período selecionado
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 

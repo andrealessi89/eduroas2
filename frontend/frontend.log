@@ -1,0 +1,3282 @@
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 2.2s
+ ✓ Ready in 4s
+Middleware: path=/, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+ ○ Compiling /login ...
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/@vite/env, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+ ✓ Compiled /login in 9.6s
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/actuator/env, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/server, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 1674ms
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 10240ms
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/.vscode/sftp.json, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/_next/webpack-hmr, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/login.action, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 301ms
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/about, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/server-status, hasToken=false
+ ○ Compiling /api/auth/[...nextauth] ...
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/debug/default/view, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/s/13e26393e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/v2/_catalog, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/s/13e28343e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/s/13e2231313e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/s/13e22333e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/s/13e26313e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/s/13e24363e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/server-status, hasToken=false
+Middleware: path=/s/13e20383e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/login.action, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/_all_dbs, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/.DS_Store, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/s/13e26393e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/s/13e26313e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/s/13e22333e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/s/13e24363e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/s/13e20383e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/s/13e28343e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/s/13e2231313e21323e2430313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/config.json, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/telescope/requests, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 5477ms
+Middleware: path=/, hasToken=false
+Middleware: path=/info.php, hasToken=false
+Middleware: path=/, hasToken=false
+ ✓ Compiled /api/auth/[...nextauth] in 6.4s
+ GET /api/auth/session 200 in 7266ms
+ GET /api/auth/providers 200 in 67ms
+ GET /api/auth/csrf 200 in 47ms
+ POST /api/auth/signin/google 200 in 379ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 77ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 72ms
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /favicon.ico 200 in 236ms
+ GET /favicon.ico 200 in 233ms
+ GET /favicon.ico 200 in 226ms
+ GET /favicon.ico 200 in 229ms
+Middleware: path=/, hasToken=false
+ GET /favicon.ico 200 in 245ms
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 70ms
+ GET /login?callbackUrl=%2F 200 in 65ms
+ GET /login?callbackUrl=%2F 200 in 54ms
+ GET /api/auth/session 200 in 82ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 63ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 290ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 255ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 54ms
+ GET /api/auth/session 200 in 65ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 74ms
+ GET /api/auth/session 200 in 66ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 63ms
+ GET /login?callbackUrl=%2F 200 in 52ms
+ GET /api/auth/session 200 in 97ms
+ GET /api/auth/session 200 in 98ms
+Middleware: path=/, hasToken=false
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/providers 200 in 61ms
+ GET /api/auth/csrf 200 in 54ms
+ POST /api/auth/signin/google 200 in 225ms
+ GET /login?callbackUrl=%2F 200 in 50ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 74ms
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 70ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 67ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 68ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 56ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 62ms
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 59ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 63ms
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 98ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 87ms
+Middleware: path=/.git/config, hasToken=false
+[next-auth][error][OAUTH_CALLBACK_ERROR] 
+https://next-auth.js.org/errors#oauth_callback_error State cookie was missing. {
+  error: [Error [OAuthCallbackError]: State cookie was missing.] {
+    code: undefined
+  },
+  providerId: 'google',
+  message: 'State cookie was missing.'
+}
+ GET /api/auth/callback/google 302 in 1038ms
+ GET /api/auth/error?error=OAuthCallback 302 in 81ms
+ GET /api/auth/signin?error=OAuthCallback 302 in 62ms
+ GET /login?callbackUrl=https%3A%2F%2Fdashboard.dashproapp.com.br&error=OAuthCallback 200 in 154ms
+ GET /login?callbackUrl=%2F 200 in 55ms
+ GET /api/auth/session 200 in 61ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 67ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/providers 200 in 66ms
+ GET /api/auth/csrf 200 in 65ms
+ POST /api/auth/signin/google 200 in 227ms
+Acesso negado: usuário andrealessi89@gmail.com não cadastrado
+ GET /api/auth/callback/google?state=x6BHhMRvrPGIP2BNxaGOOyix-tlAFbi3TMqbovCQDu8&code=4%2F0AVMBsJj05Iga_Bp8H0loatUkiXXAsuMYNI3DmkV3no8SGh_nAyBlqccO4ash5Yj01mKP6A&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none 302 in 738ms
+ GET /api/auth/error?error=AccessDenied 302 in 72ms
+ GET /login?error=AccessDenied 200 in 118ms
+ GET /api/auth/session 200 in 77ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/providers 200 in 79ms
+ GET /api/auth/csrf 200 in 60ms
+ POST /api/auth/signin/google 200 in 226ms
+Acesso negado: usuário andrealessi89@gmail.com não cadastrado
+ GET /api/auth/callback/google?state=ZZAgmjt4EE8A_-c88gqJg31AbvBd9LggXSUAabkV9WY&code=4%2F0AVMBsJijiuyvc3nbFtIwhe46WNCjNhdAR3CJapDOdVGmjhAseO_pbkchTIF8gUirZ86-Bg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none 302 in 683ms
+ GET /api/auth/error?error=AccessDenied 302 in 81ms
+ GET /login?error=AccessDenied 200 in 148ms
+ GET /api/auth/session 200 in 60ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 77ms
+ GET /favicon.ico 200 in 245ms
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 96ms
+Middleware: path=/, hasToken=false
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 120ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 134ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 143ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 77ms
+ GET /api/auth/session 200 in 62ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+Middleware: path=/, hasToken=false
+ HEAD /login?callbackUrl=/ 200 in 57ms
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 61ms
+ GET /login?callbackUrl=%2F 200 in 111ms
+ GET /api/auth/providers 200 in 99ms
+ GET /api/auth/csrf 200 in 87ms
+ POST /api/auth/signin/google 200 in 329ms
+Acesso negado: usuário andrealessi89@gmail.com não cadastrado
+ GET /api/auth/callback/google?state=BrsGNELYvqHhu58yY51cSqhgl8LiGRLliOn9WYY4Srw&code=4%2F0AVMBsJj9C7MByzozgHXCLRTeRvDFO1XalRbhOeYmQCp3qw_MtKi1vpPwUFIIevV2VhEmwg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none 302 in 851ms
+ GET /api/auth/error?error=AccessDenied 302 in 68ms
+ GET /login?error=AccessDenied 200 in 241ms
+ GET /api/auth/session 200 in 102ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/providers 200 in 89ms
+ GET /api/auth/csrf 200 in 65ms
+ POST /api/auth/signin/google 200 in 259ms
+Acesso autorizado: andrealessi89@gmail.com
+ GET /api/auth/callback/google?state=-5TiUMvsBkKzq6IJEjAaPNQZ04gGVu9eorWAIQedbPc&code=4%2F0AVMBsJjNkawX_CEDWRqIvw8-ding19Yp2QMAmhkiS--66phbx9qd00BQ0Djhu7FTF71CVA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none 302 in 570ms
+Middleware: path=/dashboard, hasToken=true
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 12s
+ GET /dashboard 200 in 12539ms
+ GET /api/auth/session 200 in 143ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ ○ Compiling /_not-found/page ...
+ POST /api/user/token 200 in 5436ms
+ ✓ Compiled /_not-found/page in 6.2s
+ GET /_next/webpack-hmr 404 in 6278ms
+Middleware: path=/integracoes, hasToken=true
+ ○ Compiling /integracoes ...
+ ✓ Compiled /integracoes in 3.7s
+ GET /integracoes 200 in 3792ms
+ POST /api/user/token 200 in 89ms
+ POST /api/user/token 200 in 79ms
+ POST /api/user/token 200 in 44ms
+ POST /api/user/token 200 in 46ms
+ POST /api/user/token 200 in 59ms
+ POST /api/user/token 200 in 64ms
+ POST /api/user/token 200 in 52ms
+ POST /api/user/token 200 in 122ms
+ POST /api/user/token 200 in 53ms
+ POST /api/user/token 200 in 56ms
+ POST /api/user/token 200 in 53ms
+ POST /api/user/token 200 in 60ms
+Middleware: path=/facebook-ads, hasToken=true
+ ○ Compiling /facebook-ads ...
+ ✓ Compiled /facebook-ads in 5.8s
+ GET /facebook-ads 200 in 5849ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 134ms
+ POST /api/user/token 200 in 68ms
+ POST /api/user/token 200 in 69ms
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/, hasToken=false
+ HEAD /login?callbackUrl=/ 200 in 44ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 77ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 59ms
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 63ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 68ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 176ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 76ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 65ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 70ms
+ GET /favicon.ico 200 in 288ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 227ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 73ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 69ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 155ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 70ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 68ms
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 84ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 71ms
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 109ms
+ GET /login?callbackUrl=%2F 200 in 144ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 72ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 82ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 74ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 93ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 97ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 933ms
+ GET /login?callbackUrl=%2F 200 in 268ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 94ms
+Middleware: path=/bitbucket-pipelines.yml, hasToken=false
+Middleware: path=/.env, hasToken=false
+Middleware: path=/hardhat.config.js, hasToken=false
+ GET /login?callbackUrl=%2Fbitbucket-pipelines.yml 200 in 83ms
+Middleware: path=/Login, hasToken=false
+Middleware: path=/Dockerfile, hasToken=false
+ GET /login?callbackUrl=%2Fhardhat.config.js 200 in 72ms
+ GET /login?callbackUrl=%2FDockerfile 200 in 75ms
+Middleware: path=/users/sign_in, hasToken=false
+ GET /login?callbackUrl=%2F.env 200 in 65ms
+ GET /login?callbackUrl=%2Fusers%2Fsign_in 200 in 57ms
+ GET /login?callbackUrl=%2FLogin 200 in 65ms
+Middleware: path=/, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/auth.json, hasToken=false
+Middleware: path=/ftpsync.settings, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 64ms
+ GET /login?callbackUrl=%2Fauth.json 200 in 185ms
+ GET /login?callbackUrl=%2F 200 in 218ms
+ GET /login?callbackUrl=%2Fftpsync.settings 200 in 205ms
+Middleware: path=/_profiler/empty/search/results, hasToken=false
+ GET /login?callbackUrl=%2F_profiler%2Fempty%2Fsearch%2Fresults 200 in 91ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 81ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 71ms
+ GET /api/auth/session 200 in 210ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 156ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 479ms
+ GET /favicon.ico 200 in 244ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 247ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 75ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 80ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 882ms
+ GET /api/auth/session 200 in 1060ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 290ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 257ms
+ GET /favicon.ico 200 in 234ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=/ 200 in 128ms
+ GET /login?callbackUrl=%2F 200 in 88ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 632ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 571ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 86ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 81ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 82ms
+ GET /login?callbackUrl=%2F 200 in 64ms
+ GET /api/auth/session 200 in 80ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 313ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 102ms
+Middleware: path=/login.zip, hasToken=false
+ HEAD /login?callbackUrl=%2Flogin.zip 200 in 68ms
+Middleware: path=/login.rar, hasToken=false
+ HEAD /login?callbackUrl=%2Flogin.rar 200 in 69ms
+Middleware: path=/login.7z, hasToken=false
+ HEAD /login?callbackUrl=%2Flogin.7z 200 in 52ms
+Middleware: path=/login.tar, hasToken=false
+ HEAD /login?callbackUrl=%2Flogin.tar 200 in 67ms
+Middleware: path=/login.tar.gz, hasToken=false
+ HEAD /login?callbackUrl=%2Flogin.tar.gz 200 in 186ms
+ GET /login?callbackUrl=%2F 200 in 80ms
+ GET /login?callbackUrl=%2F 200 in 65ms
+ GET /login?callbackUrl=%2F 200 in 65ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 229ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 232ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 229ms
+ GET /favicon.ico 200 in 234ms
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 88ms
+ GET /login?callbackUrl=%2F 200 in 67ms
+ GET /api/auth/session 200 in 88ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 250ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 233ms
+Middleware: path=/, hasToken=false
+ HEAD /login?callbackUrl=/ 200 in 51ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 60ms
+ GET /api/auth/session 200 in 94ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /login 200 in 84ms
+ GET /favicon.ico 200 in 232ms
+Middleware: path=/favicon.png, hasToken=false
+ GET /login?callbackUrl=%2Ffavicon.png 200 in 69ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 248ms
+ GET /login 200 in 64ms
+ GET /favicon.ico 200 in 228ms
+Middleware: path=/favicon.png, hasToken=false
+ GET /login?callbackUrl=%2Ffavicon.png 200 in 60ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 236ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 214ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 81ms
+ GET /api/auth/session 200 in 442ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 266ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 108ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 92ms
+ GET /login?callbackUrl=%2F 200 in 97ms
+ GET /login?callbackUrl=%2F 200 in 120ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 324ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 683ms
+Middleware: path=/, hasToken=false
+ HEAD /login?callbackUrl=/ 200 in 68ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 232ms
+Middleware: path=/.git/config, hasToken=false
+ GET /login?callbackUrl=%2F.git%2Fconfig 200 in 623ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 140ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 81ms
+ GET /api/auth/session 200 in 486ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 273ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 207ms
+Middleware: path=/, hasToken=true
+ ○ Compiling / ...
+ ✓ Compiled / in 23.9s
+ GET / 200 in 24526ms
+Middleware: path=/dashboard, hasToken=true
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 590ms
+ GET /dashboard 200 in 704ms
+ GET /_next/webpack-hmr 404 in 632ms
+ POST /api/user/token 200 in 1671ms
+ POST /api/user/token 200 in 1481ms
+ GET /api/auth/session 200 in 145ms
+ POST /api/user/token 200 in 79ms
+Killed
+Middleware: path=/pedidos, hasToken=true
+ ○ Compiling /pedidos ...
+ ✓ Compiled /pedidos in 43.8s
+ GET /pedidos 200 in 43984ms
+ POST /api/user/token 200 in 367ms
+ POST /api/user/token 200 in 408ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 113ms
+ POST /api/user/token 200 in 598ms
+ POST /api/user/token 200 in 604ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 237ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 312ms
+ GET /_next/webpack-hmr 404 in 487ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 602ms
+ POST /api/user/token 200 in 331ms
+aedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3333
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3333)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 4.7s
+ ✓ Ready in 10.2s
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 5.5s
+ ✓ Ready in 10.1s
+ ○ Compiling /api/auth/[...nextauth] ...
+Middleware: path=/dashboard, hasToken=true
+ GET /api/auth/session 200 in 13373ms
+ POST /api/user/token 200 in 10393ms
+ ✓ Compiled /api/auth/[...nextauth] in 27.7s
+ GET /dashboard 200 in 27584ms
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 253ms
+ POST /api/user/token 200 in 129ms
+ ○ Compiling /_not-found/page ...
+ ✓ Compiled /_not-found/page in 3.5s
+ GET /_next/webpack-hmr 404 in 3620ms
+ GET /api/auth/session 200 in 145ms
+ POST /api/user/token 200 in 115ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 122ms
+ GET /api/auth/session 200 in 154ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ POST /api/user/token 200 in 118ms
+ GET /_next/webpack-hmr 404 in 273ms
+Middleware: path=/google-ads, hasToken=true
+ ○ Compiling /google-ads ...
+ ✓ Compiled /google-ads in 9.3s
+ GET /google-ads 200 in 9377ms
+ POST /api/user/token 200 in 326ms
+ POST /api/user/token 200 in 327ms
+Middleware: path=/integracoes, hasToken=true
+ ○ Compiling /integracoes ...
+ ✓ Compiled /integracoes in 3.4s
+ GET /integracoes 200 in 3503ms
+ POST /api/user/token 200 in 80ms
+ POST /api/user/token 200 in 87ms
+ POST /api/user/token 200 in 53ms
+ POST /api/user/token 200 in 59ms
+ POST /api/user/token 200 in 137ms
+ POST /api/user/token 200 in 173ms
+ POST /api/user/token 200 in 46ms
+ POST /api/user/token 200 in 50ms
+ POST /api/user/token 200 in 55ms
+ POST /api/user/token 200 in 61ms
+ POST /api/user/token 200 in 50ms
+ POST /api/user/token 200 in 57ms
+ GET /api/auth/session 200 in 88ms
+ POST /api/user/token 200 in 90ms
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'allowedDevOrigins' at "experimental"
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 2.3s
+ ✓ Ready in 3.9s
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'allowedDevOrigins' at "experimental"
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 2.5s
+ ✓ Ready in 4s
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 2.6s
+ ✓ Ready in 4.5s
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 5.5s
+ GET /api/auth/session 200 in 6544ms
+ ○ Compiling /api/user/token ...
+ ✓ Compiled /api/user/token in 2.4s
+ POST /api/user/token 200 in 2601ms
+ GET /api/auth/session 200 in 96ms
+ POST /api/user/token 200 in 86ms
+Middleware: path=/integracoes, hasToken=true
+ ○ Compiling /integracoes ...
+ ✓ Compiled /integracoes in 8.3s
+ GET /integracoes 200 in 8874ms
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET /api/auth/session 200 in 220ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ POST /api/user/token 200 in 187ms
+ POST /api/user/token 200 in 207ms
+ ○ Compiling /_not-found/page ...
+ POST /api/user/token 200 in 150ms
+ POST /api/user/token 200 in 163ms
+ ✓ Compiled /_not-found/page in 3.3s
+ GET /_next/webpack-hmr 404 in 3460ms
+ POST /api/user/token 200 in 67ms
+ POST /api/user/token 200 in 77ms
+Middleware: path=/google-ads, hasToken=true
+ ○ Compiling /google-ads ...
+Middleware: path=/facebook-ads, hasToken=true
+ GET /google-ads 200 in 16734ms
+ ✓ Compiled /google-ads in 18s
+ GET /facebook-ads 200 in 8389ms
+ POST /api/user/token 200 in 74ms
+ POST /api/user/token 200 in 80ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 70ms
+ POST /api/user/token 200 in 158ms
+ POST /api/user/token 200 in 163ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 38ms
+ POST /api/user/token 200 in 115ms
+ POST /api/user/token 200 in 125ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 58ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 33ms
+ POST /api/user/token 200 in 112ms
+ POST /api/user/token 200 in 170ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 48ms
+ POST /api/user/token 200 in 78ms
+ POST /api/user/token 200 in 89ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 54ms
+ POST /api/user/token 200 in 66ms
+ POST /api/user/token 200 in 69ms
+ POST /api/user/token 200 in 56ms
+ POST /api/user/token 200 in 76ms
+ POST /api/user/token 200 in 54ms
+ POST /api/user/token 200 in 65ms
+ POST /api/user/token 200 in 102ms
+ POST /api/user/token 200 in 185ms
+ POST /api/user/token 200 in 51ms
+ POST /api/user/token 200 in 59ms
+ POST /api/user/token 200 in 57ms
+ POST /api/user/token 200 in 67ms
+ POST /api/user/token 200 in 58ms
+ POST /api/user/token 200 in 76ms
+ POST /api/user/token 200 in 103ms
+ POST /api/user/token 200 in 106ms
+ POST /api/user/token 200 in 125ms
+ POST /api/user/token 200 in 123ms
+ GET /api/auth/session 200 in 121ms
+ POST /api/user/token 200 in 101ms
+ POST /api/user/token 200 in 64ms
+ POST /api/user/token 200 in 68ms
+ GET /api/auth/session 200 in 147ms
+ POST /api/user/token 200 in 142ms
+ GET /api/auth/session 200 in 464ms
+ POST /api/user/token 200 in 131ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 671ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 224ms
+ GET /_next/webpack-hmr 404 in 291ms
+ POST /api/user/token 200 in 132ms
+ POST /api/user/token 200 in 153ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 285ms
+ GET /api/auth/session 200 in 144ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 207ms
+ POST /api/user/token 200 in 252ms
+ POST /api/user/token 200 in 247ms
+ POST /api/user/token 200 in 74ms
+ POST /api/user/token 200 in 83ms
+ POST /api/user/token 200 in 152ms
+ POST /api/user/token 200 in 172ms
+ POST /api/user/token 200 in 112ms
+ POST /api/user/token 200 in 115ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 87ms
+ GET /api/auth/session 200 in 192ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 177ms
+ POST /api/user/token 200 in 215ms
+ POST /api/user/token 200 in 234ms
+ POST /api/user/token 200 in 79ms
+ POST /api/user/token 200 in 97ms
+ POST /api/user/token 200 in 63ms
+ POST /api/user/token 200 in 68ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 761ms
+ GET /api/auth/session 200 in 125ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 337ms
+ POST /api/user/token 200 in 328ms
+ POST /api/user/token 200 in 325ms
+ POST /api/user/token 200 in 232ms
+ POST /api/user/token 200 in 228ms
+ POST /api/user/token 200 in 72ms
+ POST /api/user/token 200 in 72ms
+ POST /api/user/token 200 in 72ms
+ POST /api/user/token 200 in 80ms
+Middleware: path=/.env, hasToken=false
+ ○ Compiling /login ...
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 170ms
+ POST /api/user/token 200 in 252ms
+ POST /api/user/token 200 in 293ms
+ ✓ Compiled /login in 7s
+ GET /login?callbackUrl=%2F.env 200 in 7149ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 48ms
+ POST /api/user/token 200 in 233ms
+ POST /api/user/token 200 in 202ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 129ms
+ POST /api/user/token 200 in 101ms
+ POST /api/user/token 200 in 112ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 55ms
+ POST /api/user/token 200 in 72ms
+ POST /api/user/token 200 in 81ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 45ms
+ POST /api/user/token 200 in 69ms
+ POST /api/user/token 200 in 72ms
+Middleware: path=/pedidos, hasToken=true
+ ○ Compiling /pedidos ...
+ ✓ Compiled /pedidos in 8.2s
+ GET /pedidos 200 in 8466ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 202ms
+ POST /api/user/token 200 in 86ms
+ POST /api/user/token 200 in 85ms
+Middleware: path=/dashboard, hasToken=true
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 9.3s
+ GET /dashboard 200 in 9407ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 289ms
+ POST /api/user/token 200 in 218ms
+ POST /api/user/token 200 in 260ms
+ GET /api/auth/session 200 in 157ms
+ POST /api/user/token 200 in 111ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 732ms
+ GET /api/auth/session 200 in 194ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 270ms
+ POST /api/user/token 200 in 277ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 341ms
+ POST /api/user/token 200 in 158ms
+ POST /api/user/token 200 in 160ms
+ GET /api/auth/session 200 in 139ms
+ POST /api/user/token 200 in 123ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 70ms
+ GET /api/auth/session 200 in 150ms
+ POST /api/user/token 200 in 84ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 61ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 552ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 166ms
+ GET /_next/webpack-hmr 404 in 392ms
+ POST /api/user/token 200 in 310ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 471ms
+ POST /api/user/token 200 in 137ms
+ POST /api/user/token 200 in 137ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 67ms
+ POST /api/user/token 200 in 86ms
+ POST /api/user/token 200 in 91ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 97ms
+ POST /api/user/token 200 in 172ms
+ POST /api/user/token 200 in 185ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 42ms
+ POST /api/user/token 200 in 151ms
+ POST /api/user/token 200 in 172ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 663ms
+ POST /api/user/token 200 in 273ms
+ POST /api/user/token 200 in 290ms
+ POST /api/user/token 200 in 90ms
+ POST /api/user/token 200 in 106ms
+ POST /api/user/token 200 in 181ms
+ POST /api/user/token 200 in 178ms
+ POST /api/user/token 200 in 199ms
+ POST /api/user/token 200 in 215ms
+ POST /api/user/token 200 in 74ms
+ POST /api/user/token 200 in 80ms
+ POST /api/user/token 200 in 101ms
+ POST /api/user/token 200 in 115ms
+ POST /api/user/token 200 in 126ms
+ POST /api/user/token 200 in 133ms
+ POST /api/user/token 200 in 218ms
+ POST /api/user/token 200 in 229ms
+ POST /api/user/token 200 in 131ms
+ POST /api/user/token 200 in 151ms
+ GET /api/auth/session 200 in 161ms
+ POST /api/user/token 200 in 121ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 564ms
+ POST /api/user/token 200 in 186ms
+ POST /api/user/token 200 in 203ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 75ms
+ POST /api/user/token 200 in 84ms
+ POST /api/user/token 200 in 87ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 58ms
+ POST /api/user/token 200 in 107ms
+ POST /api/user/token 200 in 53ms
+ POST /api/user/token 200 in 162ms
+ POST /api/user/token 200 in 171ms
+ POST /api/user/token 200 in 124ms
+ POST /api/user/token 200 in 137ms
+ POST /api/user/token 200 in 74ms
+ POST /api/user/token 200 in 80ms
+ POST /api/user/token 200 in 83ms
+ POST /api/user/token 200 in 90ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 51ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 80ms
+ POST /api/user/token 200 in 158ms
+ POST /api/user/token 200 in 171ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 648ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 334ms
+ GET /_next/webpack-hmr 404 in 585ms
+ POST /api/user/token 200 in 333ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 60ms
+ POST /api/user/token 200 in 85ms
+ POST /api/user/token 200 in 79ms
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 2.1s
+ ✓ Ready in 4.8s
+Middleware: path=/facebook-ads, hasToken=true
+ ○ Compiling /facebook-ads ...
+ ✓ Compiled /facebook-ads in 14.5s
+ GET /facebook-ads 200 in 16062ms
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ ○ Compiling /api/auth/[...nextauth] ...
+ GET /_next/webpack-hmr 404 in 7809ms
+ ✓ Compiled /api/auth/[...nextauth] in 9s
+ GET /api/auth/session 200 in 10534ms
+ ○ Compiling /api/user/token ...
+ ✓ Compiled /api/user/token in 4.2s
+ POST /api/user/token 200 in 4389ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 180ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 213ms
+ GET /_next/webpack-hmr 404 in 334ms
+ POST /api/user/token 200 in 125ms
+Middleware: path=/integracoes, hasToken=true
+ ○ Compiling /integracoes ...
+ ✓ Compiled /integracoes in 5.8s
+ GET /integracoes 200 in 6105ms
+ POST /api/user/token 200 in 179ms
+ POST /api/user/token 200 in 170ms
+ POST /api/user/token 200 in 181ms
+ POST /api/user/token 200 in 309ms
+ POST /api/user/token 200 in 63ms
+ POST /api/user/token 200 in 75ms
+ POST /api/user/token 200 in 70ms
+ POST /api/user/token 200 in 78ms
+Middleware: path=/pedidos, hasToken=true
+ ○ Compiling /pedidos ...
+Middleware: path=/google-ads, hasToken=true
+ GET /pedidos 200 in 8192ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 624ms
+ POST /api/user/token 200 in 686ms
+ POST /api/user/token 200 in 678ms
+Middleware: path=/google-ads, hasToken=true
+ ✓ Compiled /pedidos in 21.1s
+ GET /google-ads 200 in 16640ms
+ GET /google-ads 200 in 2552ms
+Middleware: path=/google-ads, hasToken=true
+ POST /api/user/token 200 in 148ms
+ POST /api/user/token 200 in 163ms
+ GET /google-ads 200 in 363ms
+ GET /api/auth/session 200 in 91ms
+ POST /api/user/token 200 in 99ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 524ms
+ GET /api/auth/session 200 in 130ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 260ms
+ POST /api/user/token 200 in 282ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 81ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 214ms
+ GET /_next/webpack-hmr 404 in 299ms
+ POST /api/user/token 200 in 124ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 106ms
+ GET /api/auth/session 200 in 137ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 169ms
+ POST /api/user/token 200 in 184ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 98ms
+ GET /api/auth/session 200 in 146ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 189ms
+ POST /api/user/token 200 in 192ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 199ms
+ GET /api/auth/session 200 in 127ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 248ms
+ POST /api/user/token 200 in 247ms
+ GET /api/auth/session 200 in 130ms
+ POST /api/user/token 200 in 66ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 117ms
+ GET /api/auth/session 200 in 133ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 175ms
+ POST /api/user/token 200 in 181ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 117ms
+ GET /api/auth/session 200 in 120ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 215ms
+ POST /api/user/token 200 in 227ms
+ GET /api/auth/session 200 in 111ms
+ POST /api/user/token 200 in 105ms
+ GET /api/auth/session 200 in 414ms
+ POST /api/user/token 200 in 204ms
+ GET /api/auth/session 200 in 177ms
+ POST /api/user/token 200 in 108ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 241ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 249ms
+ GET /_next/webpack-hmr 404 in 259ms
+ POST /api/user/token 200 in 85ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 77ms
+ GET /api/auth/session 200 in 135ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 168ms
+ POST /api/user/token 200 in 192ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 260ms
+ GET /api/auth/session 200 in 153ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 194ms
+ POST /api/user/token 200 in 194ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 85ms
+ GET /api/auth/session 200 in 130ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 199ms
+ POST /api/user/token 200 in 201ms
+ GET /api/auth/session 200 in 89ms
+ POST /api/user/token 200 in 83ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 92ms
+ GET /api/auth/session 200 in 122ms
+ POST /api/user/token 200 in 76ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 131ms
+ GET /api/auth/session 200 in 138ms
+ POST /api/user/token 200 in 106ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 93ms
+ GET /api/auth/session 200 in 149ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 156ms
+ POST /api/user/token 200 in 159ms
+ GET /api/auth/session 200 in 89ms
+ POST /api/user/token 200 in 67ms
+ GET /api/auth/session 200 in 116ms
+ POST /api/user/token 200 in 154ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 1192ms
+ GET /api/auth/session 200 in 160ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 176ms
+ POST /api/user/token 200 in 128ms
+ GET /api/auth/session 200 in 127ms
+ POST /api/user/token 200 in 85ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 101ms
+ GET /api/auth/session 200 in 142ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 167ms
+ POST /api/user/token 200 in 170ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 241ms
+ POST /api/user/token 200 in 171ms
+ POST /api/user/token 200 in 160ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 638ms
+ POST /api/user/token 200 in 174ms
+ POST /api/user/token 200 in 180ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 90ms
+ POST /api/user/token 200 in 102ms
+ POST /api/user/token 200 in 111ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 54ms
+ POST /api/user/token 200 in 97ms
+ POST /api/user/token 200 in 104ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 45ms
+ POST /api/user/token 200 in 69ms
+ POST /api/user/token 200 in 72ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 56ms
+ POST /api/user/token 200 in 60ms
+ POST /api/user/token 200 in 68ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 454ms
+ GET /api/auth/session 200 in 138ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 183ms
+ POST /api/user/token 200 in 83ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 141ms
+ GET /api/auth/session 200 in 166ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 198ms
+ POST /api/user/token 200 in 233ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 145ms
+ GET /api/auth/session 200 in 130ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 235ms
+ POST /api/user/token 200 in 228ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 46ms
+ POST /api/user/token 200 in 92ms
+ POST /api/user/token 200 in 93ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 46ms
+ POST /api/user/token 200 in 76ms
+ POST /api/user/token 200 in 80ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 203ms
+ POST /api/user/token 200 in 70ms
+ POST /api/user/token 200 in 77ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 61ms
+ POST /api/user/token 200 in 84ms
+ POST /api/user/token 200 in 90ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 43ms
+ POST /api/user/token 200 in 58ms
+ POST /api/user/token 200 in 66ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 62ms
+ POST /api/user/token 200 in 65ms
+ POST /api/user/token 200 in 77ms
+Middleware: path=/custos-fixos, hasToken=true
+ GET /custos-fixos 404 in 37ms
+Middleware: path=/custos-fixos, hasToken=true
+ GET /custos-fixos 404 in 96ms
+ GET /api/auth/session 200 in 135ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 160ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 209ms
+ GET /api/auth/session 200 in 141ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 229ms
+ POST /api/user/token 200 in 263ms
+ POST /api/user/token 200 in 266ms
+ GET /api/auth/session 200 in 123ms
+ POST /api/user/token 200 in 99ms
+ GET /api/auth/session 200 in 111ms
+ POST /api/user/token 200 in 87ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 560ms
+ GET /api/auth/session 200 in 106ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 257ms
+ POST /api/user/token 200 in 278ms
+ POST /api/user/token 200 in 291ms
+ GET /api/auth/session 200 in 127ms
+ POST /api/user/token 200 in 80ms
+ GET /api/auth/session 200 in 130ms
+ POST /api/user/token 200 in 80ms
+ GET /api/auth/csrf 200 in 127ms
+ POST /api/auth/signout 200 in 95ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 8.8s
+ GET /login 200 in 9052ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 184ms
+ GET /login 200 in 94ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 2.1s
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 2405ms
+ GET /login 200 in 87ms
+ GET /api/auth/session 200 in 120ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 368ms
+ GET /api/auth/providers 200 in 129ms
+ GET /api/auth/csrf 200 in 80ms
+ POST /api/auth/signin/google 200 in 441ms
+ GET /api/auth/providers 200 in 139ms
+ GET /api/auth/csrf 200 in 89ms
+ POST /api/auth/signin/google 200 in 329ms
+Acesso autorizado: andrealessi89@gmail.com
+ GET /api/auth/callback/google?state=_Xpqp6nKp3_b6NHpqbX76LUU849Pf95ERjv6aX-6KTM&code=4%2F0AVMBsJg4asH8MOk0rpQKzFGoSk6ejlXkSHMu4bfswLErYGjL9ejkVUkC8cVHPbeEWHQFHw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none 302 in 732ms
+Middleware: path=/dashboard, hasToken=true
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 9.4s
+ GET /dashboard 200 in 10235ms
+ GET /api/auth/session 200 in 190ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ POST /api/user/token 200 in 453ms
+ GET /_next/webpack-hmr 404 in 1101ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 262ms
+ POST /api/user/token 200 in 101ms
+ POST /api/user/token 200 in 93ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 62ms
+ POST /api/user/token 200 in 69ms
+ POST /api/user/token 200 in 76ms
+Acesso autorizado: educnreis33@gmail.com
+ GET /api/auth/callback/google?state=ts5f1NxeHiAwZu_QG8oDHTaSUzoM-gvvxxmxe6DUxGA&code=4%2F0AVMBsJiLDKQLrfUSfhVzKBud1wiSzCUQuHdzUMqcMbgquKhXkurjiZWxAeBOqwIJhiJyZw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=1&prompt=consent 302 in 970ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 319ms
+ GET /api/auth/session 200 in 120ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 244ms
+ POST /api/user/token 200 in 249ms
+Middleware: path=/dashboard, hasToken=false
+ GET /login?callbackUrl=%2Fdashboard 200 in 86ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ GET /api/auth/session 200 in 136ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 271ms
+ GET /api/auth/providers 200 in 123ms
+ GET /api/auth/csrf 200 in 68ms
+ POST /api/auth/signin/google 200 in 275ms
+Acesso autorizado: educnreis33@gmail.com
+ GET /api/auth/callback/google?state=kuGSOBXmQNq5HVwVJO3ScTuksvEAfb_2PAdsuW-dvXM&code=4%2F0AVMBsJjspVqiTd7er28cn4VSbhEqbS2DkaFQcfsGmjIaQaa08Jt4mW9WhIkdofOQ_UTJkw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none 302 in 673ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 173ms
+ GET /api/auth/session 200 in 141ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 214ms
+ POST /api/user/token 200 in 208ms
+ GET /api/auth/session 200 in 129ms
+ POST /api/user/token 200 in 88ms
+ GET /api/auth/session 200 in 171ms
+ POST /api/user/token 200 in 149ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 51ms
+ POST /api/user/token 200 in 101ms
+ POST /api/user/token 200 in 103ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 89ms
+ POST /api/user/token 200 in 98ms
+ POST /api/user/token 200 in 123ms
+ GET /api/auth/session 200 in 139ms
+ POST /api/user/token 200 in 104ms
+ POST /api/user/token 200 in 80ms
+ POST /api/user/token 200 in 80ms
+ POST /api/user/token 200 in 68ms
+ POST /api/user/token 200 in 69ms
+ GET /api/auth/session 200 in 137ms
+ POST /api/user/token 200 in 95ms
+ GET /api/auth/session 200 in 143ms
+ POST /api/user/token 200 in 90ms
+ GET /api/auth/session 200 in 126ms
+ POST /api/user/token 200 in 121ms
+ GET /api/auth/session 200 in 124ms
+ POST /api/user/token 200 in 89ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 514ms
+ POST /api/user/token 200 in 145ms
+ POST /api/user/token 200 in 137ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 383ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 195ms
+ GET /_next/webpack-hmr 404 in 299ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 413ms
+ POST /api/user/token 200 in 108ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 134ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 211ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 383ms
+ GET /_next/webpack-hmr 404 in 359ms
+ POST /api/user/token 200 in 233ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 111ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 217ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 455ms
+ GET /_next/webpack-hmr 404 in 444ms
+ POST /api/user/token 200 in 444ms
+ GET /api/auth/session 200 in 141ms
+ POST /api/user/token 200 in 100ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 64ms
+ POST /api/user/token 200 in 90ms
+ POST /api/user/token 200 in 89ms
+ POST /api/user/token 200 in 121ms
+ POST /api/user/token 200 in 117ms
+ GET /api/auth/session 200 in 175ms
+ POST /api/user/token 200 in 92ms
+ GET /api/auth/session 200 in 137ms
+ POST /api/user/token 200 in 90ms
+ GET /api/auth/session 200 in 164ms
+ POST /api/user/token 200 in 104ms
+ GET /api/auth/session 200 in 131ms
+ POST /api/user/token 200 in 90ms
+ GET /api/auth/session 200 in 156ms
+ POST /api/user/token 200 in 116ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 498ms
+ POST /api/user/token 200 in 103ms
+ POST /api/user/token 200 in 96ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 59ms
+ POST /api/user/token 200 in 119ms
+ POST /api/user/token 200 in 111ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 70ms
+ POST /api/user/token 200 in 121ms
+ POST /api/user/token 200 in 114ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 51ms
+ POST /api/user/token 200 in 129ms
+ POST /api/user/token 200 in 130ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 66ms
+ POST /api/user/token 200 in 94ms
+ POST /api/user/token 200 in 93ms
+ POST /api/user/token 200 in 119ms
+ POST /api/user/token 200 in 125ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 64ms
+ POST /api/user/token 200 in 81ms
+ POST /api/user/token 200 in 90ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 64ms
+ POST /api/user/token 200 in 312ms
+ POST /api/user/token 200 in 371ms
+ GET /api/auth/session 200 in 165ms
+ POST /api/user/token 200 in 97ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 66ms
+ POST /api/user/token 200 in 72ms
+ POST /api/user/token 200 in 78ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 54ms
+ POST /api/user/token 200 in 71ms
+ POST /api/user/token 200 in 74ms
+ POST /api/user/token 200 in 65ms
+ POST /api/user/token 200 in 69ms
+ GET /api/auth/session 200 in 172ms
+ POST /api/user/token 200 in 110ms
+ POST /api/user/token 200 in 95ms
+ POST /api/user/token 200 in 98ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 78ms
+ POST /api/user/token 200 in 78ms
+ POST /api/user/token 200 in 84ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 50ms
+ POST /api/user/token 200 in 438ms
+ POST /api/user/token 200 in 464ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 81ms
+ POST /api/user/token 200 in 112ms
+ POST /api/user/token 200 in 130ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 462ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 348ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 436ms
+ GET /_next/webpack-hmr 404 in 930ms
+ POST /api/user/token 200 in 583ms
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 3s
+ ✓ Ready in 12.2s
+Middleware: path=/pedidos, hasToken=true
+ ○ Compiling /pedidos ...
+Middleware: path=/pedidos, hasToken=true
+ ✓ Compiled /pedidos in 18.5s
+ GET /pedidos 200 in 8838ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 6090ms
+ ✓ Compiled /api/auth/[...nextauth] in 7.4s
+ GET /api/auth/session 200 in 8863ms
+ ○ Compiling /api/user/token ...
+ ✓ Compiled /api/user/token in 2.3s
+ POST /api/user/token 200 in 2512ms
+Middleware: path=/facebook-ads, hasToken=true
+ ○ Compiling /facebook-ads ...
+ ✓ Compiled /facebook-ads in 3.9s
+ GET /facebook-ads 200 in 3980ms
+ POST /api/user/token 200 in 61ms
+ POST /api/user/token 200 in 62ms
+Middleware: path=/google-ads, hasToken=true
+ ○ Compiling /google-ads ...
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 108ms
+ ✓ Compiled /google-ads in 11.6s
+ GET /google-ads 200 in 11671ms
+ GET /api/auth/session 200 in 104ms
+ POST /api/user/token 200 in 72ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 59ms
+ POST /api/user/token 200 in 148ms
+ POST /api/user/token 200 in 141ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 33ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 315ms
+ GET /api/auth/session 200 in 150ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 151ms
+ POST /api/user/token 200 in 172ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 101ms
+ GET /api/auth/session 200 in 107ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 168ms
+ POST /api/user/token 200 in 169ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 34ms
+ POST /api/user/token 200 in 66ms
+ POST /api/user/token 200 in 74ms
+ GET /api/auth/session 200 in 109ms
+ POST /api/user/token 200 in 67ms
+Middleware: path=/integracoes, hasToken=true
+ ○ Compiling /integracoes ...
+ ✓ Compiled /integracoes in 3.8s
+ GET /integracoes 200 in 3934ms
+ POST /api/user/token 200 in 95ms
+ POST /api/user/token 200 in 101ms
+ POST /api/user/token 200 in 128ms
+ POST /api/user/token 200 in 110ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 44ms
+ POST /api/user/token 200 in 98ms
+ POST /api/user/token 200 in 89ms
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 5.3s
+ ✓ Ready in 8.3s
+Middleware: path=/facebook-ads, hasToken=true
+ ○ Compiling /facebook-ads ...
+ ✓ Compiled /facebook-ads in 12.9s
+ GET /facebook-ads 200 in 13472ms
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ○ Compiling /api/auth/[...nextauth] ...
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 5110ms
+ ✓ Compiled /api/auth/[...nextauth] in 6.3s
+ GET /api/auth/session 200 in 7107ms
+Middleware: path=/google-ads, hasToken=true
+ ○ Compiling /api/user/token ...
+ POST /api/user/token 200 in 5956ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 321ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 456ms
+ GET /_next/webpack-hmr 404 in 1081ms
+Middleware: path=/google-ads, hasToken=true
+ POST /api/user/token 200 in 976ms
+ ✓ Compiled /api/user/token in 16.7s
+ GET /google-ads 200 in 1558ms
+ POST /api/user/token 200 in 124ms
+ POST /api/user/token 200 in 121ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 60ms
+ POST /api/user/token 200 in 75ms
+ POST /api/user/token 200 in 75ms
+Middleware: path=/dashboard, hasToken=true
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 6.8s
+ GET /dashboard 200 in 6853ms
+ POST /api/user/token 200 in 168ms
+ POST /api/user/token 200 in 171ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 45ms
+ POST /api/user/token 200 in 54ms
+ POST /api/user/token 200 in 61ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 35ms
+ POST /api/user/token 200 in 174ms
+ POST /api/user/token 200 in 189ms
+ GET /api/auth/session 200 in 518ms
+ POST /api/user/token 200 in 155ms
+ GET /api/auth/session 200 in 103ms
+ POST /api/user/token 200 in 79ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 125ms
+ GET /api/auth/session 200 in 156ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 291ms
+ POST /api/user/token 200 in 343ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 121ms
+ GET /api/auth/session 200 in 138ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ POST /api/user/token 200 in 118ms
+ GET /_next/webpack-hmr 404 in 216ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 57ms
+ POST /api/user/token 200 in 160ms
+ POST /api/user/token 200 in 168ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 55ms
+ POST /api/user/token 200 in 69ms
+ POST /api/user/token 200 in 73ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 38ms
+ POST /api/user/token 200 in 69ms
+ POST /api/user/token 200 in 69ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 50ms
+ POST /api/user/token 200 in 266ms
+ POST /api/user/token 200 in 286ms
+ GET /api/auth/session 200 in 94ms
+ POST /api/user/token 200 in 66ms
+ GET /api/auth/session 200 in 112ms
+ POST /api/user/token 200 in 102ms
+Middleware: path=/, hasToken=false
+ ○ Compiling /login ...
+ ✓ Compiled /login in 2.9s
+ GET /login?callbackUrl=%2F 200 in 3063ms
+ GET /api/auth/session 200 in 126ms
+ POST /api/user/token 200 in 138ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 62ms
+ POST /api/user/token 200 in 73ms
+ POST /api/user/token 200 in 89ms
+Middleware: path=/pedidos, hasToken=true
+ ○ Compiling /pedidos ...
+ ✓ Compiled /pedidos in 7.2s
+ GET /pedidos 200 in 7296ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 293ms
+ POST /api/user/token 200 in 76ms
+ POST /api/user/token 200 in 71ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 38ms
+ POST /api/user/token 200 in 82ms
+ POST /api/user/token 200 in 80ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 77ms
+ POST /api/user/token 200 in 63ms
+ POST /api/user/token 200 in 66ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 67ms
+ POST /api/user/token 200 in 50ms
+ POST /api/user/token 200 in 57ms
+ GET /api/auth/session 200 in 106ms
+ POST /api/user/token 200 in 64ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 493ms
+ GET /api/auth/session 200 in 146ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 180ms
+ POST /api/user/token 200 in 176ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 114ms
+ GET /api/auth/session 200 in 120ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 212ms
+ POST /api/user/token 200 in 128ms
+ GET /api/auth/session 200 in 123ms
+ POST /api/user/token 200 in 101ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 42ms
+ POST /api/user/token 200 in 78ms
+ POST /api/user/token 200 in 68ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 40ms
+ POST /api/user/token 200 in 53ms
+ POST /api/user/token 200 in 59ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 77ms
+ GET /api/auth/session 200 in 145ms
+ POST /api/user/token 200 in 74ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 128ms
+ GET /api/auth/session 200 in 133ms
+ POST /api/user/token 200 in 78ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 40ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 40ms
+ POST /api/user/token 200 in 57ms
+ POST /api/user/token 200 in 62ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 37ms
+ POST /api/user/token 200 in 67ms
+ POST /api/user/token 200 in 69ms
+Middleware: path=/integracoes, hasToken=true
+ ○ Compiling /integracoes ...
+ ✓ Compiled /integracoes in 4.1s
+ GET /integracoes 200 in 4167ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 129ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 34ms
+ POST /api/user/token 200 in 68ms
+ POST /api/user/token 200 in 70ms
+ POST /api/user/token 200 in 58ms
+ POST /api/user/token 200 in 99ms
+ GET /api/auth/session 200 in 135ms
+ POST /api/user/token 200 in 81ms
+ GET /api/auth/session 200 in 115ms
+ POST /api/user/token 200 in 78ms
+ GET /api/auth/session 200 in 122ms
+ POST /api/user/token 200 in 76ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 265ms
+ GET /api/auth/session 200 in 144ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 187ms
+ POST /api/user/token 200 in 235ms
+ POST /api/user/token 200 in 141ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 35ms
+ POST /api/user/token 200 in 171ms
+ POST /api/user/token 200 in 175ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 45ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 90ms
+ GET /api/auth/session 200 in 167ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 138ms
+ POST /api/user/token 200 in 165ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 39ms
+ POST /api/user/token 200 in 42ms
+ POST /api/user/token 200 in 54ms
+ POST /api/user/token 200 in 69ms
+ POST /api/user/token 200 in 72ms
+ GET /api/auth/session 200 in 137ms
+ POST /api/user/token 200 in 100ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 45ms
+ POST /api/user/token 200 in 176ms
+ POST /api/user/token 200 in 222ms
+ GET /api/auth/session 200 in 121ms
+ POST /api/user/token 200 in 79ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 122ms
+ GET /api/auth/session 200 in 123ms
+ POST /api/user/token 200 in 84ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 314ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 82ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 75ms
+ GET /api/auth/session 200 in 123ms
+ POST /api/user/token 200 in 70ms
+ GET /api/auth/session 200 in 120ms
+ POST /api/user/token 200 in 63ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 47ms
+ POST /api/user/token 200 in 64ms
+ POST /api/user/token 200 in 73ms
+ POST /api/user/token 200 in 55ms
+ POST /api/user/token 200 in 60ms
+ GET /api/auth/session 200 in 112ms
+ POST /api/user/token 200 in 81ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 697ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 156ms
+ GET /_next/webpack-hmr 404 in 244ms
+ POST /api/user/token 200 in 157ms
+ POST /api/user/token 200 in 193ms
+ POST /api/user/token 200 in 60ms
+ POST /api/user/token 200 in 65ms
+ GET /api/auth/session 200 in 120ms
+ POST /api/user/token 200 in 78ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 47ms
+ POST /api/user/token 200 in 121ms
+ POST /api/user/token 200 in 133ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 46ms
+ POST /api/user/token 200 in 72ms
+ POST /api/user/token 200 in 68ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 52ms
+ POST /api/user/token 200 in 67ms
+ POST /api/user/token 200 in 76ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 54ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 44ms
+ POST /api/user/token 200 in 84ms
+ POST /api/user/token 200 in 91ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 41ms
+ POST /api/user/token 200 in 62ms
+ POST /api/user/token 200 in 69ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 42ms
+ POST /api/user/token 200 in 57ms
+ POST /api/user/token 200 in 65ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 165ms
+ POST /api/user/token 200 in 83ms
+ POST /api/user/token 200 in 77ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 45ms
+ POST /api/user/token 200 in 103ms
+ POST /api/user/token 200 in 101ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 30ms
+ POST /api/user/token 200 in 64ms
+ POST /api/user/token 200 in 69ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 31ms
+ POST /api/user/token 200 in 55ms
+ POST /api/user/token 200 in 61ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 28ms
+ POST /api/user/token 200 in 52ms
+ POST /api/user/token 200 in 60ms
+Middleware: path=/, hasToken=false
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 160ms
+ POST /api/user/token 200 in 57ms
+ POST /api/user/token 200 in 62ms
+ GET /login?callbackUrl=%2F 200 in 80ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 33ms
+ POST /api/user/token 200 in 62ms
+ POST /api/user/token 200 in 72ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 31ms
+ POST /api/user/token 200 in 52ms
+ POST /api/user/token 200 in 60ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 60ms
+ POST /api/user/token 200 in 41ms
+ POST /api/user/token 200 in 93ms
+ POST /api/user/token 200 in 70ms
+ POST /api/user/token 200 in 79ms
+ POST /api/user/token 200 in 69ms
+ POST /api/user/token 200 in 74ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 44ms
+ POST /api/user/token 200 in 60ms
+ POST /api/user/token 200 in 69ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 90ms
+ GET /api/auth/session 200 in 236ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 238ms
+ POST /api/user/token 200 in 231ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 30ms
+ POST /api/user/token 200 in 95ms
+ POST /api/user/token 200 in 97ms
+ POST /api/user/token 200 in 55ms
+ POST /api/user/token 200 in 61ms
+ POST /api/user/token 200 in 66ms
+ POST /api/user/token 200 in 64ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 164ms
+ POST /api/user/token 200 in 54ms
+ POST /api/user/token 200 in 62ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 92ms
+ GET /api/auth/session 200 in 140ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 175ms
+ POST /api/user/token 200 in 85ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 45ms
+ POST /api/user/token 200 in 72ms
+ POST /api/user/token 200 in 64ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 336ms
+ POST /api/user/token 200 in 120ms
+ POST /api/user/token 200 in 169ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 72ms
+ GET /api/auth/session 200 in 198ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 137ms
+ POST /api/user/token 200 in 55ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 58ms
+ POST /api/user/token 200 in 88ms
+ POST /api/user/token 200 in 47ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 52ms
+ POST /api/user/token 200 in 85ms
+ POST /api/user/token 200 in 91ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 81ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 91ms
+ GET /api/auth/session 200 in 114ms
+ POST /api/user/token 200 in 98ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 80ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 173ms
+ GET /_next/webpack-hmr 404 in 187ms
+ POST /api/user/token 200 in 148ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 49ms
+ POST /api/user/token 200 in 88ms
+ POST /api/user/token 200 in 91ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 87ms
+ GET /api/auth/session 200 in 143ms
+ POST /api/user/token 200 in 63ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 148ms
+Middleware: path=/integracoes, hasToken=true
+ GET /integracoes 200 in 50ms
+ POST /api/user/token 200 in 63ms
+ POST /api/user/token 200 in 59ms
+ POST /api/user/token 200 in 54ms
+ POST /api/user/token 200 in 61ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 41ms
+ POST /api/user/token 200 in 80ms
+ POST /api/user/token 200 in 79ms
+ POST /api/user/token 200 in 123ms
+ POST /api/user/token 200 in 134ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 37ms
+ POST /api/user/token 200 in 68ms
+ POST /api/user/token 200 in 63ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 95ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 84ms
+ GET /api/auth/session 200 in 182ms
+ POST /api/user/token 200 in 76ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 97ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 138ms
+ GET /_next/webpack-hmr 404 in 233ms
+ POST /api/user/token 200 in 66ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 38ms
+ POST /api/user/token 200 in 82ms
+ POST /api/user/token 200 in 88ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 106ms
+ POST /api/user/token 200 in 61ms
+ POST /api/user/token 200 in 67ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 42ms
+ POST /api/user/token 200 in 56ms
+ POST /api/user/token 200 in 61ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 163ms
+ POST /api/user/token 200 in 75ms
+ POST /api/user/token 200 in 82ms
+ GET /api/auth/session 200 in 142ms
+ POST /api/user/token 200 in 96ms
+Middleware: path=/dashboard, hasToken=true
+ GET /dashboard 200 in 96ms
+ GET /api/auth/session 200 in 106ms
+ POST /api/user/token 200 in 102ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 128ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 36ms
+ POST /api/user/token 200 in 35ms
+ POST /api/user/token 200 in 34ms
+ GET /api/auth/session 200 in 125ms
+ POST /api/user/token 200 in 112ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 851ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 305ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 143ms
+Middleware: path=/.env, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/xmlrpc.php, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/blog/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/web/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/wordpress/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/website/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/wp/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/news/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/2018/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/2019/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/shop/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/wp1/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/test/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/media/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/wp2/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/site/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/cms/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/sito/wp-includes/wlwmanifest.xml, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 721ms
+Middleware: path=/.env, hasToken=false
+ GET /login?callbackUrl=%2F.env 200 in 207ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 106ms
+Middleware: path=/, hasToken=false
+ GET /api/auth/session 200 in 1466ms
+Middleware: path=/facebook-ads, hasToken=true
+ POST /api/user/token 200 in 449ms
+ GET /facebook-ads 200 in 655ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 503ms
+ GET /_next/webpack-hmr 404 in 926ms
+ POST /api/user/token 200 in 554ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 82ms
+ POST /api/user/token 200 in 58ms
+ POST /api/user/token 200 in 77ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 734ms
+Middleware: path=/, hasToken=true
+ ○ Compiling / ...
+ ✓ Compiled / in 20.2s
+ GET / 200 in 20487ms
+Middleware: path=/dashboard, hasToken=true
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 270ms
+ GET /dashboard 200 in 357ms
+ GET /_next/webpack-hmr 404 in 532ms
+ POST /api/user/token 200 in 166ms
+ POST /api/user/token 200 in 168ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 520ms
+ POST /api/user/token 200 in 71ms
+ POST /api/user/token 200 in 72ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 78ms
+ POST /api/user/token 200 in 183ms
+ POST /api/user/token 200 in 189ms
+ GET /api/auth/session 200 in 160ms
+ POST /api/user/token 200 in 151ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 129ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 366ms
+ ○ Compiling /favicon.ico ...
+ GET /_next/webpack-hmr 404 in 665ms
+ POST /api/user/token 200 in 390ms
+ ✓ Compiled /favicon.ico in 4.1s
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 4359ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 207ms
+ GET /api/auth/session 200 in 142ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 330ms
+ POST /api/user/token 200 in 327ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 306ms
+ POST /api/user/token 200 in 128ms
+ POST /api/user/token 200 in 122ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 590ms
+ GET /api/auth/session 200 in 269ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ POST /api/user/token 200 in 185ms
+ GET /_next/webpack-hmr 404 in 369ms
+Middleware: path=/facebook-ads, hasToken=true
+Middleware: path=/facebook-ads, hasToken=true
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 1826ms
+ ✓ Ready in 7.7s
+Middleware: path=/facebook-ads, hasToken=true
+ ○ Compiling /facebook-ads ...
+ ✓ Compiled /facebook-ads in 12.4s
+ GET /facebook-ads 200 in 13275ms
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ ○ Compiling /api/auth/[...nextauth] ...
+ GET /_next/webpack-hmr 404 in 6574ms
+ ✓ Compiled /api/auth/[...nextauth] in 7.9s
+ GET /api/auth/session 200 in 9242ms
+ ○ Compiling /api/user/token ...
+ ✓ Compiled /api/user/token in 2.6s
+ POST /api/user/token 200 in 2768ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 101ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 125ms
+ GET /_next/webpack-hmr 404 in 213ms
+ POST /api/user/token 200 in 163ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 99ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 136ms
+ GET /_next/webpack-hmr 404 in 231ms
+ POST /api/user/token 200 in 85ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 88ms
+ GET /api/auth/session 200 in 118ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 142ms
+ POST /api/user/token 200 in 149ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 81ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+Middleware: path=/facebook-ads, hasToken=true
+ GET /api/auth/session 200 in 192ms
+ GET /_next/webpack-hmr 404 in 352ms
+ GET /facebook-ads 200 in 370ms
+ POST /api/user/token 200 in 173ms
+Error fetching/creating API token: SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at POST (src/app/api/user/token/route.ts:15:36)
+  13 |     }
+  14 |
+> 15 |     const { email } = await request.json();
+     |                                    ^
+  16 |     
+  17 |     if (email !== session.user.email) {
+  18 |       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 101ms
+ GET /_next/webpack-hmr 404 in 216ms
+ POST /api/user/token 200 in 128ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 85ms
+ GET /api/auth/session 200 in 119ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 117ms
+ POST /api/user/token 200 in 55ms
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 2.1s
+ ✓ Ready in 5.8s
+Middleware: path=/facebook-ads, hasToken=true
+ ○ Compiling /facebook-ads ...
+ ✓ Compiled /facebook-ads in 10.8s
+ GET /facebook-ads 200 in 11178ms
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ ○ Compiling /api/auth/[...nextauth] ...
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 189ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /_next/webpack-hmr 404 in 1983ms
+ ✓ Compiled /api/auth/[...nextauth] in 6.2s
+ POST /api/auth/_log 200 in 3811ms
+ GET /api/auth/session 200 in 3507ms
+ ○ Compiling /api/user/token ...
+ ✓ Compiled /api/user/token in 2.6s
+ POST /api/user/token 200 in 2838ms
+Middleware: path=/google-ads, hasToken=true
+ ○ Compiling /google-ads ...
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 1475ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+Middleware: path=/google-ads, hasToken=true
+ GET /api/auth/session 200 in 1044ms
+ GET /_next/webpack-hmr 404 in 1451ms
+ POST /api/user/token 200 in 336ms
+Middleware: path=/pedidos, hasToken=true
+ GET /google-ads 200 in 10370ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 203ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 138ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 110ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 109ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 174ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 79ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 159ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 329ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 212ms
+Middleware: path=/google-ads, hasToken=true
+Middleware: path=/, hasToken=true
+ GET /google-ads 200 in 129ms
+ POST /api/user/token 200 in 195ms
+ POST /api/user/token 200 in 210ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 118ms
+ GET /pedidos 200 in 11457ms
+Middleware: path=/facebook-ads, hasToken=true
+ ✓ Compiled /google-ads in 29.8s
+ GET / 200 in 5032ms
+Middleware: path=/dashboard, hasToken=true
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 240ms
+ ○ Compiling /dashboard ...
+ GET /_next/webpack-hmr 404 in 531ms
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 2.1s
+ ✓ Ready in 5.4s
+Middleware: path=/dashboard, hasToken=true
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 15.9s
+ GET /dashboard 200 in 16475ms
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ ○ Compiling /api/auth/[...nextauth] ...
+ GET /_next/webpack-hmr 404 in 4854ms
+ ✓ Compiled /api/auth/[...nextauth] in 5.7s
+ GET /api/auth/session 200 in 6432ms
+ ○ Compiling /api/user/token ...
+ ✓ Compiled /api/user/token in 2.6s
+ POST /api/user/token 200 in 2750ms
+Middleware: path=/facebook-ads, hasToken=true
+ ○ Compiling /facebook-ads ...
+ ✓ Compiled /facebook-ads in 5.1s
+ GET /facebook-ads 200 in 5200ms
+ POST /api/user/token 200 in 59ms
+ POST /api/user/token 200 in 62ms
+Middleware: path=/google-ads, hasToken=true
+ ○ Compiling /google-ads ...
+ ✓ Compiled /google-ads in 6.9s
+ GET /google-ads 200 in 6960ms
+ POST /api/user/token 200 in 120ms
+ POST /api/user/token 200 in 126ms
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 1914ms
+ ✓ Ready in 4.9s
+Middleware: path=/facebook-ads, hasToken=true
+ ○ Compiling /facebook-ads ...
+ ✓ Compiled /facebook-ads in 11.6s
+ GET /facebook-ads 200 in 11977ms
+ ○ Compiling /api/user/token ...
+ ✓ Compiled /api/user/token in 3.3s
+ POST /api/user/token 200 in 3634ms
+ POST /api/user/token 200 in 3630ms
+Middleware: path=/google-ads, hasToken=true
+ ○ Compiling /google-ads ...
+ ✓ Compiled /google-ads in 10.9s
+ GET /google-ads 200 in 11022ms
+ POST /api/user/token 200 in 90ms
+ POST /api/user/token 200 in 98ms
+Middleware: path=/, hasToken=false
+ ○ Compiling /login ...
+ ✓ Compiled /login in 2.3s
+ GET /login?callbackUrl=%2F 200 in 2702ms
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 180ms
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 3.7s
+ GET /login?callbackUrl=%2F 200 in 87ms
+ GET /api/auth/session 200 in 118ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+Middleware: path=/wp-admin/setup-config.ph%70, hasToken=false
+Middleware: path=/wordpress/wp-admin/setup-config.ph%70, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 114ms
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 130ms
+Middleware: path=/.git/config, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 702ms
+Middleware: path=/, hasToken=false
+ HEAD /login?callbackUrl=/ 200 in 603ms
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 706ms
+ GET /api/auth/session 200 in 729ms
+Middleware: path=/_next/webpack-hmr, hasToken=false
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 11.4s
+Middleware: path=/, hasToken=false
+ GET /login?callbackUrl=%2F 200 in 93ms
+Middleware: path=/, hasToken=false
+Middleware: path=/, hasToken=true
+ ○ Compiling / ...
+ ✓ Compiled / in 16.9s
+ GET / 200 in 17480ms
+Middleware: path=/dashboard, hasToken=true
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ ○ Compiling /dashboard ...
+ GET /api/auth/session 200 in 732ms
+ GET /_next/webpack-hmr 404 in 16448ms
+ ✓ Compiled /dashboard in 21s
+ GET /dashboard 200 in 21102ms
+ POST /api/user/token 200 in 470ms
+ POST /api/user/token 200 in 465ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 50ms
+ POST /api/user/token 200 in 130ms
+ POST /api/user/token 200 in 132ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 123ms
+ POST /api/user/token 200 in 87ms
+ POST /api/user/token 200 in 93ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 49ms
+ POST /api/user/token 200 in 96ms
+ POST /api/user/token 200 in 117ms
+Middleware: path=/facebook-ads, hasToken=true
+ GET /facebook-ads 200 in 35ms
+ POST /api/user/token 200 in 165ms
+ POST /api/user/token 200 in 221ms
+Middleware: path=/google-ads, hasToken=true
+ GET /google-ads 200 in 57ms
+ POST /api/user/token 200 in 72ms
+ POST /api/user/token 200 in 82ms
+Middleware: path=/pedidos, hasToken=true
+ ○ Compiling /pedidos ...
+ ✓ Compiled /pedidos in 8.3s
+ GET /pedidos 200 in 8442ms
+ POST /api/user/token 200 in 128ms
+ POST /api/user/token 200 in 138ms
+ GET /api/auth/session 200 in 133ms
+ POST /api/user/token 200 in 134ms
+Middleware: path=/integracoes, hasToken=true
+ ○ Compiling /integracoes ...
+ ✓ Compiled /integracoes in 4.4s
+ GET /integracoes 200 in 4532ms
+ POST /api/user/token 200 in 285ms
+ POST /api/user/token 200 in 321ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 84ms
+ POST /api/user/token 200 in 105ms
+ POST /api/user/token 200 in 110ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 331ms
+ GET /api/auth/session 200 in 195ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 432ms
+ GET /_next/webpack-hmr 404 in 266ms
+ POST /api/user/token 200 in 266ms
+Middleware: path=/pedidos, hasToken=true
+ GET /pedidos 200 in 2494ms
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ GET /api/auth/session 200 in 501ms
+ GET /_next/webpack-hmr 404 in 818ms
+ POST /api/user/token 200 in 718ms
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 2.3s
+ ✓ Ready in 8.3s
+Middleware: path=/dashboard, hasToken=true
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 21.2s
+ GET /dashboard 200 in 21652ms
+ ○ Compiling /api/user/token ...
+ ✓ Compiled /api/user/token in 4.2s
+ POST /api/user/token 200 in 4527ms
+ POST /api/user/token 200 in 4510ms
+Middleware: path=/pedidos, hasToken=true
+ ○ Compiling /pedidos ...
+ ✓ Compiled /pedidos in 8s
+ GET /pedidos 200 in 8125ms
+ POST /api/user/token 200 in 123ms
+ POST /api/user/token 200 in 131ms
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 4.8s
+ ✓ Ready in 7.6s
+Middleware: path=/pedidos, hasToken=true
+ ○ Compiling /pedidos ...
+ ✓ Compiled /pedidos in 13.3s
+ GET /pedidos 200 in 13837ms
+ ⚠ Cross origin request detected from dashboard.dashproapp.com.br to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Middleware: path=/_next/webpack-hmr, hasToken=true
+ ○ Compiling /api/auth/[...nextauth] ...
+ GET /_next/webpack-hmr 404 in 4840ms
+ ✓ Compiled /api/auth/[...nextauth] in 6.1s
+ GET /api/auth/session 200 in 6916ms
+ ○ Compiling /api/user/token ...
+ ✓ Compiled /api/user/token in 2.5s
+ POST /api/user/token 200 in 2619ms
+[?25h
+
+> sistemaedu@0.1.0 dev
+> next dev --turbopack -p 3333
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3333
+   - Network:      http://85.209.93.148:3333
+   - Environments: .env
+
+ ✓ Starting...
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 4.8s
+ ✓ Ready in 7.8s

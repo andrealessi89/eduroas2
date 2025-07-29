@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useApiToken } from "@/hooks/useApiToken";
-import { Save, ShoppingBag, CheckCircle, AlertCircle } from "lucide-react";
+import { Save, ShoppingBag, CheckCircle, AlertCircle, Copy, Link } from "lucide-react";
 
 interface MagazordIntegration {
   id: string;
@@ -22,6 +22,8 @@ export default function MagazordTab() {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [integration, setIntegration] = useState<MagazordIntegration | null>(null);
+  const [webhookUrl, setWebhookUrl] = useState<string>("");
+  const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({
     user: "",
     key: "",
@@ -50,9 +52,24 @@ export default function MagazordTab() {
     }
   };
 
+  // Buscar URL do webhook
+  const fetchWebhookUrl = async () => {
+    try {
+      const response = await apiCall<{ success: boolean; data: { url: string } }>("/pedidos/webhook/url");
+      if (response.success && response.data) {
+        // Garantir que a URL usa o domínio correto
+        const url = response.data.url.replace('http://localhost:3001', 'https://api.dashproapp.com.br');
+        setWebhookUrl(url);
+      }
+    } catch (error) {
+      console.error("Erro ao buscar URL do webhook:", error);
+    }
+  };
+
   useEffect(() => {
     if (!tokenLoading) {
       fetchIntegration();
+      fetchWebhookUrl();
     }
   }, [tokenLoading]);
 
@@ -87,6 +104,12 @@ export default function MagazordTab() {
     } finally {
       setSaving(false);
     }
+  };
+
+  const copyWebhookUrl = () => {
+    navigator.clipboard.writeText(webhookUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   if (loading || tokenLoading) {
@@ -194,15 +217,47 @@ export default function MagazordTab() {
         </div>
       </form>
 
+      {/* URL do Webhook */}
+      {webhookUrl && (
+        <div className="mt-8 bg-blue-50 rounded-lg p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <Link className="w-5 h-5 text-blue-600" />
+            <h4 className="text-sm font-medium text-gray-900">URL do Webhook</h4>
+          </div>
+          <p className="text-xs text-gray-600 mb-3">
+            Configure esta URL no webhook da Magazord para receber pedidos aprovados automaticamente.
+          </p>
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              value={webhookUrl}
+              readOnly
+              className="flex-1 px-3 py-2 text-sm bg-white border border-gray-300 rounded-lg font-mono text-gray-700"
+            />
+            <button
+              type="button"
+              onClick={copyWebhookUrl}
+              className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center gap-2"
+            >
+              <Copy className="w-4 h-4" />
+              {copied ? "Copiado!" : "Copiar"}
+            </button>
+          </div>
+          <div className="mt-3 text-xs text-gray-600">
+            <p className="font-medium">Passe essa URL para o suporte da Magazord para que aponte o webhook das vendas.</p>
+          </div>
+        </div>
+      )}
+
       {/* Informações adicionais */}
       <div className="mt-8 bg-gray-50 rounded-lg p-4">
-        <h4 className="text-sm font-medium text-gray-900 mb-2">Como obter as credenciais?</h4>
-        <ol className="text-sm text-gray-600 space-y-1 list-decimal list-inside">
-          <li>Acesse o painel administrativo do Magazord</li>
-          <li>Vá em Configurações → API → Chaves de Acesso</li>
-          <li>Crie uma nova chave ou use uma existente</li>
-          <li>Copie o usuário e a chave gerados</li>
-        </ol>
+        <h4 className="text-sm font-medium text-gray-900 mb-2">Como obter as credenciais da API?</h4>
+        <p className="text-sm text-gray-600 mb-3">
+          Solicite com o suporte da Magazord as credenciais da API, solicitando acesso aos endpoints para <code className="bg-gray-200 px-1 py-0.5 rounded text-xs">/api/v1/listEstoque</code>.
+        </p>
+        <p className="text-sm text-gray-600">
+          <strong>Importante:</strong> O acesso à API é necessário para capturar os custos dos produtos, e a URL do webhook é para receber as vendas da Magazord automaticamente.
+        </p>
       </div>
     </div>
   );

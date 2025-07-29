@@ -7,7 +7,6 @@ import Link from "next/link";
 import {
   LayoutDashboard,
   Settings,
-  DollarSign,
   Menu,
   X,
   LogOut,
@@ -50,11 +49,6 @@ const menuItems: MenuItem[] = [
     label: "Integrações",
     href: "/integracoes",
   },
-  {
-    icon: <DollarSign className="w-5 h-5" />,
-    label: "Custos Fixos",
-    href: "/custos-fixos",
-  },
 ];
 
 interface DashboardLayoutProps {
@@ -85,9 +79,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           </button>
           <div className="flex items-center">
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">
-              R
+              D
             </div>
-            <span className="ml-2 font-semibold">ROAS Manager</span>
+            <span className="ml-2 font-semibold">Dash PRO app</span>
           </div>
         </div>
       </div>
@@ -105,11 +99,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="h-16 flex items-center justify-between px-4 border-b">
           <div className={`flex items-center ${sidebarCollapsed && "lg:justify-center"}`}>
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">
-              R
+              D
             </div>
             {!sidebarCollapsed && (
               <div className="ml-3">
-                <h1 className="text-lg font-semibold text-gray-900">ROAS Manager</h1>
+                <h1 className="text-lg font-semibold text-gray-900">Dash PRO app</h1>
                 <p className="text-xs text-gray-500">Analytics & Performance</p>
               </div>
             )}

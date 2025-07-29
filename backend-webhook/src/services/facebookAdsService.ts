@@ -20,6 +20,7 @@ export class FacebookAdsService {
   static async fetchAndSaveInsights(userId: string, date?: string) {
     try {
       const targetDate = date || new Date().toISOString().split('T')[0];
+      console.log(`[FacebookAds] Iniciando sincronização para usuário ${userId}, data: ${targetDate}`);
       
       // Buscar integrações Meta do usuário com contas selecionadas
       const integracoes = await prisma.integracao.findMany({
@@ -29,17 +30,24 @@ export class FacebookAdsService {
           isActive: true
         }
       });
+      
+      console.log(`[FacebookAds] Encontradas ${integracoes.length} integrações ativas`);
 
       for (const integracao of integracoes) {
         const config = integracao.config as any;
         
         if (!config.accessToken || !config.selectedAccounts || config.selectedAccounts.length === 0) {
+          console.log(`[FacebookAds] Integração ${integracao.id} ignorada - sem token ou contas selecionadas`);
           continue;
         }
+        
+        console.log(`[FacebookAds] Processando integração ${integracao.id} com ${config.selectedAccounts.length} contas selecionadas`);
+        console.log(`[FacebookAds] Contas: ${config.selectedAccounts.join(', ')}`);
 
         // Para cada conta selecionada, buscar insights
         for (const accountId of config.selectedAccounts) {
           try {
+            console.log(`[FacebookAds] Buscando insights da conta ${accountId}`);
             const response = await axios.get(
               `https://graph.facebook.com/v23.0/${accountId}/insights`,
               {
@@ -56,6 +64,7 @@ export class FacebookAdsService {
 
             if (response.data && response.data.data && response.data.data.length > 0) {
               const insights: FacebookAdsInsight = response.data.data[0];
+              console.log(`[FacebookAds] Insights recebidos para conta ${accountId}:`, JSON.stringify(insights, null, 2));
               
               // Verificar se já existe registro para esta data e conta
               const existingData = await prisma.facebookAdsData.findFirst({
@@ -78,6 +87,8 @@ export class FacebookAdsService {
                 averageCpc: parseFloat(insights.cpc || '0'),
                 conversionValue: 0 // Será calculado em outra chamada se necessário
               };
+              
+              console.log(`[FacebookAds] Dados a salvar - spend original: "${insights.spend}", cost convertido: ${dataToSave.cost}`);
 
               if (existingData) {
                 await prisma.facebookAdsData.update({
@@ -90,15 +101,20 @@ export class FacebookAdsService {
                 });
               }
 
-              console.log(`Dados do Facebook Ads salvos para conta ${accountId} - ${targetDate}`);
+              console.log(`[FacebookAds] Dados salvos para conta ${accountId} - ${targetDate}`);
+            } else {
+              console.log(`[FacebookAds] Nenhum dado retornado para conta ${accountId} na data ${targetDate}`);
             }
-          } catch (error) {
-            console.error(`Erro ao buscar insights da conta ${accountId}:`, error);
+          } catch (error: any) {
+            console.error(`[FacebookAds] Erro ao buscar insights da conta ${accountId}:`, error.message);
+            if (error.response) {
+              console.error(`[FacebookAds] Resposta da API:`, error.response.data);
+            }
           }
         }
       }
-    } catch (error) {
-      console.error('Erro ao processar insights do Facebook Ads:', error);
+    } catch (error: any) {
+      console.error('[FacebookAds] Erro ao processar insights:', error.message);
       throw error;
     }
   }

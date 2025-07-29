@@ -16,6 +16,7 @@ export interface GoogleAdsData {
   averageCpc: number;
   conversionValue: number;
   receivedAt: string;
+  updatedAt?: string; // Novo campo
 }
 
 export interface GoogleAdsMetrics {

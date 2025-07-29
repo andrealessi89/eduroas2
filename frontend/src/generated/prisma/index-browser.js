@@ -193,16 +193,6 @@ exports.Prisma.FacebookAdsDataScalarFieldEnum = {
   receivedAt: 'receivedAt'
 };
 
-exports.Prisma.ProdutoScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  nome: 'nome',
-  sku: 'sku',
-  custo: 'custo',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.PedidoScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -283,7 +273,6 @@ exports.Prisma.ModelName = {
   ApiToken: 'ApiToken',
   GoogleAdsData: 'GoogleAdsData',
   FacebookAdsData: 'FacebookAdsData',
-  Produto: 'Produto',
   Pedido: 'Pedido',
   PedidoItem: 'PedidoItem',
   Integracao: 'Integracao'
