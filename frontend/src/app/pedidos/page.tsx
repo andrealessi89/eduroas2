@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import ResponsiveLayout from "@/components/Layout/ResponsiveLayout";
 import PedidoModal from "@/components/Modal/PedidoModal";
@@ -27,6 +27,25 @@ import { ptBR } from "date-fns/locale";
 
 export default function PedidosPage() {
   const { data: session, status } = useSession();
+  
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"todos" | "com-erro" | "sem-erro">("todos");
+  const [dateFilter, setDateFilter] = useState(() => {
+    // Sempre inicia com o dia atual no horário local
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const todayStr = `${year}-${month}-${day}`;
+    return {
+      startDate: todayStr,
+      endDate: todayStr,
+    };
+  });
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPedido, setSelectedPedido] = useState<any>(null);
+  const [reprocessingId, setReprocessingId] = useState<string | null>(null);
+  
   const {
     pedidos,
     loading,
@@ -34,21 +53,23 @@ export default function PedidosPage() {
     totals,
     refresh,
     reprocessarCustos,
+    fetchPedidos,
   } = usePedidos();
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [statusFilter, setStatusFilter] = useState<"todos" | "com-erro" | "sem-erro">("todos");
-  const [dateFilter, setDateFilter] = useState({
-    startDate: "",
-    endDate: ""
-  });
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedPedido, setSelectedPedido] = useState<any>(null);
-  const [reprocessingId, setReprocessingId] = useState<string | null>(null);
+  // Buscar pedidos ao montar o componente e quando os filtros mudarem
+  useEffect(() => {
+    if (dateFilter.startDate && dateFilter.endDate) {
+      fetchPedidos({
+        startDate: dateFilter.startDate,
+        endDate: dateFilter.endDate,
+      });
+    }
+  }, [dateFilter.startDate, dateFilter.endDate, fetchPedidos]);
 
-  // Filtrar pedidos
+  // Filtrar pedidos localmente (busca e status)
   const filteredPedidos = pedidos.filter((pedido) => {
     const matchesSearch = 
+      searchTerm === "" || 
       pedido.codigo.toLowerCase().includes(searchTerm.toLowerCase()) ||
       pedido.pessoaNome.toLowerCase().includes(searchTerm.toLowerCase()) ||
       pedido.pessoaEmail.toLowerCase().includes(searchTerm.toLowerCase());
@@ -200,46 +221,150 @@ export default function PedidosPage() {
 
           {/* Filtros e busca */}
           <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {/* Busca */}
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Buscar por código, cliente..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-                <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
-              </div>
-
-              {/* Filtro de status */}
-              <div>
-                <select
-                  value={statusFilter}
-                  onChange={(e) => setStatusFilter(e.target.value as any)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            <div className="space-y-4">
+              {/* Atalhos de período */}
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const year = today.getFullYear();
+                    const month = String(today.getMonth() + 1).padStart(2, '0');
+                    const day = String(today.getDate()).padStart(2, '0');
+                    const todayStr = `${year}-${month}-${day}`;
+                    setDateFilter({
+                      startDate: todayStr,
+                      endDate: todayStr,
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
                 >
-                  <option value="todos">Todos os Status</option>
-                  <option value="sem-erro">Processados</option>
-                  <option value="com-erro">Com Erros</option>
-                </select>
+                  Hoje
+                </button>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const yesterday = new Date(today);
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    const year = yesterday.getFullYear();
+                    const month = String(yesterday.getMonth() + 1).padStart(2, '0');
+                    const day = String(yesterday.getDate()).padStart(2, '0');
+                    const yesterdayStr = `${year}-${month}-${day}`;
+                    setDateFilter({
+                      startDate: yesterdayStr,
+                      endDate: yesterdayStr,
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Ontem
+                </button>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const last7Days = new Date(today);
+                    last7Days.setDate(last7Days.getDate() - 7);
+                    
+                    const todayYear = today.getFullYear();
+                    const todayMonth = String(today.getMonth() + 1).padStart(2, '0');
+                    const todayDay = String(today.getDate()).padStart(2, '0');
+                    const todayStr = `${todayYear}-${todayMonth}-${todayDay}`;
+                    
+                    const last7Year = last7Days.getFullYear();
+                    const last7Month = String(last7Days.getMonth() + 1).padStart(2, '0');
+                    const last7Day = String(last7Days.getDate()).padStart(2, '0');
+                    const last7Str = `${last7Year}-${last7Month}-${last7Day}`;
+                    
+                    setDateFilter({
+                      startDate: last7Str,
+                      endDate: todayStr,
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Últimos 7 dias
+                </button>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const last30Days = new Date(today);
+                    last30Days.setDate(last30Days.getDate() - 30);
+                    
+                    const todayYear = today.getFullYear();
+                    const todayMonth = String(today.getMonth() + 1).padStart(2, '0');
+                    const todayDay = String(today.getDate()).padStart(2, '0');
+                    const todayStr = `${todayYear}-${todayMonth}-${todayDay}`;
+                    
+                    const last30Year = last30Days.getFullYear();
+                    const last30Month = String(last30Days.getMonth() + 1).padStart(2, '0');
+                    const last30Day = String(last30Days.getDate()).padStart(2, '0');
+                    const last30Str = `${last30Year}-${last30Month}-${last30Day}`;
+                    
+                    setDateFilter({
+                      startDate: last30Str,
+                      endDate: todayStr,
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Últimos 30 dias
+                </button>
               </div>
 
-              {/* Filtro de data início */}
-              <div>
-                <input
-                  type="date"
-                  value={dateFilter.startDate}
-                  onChange={(e) => setDateFilter({ ...dateFilter, startDate: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
+              {/* Campos de filtro */}
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                {/* Busca */}
+                <div className="relative md:col-span-2">
+                  <input
+                    type="text"
+                    placeholder="Buscar por código, nome ou email..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                  <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+                </div>
+
+                {/* Filtro de status */}
+                <div>
+                  <select
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value as any)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <option value="todos">Todos os Status</option>
+                    <option value="sem-erro">Processados</option>
+                    <option value="com-erro">Com Erros</option>
+                  </select>
+                </div>
+
+                {/* Data início */}
+                <div>
+                  <input
+                    type="date"
+                    value={dateFilter.startDate}
+                    onChange={(e) => setDateFilter({ ...dateFilter, startDate: e.target.value })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+
+                {/* Data fim */}
+                <div>
+                  <input
+                    type="date"
+                    value={dateFilter.endDate}
+                    onChange={(e) => setDateFilter({ ...dateFilter, endDate: e.target.value })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
               </div>
 
               {/* Botão refresh */}
               <div className="flex justify-end">
                 <button
-                  onClick={refresh}
+                  onClick={() => fetchPedidos({
+                    startDate: dateFilter.startDate,
+                    endDate: dateFilter.endDate,
+                  })}
                   disabled={loading}
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
                 >

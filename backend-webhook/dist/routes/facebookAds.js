@@ -23,14 +23,16 @@ router.get('/', auth_1.authenticateToken, async (req, res) => {
         }
         const data = await prisma.facebookAdsData.findMany({
             where,
-            orderBy: [
-                { date: 'desc' },
-                { accountName: 'asc' }
-            ]
+            orderBy: {
+                updatedAt: 'desc'
+            }
         });
         console.log(`[FacebookAds API] Dados encontrados: ${data.length} registros`);
         if (data.length > 0) {
             console.log(`[FacebookAds API] Primeiro registro:`, JSON.stringify(data[0], null, 2));
+            console.log(`[FacebookAds API] Campos do primeiro registro:`, Object.keys(data[0]));
+            console.log(`[FacebookAds API] updatedAt presente?`, 'updatedAt' in data[0]);
+            console.log(`[FacebookAds API] Valor de updatedAt:`, data[0].updatedAt);
         }
         // Calcular métricas totais
         const totals = data.reduce((acc, record) => ({
@@ -53,9 +55,15 @@ router.get('/', auth_1.authenticateToken, async (req, res) => {
             ctr: totals.impressions > 0 ? (totals.clicks / totals.impressions) * 100 : 0
         };
         console.log(`[FacebookAds API] Totals calculados:`, JSON.stringify(totals, null, 2));
+        // Garantir que os campos de data sejam serializados corretamente
+        const serializedData = data.map(item => ({
+            ...item,
+            receivedAt: item.receivedAt.toISOString(),
+            updatedAt: item.updatedAt.toISOString()
+        }));
         return res.json({
             success: true,
-            data,
+            data: serializedData,
             totals,
             metrics
         });
@@ -65,6 +73,76 @@ router.get('/', auth_1.authenticateToken, async (req, res) => {
         return res.status(500).json({
             success: false,
             error: 'Erro ao buscar dados'
+        });
+    }
+});
+// Buscar dados agregados
+router.get('/aggregated/:period', auth_1.authenticateToken, async (req, res) => {
+    try {
+        const { period } = req.params;
+        const { startDate, endDate } = req.query;
+        const where = {
+            userId: req.user.id
+        };
+        if (startDate || endDate) {
+            where.date = {};
+            if (startDate)
+                where.date.gte = startDate;
+            if (endDate)
+                where.date.lte = endDate;
+        }
+        const data = await prisma.facebookAdsData.findMany({
+            where,
+            orderBy: { date: 'asc' }
+        });
+        // Agrupar dados por período
+        const aggregated = new Map();
+        data.forEach(record => {
+            let key = record.date;
+            if (period === 'week') {
+                // Agrupar por semana
+                const date = new Date(record.date);
+                const weekStart = new Date(date);
+                weekStart.setDate(date.getDate() - date.getDay());
+                key = weekStart.toISOString().split('T')[0];
+            }
+            else if (period === 'month') {
+                // Agrupar por mês
+                key = record.date.substring(0, 7);
+            }
+            if (!aggregated.has(key)) {
+                aggregated.set(key, {
+                    period: key,
+                    cost: 0,
+                    impressions: 0,
+                    clicks: 0,
+                    conversions: 0,
+                    conversionValue: 0
+                });
+            }
+            const agg = aggregated.get(key);
+            agg.cost += record.cost;
+            agg.impressions += record.impressions;
+            agg.clicks += record.clicks;
+            agg.conversions += record.conversions;
+            agg.conversionValue += record.conversionValue;
+        });
+        // Calcular métricas derivadas
+        const result = Array.from(aggregated.values()).map(agg => ({
+            ...agg,
+            ctr: agg.impressions > 0 ? (agg.clicks / agg.impressions) * 100 : 0,
+            conversionRate: agg.clicks > 0 ? (agg.conversions / agg.clicks) * 100 : 0
+        }));
+        return res.json({
+            success: true,
+            data: result
+        });
+    }
+    catch (error) {
+        console.error('Erro ao buscar dados agregados:', error);
+        return res.status(500).json({
+            success: false,
+            error: 'Erro ao buscar dados agregados'
         });
     }
 });

@@ -14,6 +14,9 @@ import { initializeFacebookAdsCron } from './jobs/facebookAdsCron';
 
 dotenv.config();
 
+// Configurar timezone do processo para Brasília
+process.env.TZ = 'America/Sao_Paulo';
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { authenticateToken, AuthRequest } from '../middleware/auth';
+import { createDateRange } from '../utils/dateUtils';
 
 const router = Router();
 const prisma = new PrismaClient();
@@ -25,14 +26,9 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
       userId: req.user!.id
     };
 
-    if (startDate || endDate) {
-      wherePedidos.createdAt = {};
-      if (startDate) wherePedidos.createdAt.gte = new Date(startDate as string);
-      if (endDate) {
-        const end = new Date(endDate as string);
-        end.setHours(23, 59, 59, 999);
-        wherePedidos.createdAt.lte = end;
-      }
+    const pedidosDateRange = createDateRange(startDate as string, endDate as string);
+    if (pedidosDateRange) {
+      wherePedidos.dataHora = pedidosDateRange;
     }
 
     // Buscar dados conforme a plataforma selecionada
@@ -64,7 +60,7 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
       prisma.pedido.findMany({
         where: wherePedidos,
         include: { itens: true },
-        orderBy: { createdAt: 'desc' }
+        orderBy: { dataHora: 'desc' }
       })
     );
 
@@ -294,10 +290,7 @@ router.get('/summary', authenticateToken, async (req: AuthRequest, res): Promise
       prisma.pedido.count({
         where: {
           userId: req.user!.id,
-          createdAt: {
-            gte: new Date(today),
-            lte: new Date(today + 'T23:59:59.999Z')
-          }
+          dataHora: createDateRange(today, today) || {}
         }
       })
     ]);

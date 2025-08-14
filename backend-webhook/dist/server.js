@@ -18,6 +18,8 @@ const googleAds_1 = __importDefault(require("./routes/googleAds"));
 const googleAdsIntegration_1 = __importDefault(require("./routes/googleAdsIntegration"));
 const facebookAdsCron_1 = require("./jobs/facebookAdsCron");
 dotenv_1.default.config();
+// Configurar timezone do processo para Brasília
+process.env.TZ = 'America/Sao_Paulo';
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3001;
 exports.prisma = new client_1.PrismaClient();

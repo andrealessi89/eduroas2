@@ -40,11 +40,15 @@ import {
 export default function GoogleAdsPage() {
   const { data: session, status } = useSession();
   const [dateFilter, setDateFilter] = useState(() => {
-    // Sempre inicia com o dia atual
-    const today = new Date().toISOString().split("T")[0];
+    // Sempre inicia com o dia atual no horário local
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const todayStr = `${year}-${month}-${day}`;
     return {
-      startDate: today,
-      endDate: today,
+      startDate: todayStr,
+      endDate: todayStr,
     };
   });
   const [accountFilter, setAccountFilter] = useState("");
@@ -194,8 +198,165 @@ export default function GoogleAdsPage() {
         </div>
 
         <div className="p-4 md:p-6 space-y-6">
+          {/* Filtros */}
+          <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+            <div className="space-y-4">
+              {/* Atalhos de período */}
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const year = today.getFullYear();
+                    const month = String(today.getMonth() + 1).padStart(2, '0');
+                    const day = String(today.getDate()).padStart(2, '0');
+                    const todayStr = `${year}-${month}-${day}`;
+                    setDateFilter({
+                      startDate: todayStr,
+                      endDate: todayStr,
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Hoje
+                </button>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const yesterday = new Date(today);
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    const year = yesterday.getFullYear();
+                    const month = String(yesterday.getMonth() + 1).padStart(2, '0');
+                    const day = String(yesterday.getDate()).padStart(2, '0');
+                    const yesterdayStr = `${year}-${month}-${day}`;
+                    setDateFilter({
+                      startDate: yesterdayStr,
+                      endDate: yesterdayStr,
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Ontem
+                </button>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const last7Days = new Date(today);
+                    last7Days.setDate(last7Days.getDate() - 7);
+                    
+                    const todayYear = today.getFullYear();
+                    const todayMonth = String(today.getMonth() + 1).padStart(2, '0');
+                    const todayDay = String(today.getDate()).padStart(2, '0');
+                    const todayStr = `${todayYear}-${todayMonth}-${todayDay}`;
+                    
+                    const last7Year = last7Days.getFullYear();
+                    const last7Month = String(last7Days.getMonth() + 1).padStart(2, '0');
+                    const last7Day = String(last7Days.getDate()).padStart(2, '0');
+                    const last7Str = `${last7Year}-${last7Month}-${last7Day}`;
+                    
+                    setDateFilter({
+                      startDate: last7Str,
+                      endDate: todayStr,
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Últimos 7 dias
+                </button>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    const last30Days = new Date(today);
+                    last30Days.setDate(last30Days.getDate() - 30);
+                    
+                    const todayYear = today.getFullYear();
+                    const todayMonth = String(today.getMonth() + 1).padStart(2, '0');
+                    const todayDay = String(today.getDate()).padStart(2, '0');
+                    const todayStr = `${todayYear}-${todayMonth}-${todayDay}`;
+                    
+                    const last30Year = last30Days.getFullYear();
+                    const last30Month = String(last30Days.getMonth() + 1).padStart(2, '0');
+                    const last30Day = String(last30Days.getDate()).padStart(2, '0');
+                    const last30Str = `${last30Year}-${last30Month}-${last30Day}`;
+                    
+                    setDateFilter({
+                      startDate: last30Str,
+                      endDate: todayStr,
+                    });
+                  }}
+                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Últimos 30 dias
+                </button>
+              </div>
+
+              {/* Campos de filtro */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                {/* Filtro de conta */}
+                <div>
+                  <select
+                    value={accountFilter}
+                    onChange={(e) => setAccountFilter(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Todas as contas</option>
+                    {accounts.map(account => (
+                      <option key={account} value={account}>{account}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Data início */}
+                <div>
+                  <input
+                    type="date"
+                    value={dateFilter.startDate}
+                    onChange={(e) => setDateFilter({ ...dateFilter, startDate: e.target.value })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                {/* Data fim */}
+                <div>
+                  <input
+                    type="date"
+                    value={dateFilter.endDate}
+                    onChange={(e) => setDateFilter({ ...dateFilter, endDate: e.target.value })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                {/* Última atualização */}
+                <div className="flex items-center justify-end text-sm text-gray-500">
+                  {data.length > 0 && data[0].updatedAt && (
+                    <span>
+                      Atualizado {getTimeAgo(data[0].updatedAt)}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card de Receita destacado */}
+          <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-lg shadow-lg">
+            <div className="flex items-center justify-between">
+              <div className="text-white">
+                <p className="text-lg font-medium opacity-90">Receita Total</p>
+                <p className="mt-2 text-4xl font-bold">
+                  {formatCurrency(metrics?.totalConversionValue || 0)}
+                </p>
+                <p className="text-sm opacity-80 mt-2">
+                  ROAS: {metrics?.roas.toFixed(2) || '0.00'}x
+                </p>
+              </div>
+              <div className="bg-white/20 p-4 rounded-lg">
+                <TrendingUp className="h-12 w-12 text-white" />
+              </div>
+            </div>
+          </div>
+
           {/* Métricas principais */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Investimento */}
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <div className="flex items-center justify-between">
@@ -209,21 +370,6 @@ export default function GoogleAdsPage() {
               </div>
             </div>
 
-            {/* ROAS */}
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">ROAS</p>
-                  <p className="mt-2 text-2xl font-bold text-gray-900">
-                    {metrics?.roas.toFixed(2) || '0.00'}x
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">
-                    Retorno: {formatCurrency(metrics?.totalConversionValue || 0)}
-                  </p>
-                </div>
-                <Target className="h-8 w-8 text-gray-400" />
-              </div>
-            </div>
 
             {/* Cliques */}
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
@@ -270,115 +416,6 @@ export default function GoogleAdsPage() {
                   </p>
                 </div>
                 <Eye className="h-8 w-8 text-gray-400" />
-              </div>
-            </div>
-          </div>
-
-          {/* Filtros */}
-          <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-            <div className="space-y-4">
-              {/* Atalhos de período */}
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => {
-                    const today = new Date();
-                    setDateFilter({
-                      startDate: today.toISOString().split("T")[0],
-                      endDate: today.toISOString().split("T")[0],
-                    });
-                  }}
-                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
-                >
-                  Hoje
-                </button>
-                <button
-                  onClick={() => {
-                    const today = new Date();
-                    const yesterday = new Date(today);
-                    yesterday.setDate(yesterday.getDate() - 1);
-                    setDateFilter({
-                      startDate: yesterday.toISOString().split("T")[0],
-                      endDate: yesterday.toISOString().split("T")[0],
-                    });
-                  }}
-                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
-                >
-                  Ontem
-                </button>
-                <button
-                  onClick={() => {
-                    const today = new Date();
-                    const last7Days = new Date(today);
-                    last7Days.setDate(last7Days.getDate() - 7);
-                    setDateFilter({
-                      startDate: last7Days.toISOString().split("T")[0],
-                      endDate: today.toISOString().split("T")[0],
-                    });
-                  }}
-                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
-                >
-                  Últimos 7 dias
-                </button>
-                <button
-                  onClick={() => {
-                    const today = new Date();
-                    const last30Days = new Date(today);
-                    last30Days.setDate(last30Days.getDate() - 30);
-                    setDateFilter({
-                      startDate: last30Days.toISOString().split("T")[0],
-                      endDate: today.toISOString().split("T")[0],
-                    });
-                  }}
-                  className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
-                >
-                  Últimos 30 dias
-                </button>
-              </div>
-
-              {/* Campos de filtro */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                {/* Filtro de conta */}
-                <div>
-                  <select
-                    value={accountFilter}
-                    onChange={(e) => setAccountFilter(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  >
-                    <option value="">Todas as contas</option>
-                    {accounts.map(account => (
-                      <option key={account} value={account}>{account}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Data início */}
-                <div>
-                  <input
-                    type="date"
-                    value={dateFilter.startDate}
-                    onChange={(e) => setDateFilter({ ...dateFilter, startDate: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-
-                {/* Data fim */}
-                <div>
-                  <input
-                    type="date"
-                    value={dateFilter.endDate}
-                    onChange={(e) => setDateFilter({ ...dateFilter, endDate: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-
-                {/* Última atualização */}
-                <div className="flex items-center justify-end text-sm text-gray-500">
-                  {data.length > 0 && data[0].updatedAt && (
-                    <span>
-                      Atualizado {getTimeAgo(data[0].updatedAt)}
-                    </span>
-                  )}
-                </div>
               </div>
             </div>
           </div>
@@ -543,15 +580,12 @@ export default function GoogleAdsPage() {
                     <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Receita
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      ROAS
-                    </th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {loading && !filteredData.length ? (
                     <tr>
-                      <td colSpan={9} className="px-6 py-12 text-center">
+                      <td colSpan={8} className="px-6 py-12 text-center">
                         <div className="flex justify-center">
                           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
                         </div>
@@ -559,7 +593,7 @@ export default function GoogleAdsPage() {
                     </tr>
                   ) : filteredData.length === 0 ? (
                     <tr>
-                      <td colSpan={9} className="px-6 py-12 text-center text-gray-500">
+                      <td colSpan={8} className="px-6 py-12 text-center text-gray-500">
                         Nenhum webhook recebido ainda
                       </td>
                     </tr>
@@ -608,11 +642,6 @@ export default function GoogleAdsPage() {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
                             {formatCurrency(item.conversionValue)}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
-                            <span className={`font-medium ${roas >= 1 ? 'text-green-600' : 'text-red-600'}`}>
-                              {roas.toFixed(2)}x
-                            </span>
                           </td>
                         </tr>
                       );
@@ -699,14 +728,6 @@ export default function GoogleAdsPage() {
                   <span className="text-sm font-medium text-gray-900">
                     {formatCurrency((metrics?.totalCost || 0) / (metrics?.totalImpressions || 1) * 1000)}
                   </span>
-                </div>
-                <div className="pt-3 border-t">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium text-gray-900">ROI</span>
-                    <span className={`text-lg font-bold ${(metrics?.roas || 0) >= 1 ? 'text-green-600' : 'text-red-600'}`}>
-                      {((metrics?.roas || 0) * 100 - 100).toFixed(0)}%
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>

@@ -47,39 +47,127 @@ const COLORS = {
 // Componente de filtros
 function DashboardFilters({ filters, onFilterChange }: any) {
   const today = new Date();
-  const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const todayStr = `${year}-${month}-${day}`;
   
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex flex-col lg:flex-row gap-3">
-        <div className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-xl">
-          <Calendar className="w-4 h-4 text-gray-500 flex-shrink-0" />
-          <input
-            type="date"
-            value={filters.startDate || thirtyDaysAgo.toISOString().split('T')[0]}
-            onChange={(e) => onFilterChange({ ...filters, startDate: e.target.value })}
-            className="bg-transparent text-xs lg:text-sm outline-none w-28 lg:w-auto"
-          />
-          <span className="text-gray-400 text-xs lg:text-sm">até</span>
-          <input
-            type="date"
-            value={filters.endDate || today.toISOString().split('T')[0]}
-            onChange={(e) => onFilterChange({ ...filters, endDate: e.target.value })}
-            className="bg-transparent text-xs lg:text-sm outline-none w-28 lg:w-auto"
-          />
-        </div>
-        
-        <div className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-xl">
-          <Filter className="w-4 h-4 text-gray-500 flex-shrink-0" />
+    <div className="space-y-4">
+      {/* Atalhos de período */}
+      <div className="flex flex-wrap gap-2">
+        <button
+          onClick={() => {
+            onFilterChange({
+              ...filters,
+              startDate: todayStr,
+              endDate: todayStr,
+            });
+          }}
+          className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+        >
+          Hoje
+        </button>
+        <button
+          onClick={() => {
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayYear = yesterday.getFullYear();
+            const yesterdayMonth = String(yesterday.getMonth() + 1).padStart(2, '0');
+            const yesterdayDay = String(yesterday.getDate()).padStart(2, '0');
+            const yesterdayStr = `${yesterdayYear}-${yesterdayMonth}-${yesterdayDay}`;
+            onFilterChange({
+              ...filters,
+              startDate: yesterdayStr,
+              endDate: yesterdayStr,
+            });
+          }}
+          className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+        >
+          Ontem
+        </button>
+        <button
+          onClick={() => {
+            const last7Days = new Date(today);
+            last7Days.setDate(last7Days.getDate() - 7);
+            const last7Year = last7Days.getFullYear();
+            const last7Month = String(last7Days.getMonth() + 1).padStart(2, '0');
+            const last7Day = String(last7Days.getDate()).padStart(2, '0');
+            const last7Str = `${last7Year}-${last7Month}-${last7Day}`;
+            onFilterChange({
+              ...filters,
+              startDate: last7Str,
+              endDate: todayStr,
+            });
+          }}
+          className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+        >
+          Últimos 7 dias
+        </button>
+        <button
+          onClick={() => {
+            const last30Days = new Date(today);
+            last30Days.setDate(last30Days.getDate() - 30);
+            const last30Year = last30Days.getFullYear();
+            const last30Month = String(last30Days.getMonth() + 1).padStart(2, '0');
+            const last30Day = String(last30Days.getDate()).padStart(2, '0');
+            const last30Str = `${last30Year}-${last30Month}-${last30Day}`;
+            onFilterChange({
+              ...filters,
+              startDate: last30Str,
+              endDate: todayStr,
+            });
+          }}
+          className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+        >
+          Últimos 30 dias
+        </button>
+      </div>
+
+      {/* Campos de filtro */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* Filtro de plataforma */}
+        <div>
           <select
             value={filters.platform || 'all'}
             onChange={(e) => onFilterChange({ ...filters, platform: e.target.value })}
-            className="bg-transparent text-xs lg:text-sm outline-none"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="all">Todas as plataformas</option>
             <option value="google">Google Ads</option>
             <option value="facebook">Facebook Ads</option>
           </select>
+        </div>
+
+        {/* Data início */}
+        <div>
+          <input
+            type="date"
+            value={filters.startDate || todayStr}
+            onChange={(e) => onFilterChange({ ...filters, startDate: e.target.value })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* Data fim */}
+        <div>
+          <input
+            type="date"
+            value={filters.endDate || todayStr}
+            onChange={(e) => onFilterChange({ ...filters, endDate: e.target.value })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* Botão de atualizar */}
+        <div className="flex items-center justify-end">
+          <button 
+            onClick={() => onFilterChange({ ...filters })}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2 shadow-sm"
+          >
+            <RefreshCw className="w-4 h-4" />
+            Atualizar
+          </button>
         </div>
       </div>
     </div>
@@ -183,7 +271,17 @@ function AdCard({ platform, data }: any) {
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState(() => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const todayStr = `${year}-${month}-${day}`;
+    return {
+      startDate: todayStr,
+      endDate: todayStr
+    };
+  });
   const { data, loading, error, refresh } = useDashboard(filters);
 
   // Calcular métricas derivadas
@@ -312,19 +410,15 @@ export default function DashboardPage() {
                 <p className="text-gray-500 text-sm">Bem vindo(a)</p>
                 <h1 className="text-3xl font-semibold text-gray-900">{session.user?.name || 'Usuário'}</h1>
               </div>
-              <button 
-                onClick={refresh}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-sm font-medium transition-colors flex items-center gap-2 shadow-sm"
-              >
-                <RefreshCw className="w-4 h-4" />
-                Sincronizar Dados
-              </button>
             </div>
           </div>
 
           {/* Filters */}
           <div className="bg-white rounded-2xl shadow-sm p-4 mb-6">
-            <DashboardFilters filters={filters} onFilterChange={setFilters} />
+            <DashboardFilters filters={filters} onFilterChange={(newFilters: any) => {
+              setFilters(newFilters);
+              refresh();
+            }} />
           </div>
 
           {/* Header Section */}

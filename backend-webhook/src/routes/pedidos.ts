@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import { authenticateToken, AuthRequest } from '../middleware/auth';
 import moment from 'moment-timezone';
 import { MagazordApiService } from '../services/magazordApi';
+import { createDateRange, parseBrazilDate, formatBrazilDate } from '../utils/dateUtils';
 
 const router = Router();
 const prisma = new PrismaClient();
@@ -22,21 +23,16 @@ router.get('/', authenticateToken, async (req: AuthRequest, res): Promise<any> =
       userId: req.user!.id
     };
 
-    if (startDate || endDate) {
-      where.createdAt = {};
-      if (startDate) where.createdAt.gte = new Date(startDate as string);
-      if (endDate) {
-        const end = new Date(endDate as string);
-        end.setHours(23, 59, 59, 999);
-        where.createdAt.lte = end;
-      }
+    const dateRange = createDateRange(startDate as string, endDate as string);
+    if (dateRange) {
+      where.dataHora = dateRange;
     }
 
     const [pedidos, total] = await Promise.all([
       prisma.pedido.findMany({
         where,
         orderBy: {
-          createdAt: 'desc'
+          dataHora: 'desc'
         },
         take: parseInt(limit as string),
         skip: parseInt(offset as string),
@@ -276,7 +272,7 @@ router.post('/webhook/:userId/ecommerce', async (req: any, res): Promise<any> =>
         },
         idPedido: pedidoData.id.toString(),
         codigo: pedidoData.codigo || '',
-        dataHora: new Date(pedidoData.dataHora),
+        dataHora: parseBrazilDate(pedidoData.dataHora),
         valorProduto: parseFloat(pedidoData.valorProduto || '0'),
         valorFrete: parseFloat(pedidoData.valorFrete || '0'),
         valorDesconto: parseFloat(pedidoData.valorDesconto || '0'),
@@ -336,32 +332,27 @@ router.get('/stats/aggregated', authenticateToken, async (req: AuthRequest, res)
       userId: req.user!.id
     };
 
-    if (startDate || endDate) {
-      where.createdAt = {};
-      if (startDate) where.createdAt.gte = new Date(startDate as string);
-      if (endDate) {
-        const end = new Date(endDate as string);
-        end.setHours(23, 59, 59, 999);
-        where.createdAt.lte = end;
-      }
+    const dateRange = createDateRange(startDate as string, endDate as string);
+    if (dateRange) {
+      where.dataHora = dateRange;
     }
 
     const pedidos = await prisma.pedido.findMany({
       where,
       orderBy: {
-        createdAt: 'asc'
+        dataHora: 'asc'
       }
     });
 
     // Agregar dados conforme o período solicitado
     const aggregatedData = pedidos.reduce((acc: any, pedido) => {
-      const date = pedido.createdAt.toISOString().split('T')[0];
+      const date = pedido.dataHora.toISOString().split('T')[0];
       let key = date;
       
       if (groupBy === 'month') {
         key = date.substring(0, 7); // YYYY-MM
       } else if (groupBy === 'week') {
-        const weekNumber = Math.ceil((pedido.createdAt.getDate() - pedido.createdAt.getDay() + 1) / 7);
+        const weekNumber = Math.ceil((pedido.dataHora.getDate() - pedido.dataHora.getDay() + 1) / 7);
         key = `${date.substring(0, 7)}-W${weekNumber}`;
       }
 

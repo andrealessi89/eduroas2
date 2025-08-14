@@ -146,25 +146,44 @@ const BACKEND_URL   = '${backendUrl}/integracoes/google-ads/webhook';
 const BACKEND_TOKEN = '${token}';
 
 function main() {
-  const acct   = AdsApp.currentAccount();
-  const stats  = acct.getStatsFor('TODAY');
+  const acct = AdsApp.currentAccount();
+  const date = Utilities.formatDate(new Date(), acct.getTimeZone(), "yyyy-MM-dd");
+
+  const report = AdsApp.report(\`
+    SELECT CampaignName, ConversionTypeName, ConversionValue, Conversions
+    FROM CAMPAIGN_PERFORMANCE_REPORT
+    WHERE CampaignStatus = ENABLED
+    DURING TODAY
+  \`);
+
+  const rows = report.rows();
+  let totalConversionValue = 0;
+
+  while (rows.hasNext()) {
+    const row = rows.next();
+    Logger.log(\`Conversão: \${row.ConversionTypeName}, Valor: \${row.ConversionValue}\`);
+    totalConversionValue += parseFloat((row.ConversionValue || "0").replace(",", ""));
+  }
+
+  const stats = acct.getStatsFor('TODAY');
 
   const payload = {
-    date:        new Date().toISOString().slice(0,10),
-    accountId:   acct.getCustomerId(),
+    date: date,
+    accountId: acct.getCustomerId(),
     accountName: acct.getName(),
-    cost:        stats.getCost(),
+    cost: stats.getCost(),
     impressions: stats.getImpressions(),
-    clicks:      stats.getClicks(),
+    clicks: stats.getClicks(),
     conversions: stats.getConversions(),
-    averageCpc:  Number(stats.getAverageCpc().toFixed(2))
+    averageCpc: Number(stats.getAverageCpc().toFixed(2)),
+    conversionValue: Number(totalConversionValue.toFixed(2))
   };
 
   UrlFetchApp.fetch(BACKEND_URL, {
-    method:      'post',
+    method: 'post',
     contentType: 'application/json',
-    headers:     { Authorization: 'Bearer ' + BACKEND_TOKEN },
-    payload:     JSON.stringify(payload),
+    headers: { Authorization: 'Bearer ' + BACKEND_TOKEN },
+    payload: JSON.stringify(payload),
     muteHttpExceptions: true
   });
 
@@ -430,7 +449,7 @@ function main() {
             </div>
 
             <div className="p-6">
-              <div className="bg-gray-900 rounded-lg p-4 mb-4">
+              <div className="bg-gray-900 rounded-lg p-4 mb-4 max-h-96 overflow-y-auto">
                 <pre className="text-sm text-gray-100 font-mono overflow-x-auto">
                   <code>{generateScript(currentToken.token)}</code>
                 </pre>
@@ -459,10 +478,10 @@ function main() {
                 </h4>
                 <ol className="text-sm text-blue-800 space-y-1 list-decimal list-inside">
                   <li>Acesse sua conta do Google Ads</li>
-                  <li>Vá para Ferramentas e configurações → Scripts</li>
+                  <li>Vá para Ferramentas → Ações em massa → Scripts</li>
                   <li>Clique em "+ NOVO SCRIPT"</li>
                   <li>Cole o código gerado acima</li>
-                  <li>Configure para executar diariamente</li>
+                  <li>Configure a frequência para executar por hora</li>
                   <li>Salve e autorize o script</li>
                 </ol>
                 <div className="mt-3">

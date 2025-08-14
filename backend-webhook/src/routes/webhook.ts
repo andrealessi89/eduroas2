@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import { authenticateToken, AuthRequest } from '../middleware/auth';
 import { prisma } from '../server';
-// import { getBrazilTime } from '../utils/timezone'; // Não mais necessário
+import { FacebookAdsService } from '../services/facebookAdsService';
+import { getBrazilTime } from '../utils/timezone';
 
 const router = Router();
 
@@ -90,7 +91,7 @@ router.post('/', authenticateToken, async (req: AuthRequest, res): Promise<any> 
           conversions: payload.conversions,
           averageCpc: payload.averageCpc,
           conversionValue: payload.conversionValue,
-          receivedAt: new Date()
+          receivedAt: getBrazilTime()
           // updatedAt será atualizado automaticamente pelo Prisma
         }
       });
@@ -105,6 +106,16 @@ router.post('/', authenticateToken, async (req: AuthRequest, res): Promise<any> 
         receivedAtISO: googleAdsData.receivedAt.toISOString(),
         isUpdate: !!existingData
       });
+
+      // Sincronizar Facebook Ads para o mesmo usuário
+      try {
+        console.log(`🔄 Iniciando sincronização do Facebook Ads para usuário ${req.user.email}`);
+        await FacebookAdsService.fetchUserInsights(req.user.id, payload.date);
+        console.log(`✅ Sincronização do Facebook Ads concluída para usuário ${req.user.email}`);
+      } catch (facebookError) {
+        console.error(`⚠️ Erro ao sincronizar Facebook Ads para usuário ${req.user.email}:`, facebookError);
+        // Não falhar o webhook do Google se o Facebook falhar
+      }
 
       res.status(201).json({
         success: true,

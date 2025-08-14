@@ -8,6 +8,7 @@ const client_1 = require("@prisma/client");
 const auth_1 = require("../middleware/auth");
 const moment_timezone_1 = __importDefault(require("moment-timezone"));
 const magazordApi_1 = require("../services/magazordApi");
+const dateUtils_1 = require("../utils/dateUtils");
 const router = (0, express_1.Router)();
 const prisma = new client_1.PrismaClient();
 // Listar pedidos do usuário com filtros
@@ -17,21 +18,15 @@ router.get('/', auth_1.authenticateToken, async (req, res) => {
         const where = {
             userId: req.user.id
         };
-        if (startDate || endDate) {
-            where.createdAt = {};
-            if (startDate)
-                where.createdAt.gte = new Date(startDate);
-            if (endDate) {
-                const end = new Date(endDate);
-                end.setHours(23, 59, 59, 999);
-                where.createdAt.lte = end;
-            }
+        const dateRange = (0, dateUtils_1.createDateRange)(startDate, endDate);
+        if (dateRange) {
+            where.dataHora = dateRange;
         }
         const [pedidos, total] = await Promise.all([
             prisma.pedido.findMany({
                 where,
                 orderBy: {
-                    createdAt: 'desc'
+                    dataHora: 'desc'
                 },
                 take: parseInt(limit),
                 skip: parseInt(offset),
@@ -247,7 +242,7 @@ router.post('/webhook/:userId/ecommerce', async (req, res) => {
                 },
                 idPedido: pedidoData.id.toString(),
                 codigo: pedidoData.codigo || '',
-                dataHora: new Date(pedidoData.dataHora),
+                dataHora: (0, dateUtils_1.parseBrazilDate)(pedidoData.dataHora),
                 valorProduto: parseFloat(pedidoData.valorProduto || '0'),
                 valorFrete: parseFloat(pedidoData.valorFrete || '0'),
                 valorDesconto: parseFloat(pedidoData.valorDesconto || '0'),
@@ -301,31 +296,25 @@ router.get('/stats/aggregated', auth_1.authenticateToken, async (req, res) => {
         const where = {
             userId: req.user.id
         };
-        if (startDate || endDate) {
-            where.createdAt = {};
-            if (startDate)
-                where.createdAt.gte = new Date(startDate);
-            if (endDate) {
-                const end = new Date(endDate);
-                end.setHours(23, 59, 59, 999);
-                where.createdAt.lte = end;
-            }
+        const dateRange = (0, dateUtils_1.createDateRange)(startDate, endDate);
+        if (dateRange) {
+            where.dataHora = dateRange;
         }
         const pedidos = await prisma.pedido.findMany({
             where,
             orderBy: {
-                createdAt: 'asc'
+                dataHora: 'asc'
             }
         });
         // Agregar dados conforme o período solicitado
         const aggregatedData = pedidos.reduce((acc, pedido) => {
-            const date = pedido.createdAt.toISOString().split('T')[0];
+            const date = pedido.dataHora.toISOString().split('T')[0];
             let key = date;
             if (groupBy === 'month') {
                 key = date.substring(0, 7); // YYYY-MM
             }
             else if (groupBy === 'week') {
-                const weekNumber = Math.ceil((pedido.createdAt.getDate() - pedido.createdAt.getDay() + 1) / 7);
+                const weekNumber = Math.ceil((pedido.dataHora.getDate() - pedido.dataHora.getDay() + 1) / 7);
                 key = `${date.substring(0, 7)}-W${weekNumber}`;
             }
             if (!acc[key]) {

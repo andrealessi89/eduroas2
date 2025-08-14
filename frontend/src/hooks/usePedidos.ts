@@ -156,9 +156,7 @@ export function usePedidos(filters?: PedidosFilters) {
     return fetchPedidos();
   }, [fetchPedidos]);
 
-  useEffect(() => {
-    fetchPedidos();
-  }, [fetchPedidos]);
+  // Não faz chamada automática - deixa o componente controlar quando buscar
 
   return {
     pedidos,
